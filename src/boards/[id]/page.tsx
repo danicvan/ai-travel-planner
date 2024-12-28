@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import List from "@/components/List";
+import List from "@/components/list";
 
 export default function BoardPage() {
     const [lists, setLists] = useState([
