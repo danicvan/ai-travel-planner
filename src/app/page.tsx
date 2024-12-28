@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-3x1 font-bold mb-6">Your Boards</h1>
-      <ul>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {boards.map((board) => (
           <li key={board.id} className="p-4 bg-white shadow rounded">
             <Link href={`/boards/${board.id}`} className="text-lg font-semibold">
