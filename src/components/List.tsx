@@ -5,7 +5,7 @@ export default function List({
   onCardClick,
 }: {
   list: { id: number; title: string; cards: { id: number; text: string }[] };
-  onCardClick?: (cardId: number, listId: number) => void; // Handler for card interactions
+  onCardClick?: (cardId: number, listId: number) => void;
 }) {
   return (
     <div className="w-72 bg-white shadow-md rounded-lg p-4 flex flex-col space-y-4">
@@ -15,7 +15,7 @@ export default function List({
           <Card
             key={card.id}
             card={card}
-            onClick={(cardId) => onCardClick?.(cardId, list.id)} // Pass both card and list IDs
+            onClick={(cardId) => onCardClick?.(cardId, list.id)}
           />
         ))}
       </ul>
