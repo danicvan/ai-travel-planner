@@ -3,37 +3,34 @@ import Image from "next/image";
 export default function Header() {
     return (
         <header>
-            <div className="flex justify-between items-center max-w-7x1 mx-auto">
+            <div className="flex justify-between items-center max-w-7x1 mx-auto p-4">
                 <div>
                     <Image
-                        src="https://e7.pngegg.com/pngimages/168/333/png-clipart-trello-logo-business-microsoft-teams-management-argentina-national-football-team-2018-fifa-world-c-blue-text.png"
+                        src="https://cdn.worldvectorlogo.com/logos/trello-logo.svg"
                         alt="Trello logo"
-                        width={50}
-                        height={50}
+                        width={100}
+                        height={100}
                     />
                 </div>
 
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="w-full p-2 rounded-md text-black"
-                    />
-                </div>
+                <div className="flex justify-between items-center max-w-7x1 gap-2">
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            className="w-full p-2 rounded-md text-black border border-indigo-600"
+                        />
+                    </div>
 
-                <div>
-                    <Image
-                        src="https://e7.pngegg.com/pngimages/168/333/png-clipart-trello-logo-business-microsoft-teams-management-argentina-national-football-team-2018-fifa-world-c-blue-text.png"
-                        alt="Profile photo"
-                        width={40}
-                        height={40}
-                        className="rounded-full"
-                    />
-                    <button
-                        className="bg-red-500 px-4 py-2 rounded-md hover:bg-red-600"
-                    >
-                        Log Out
-                    </button>
+                    <div>
+                        <Image
+                            src="https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt="Profile photo"
+                            width={100}
+                            height={100}
+                            className="w-14 h-14 rounded-full bg-cover bg-center"
+                        />
+                    </div>
                 </div>
             </div>
         </header>

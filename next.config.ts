@@ -7,7 +7,12 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'e7.pngegg.com',
         pathname: '/**'
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        pathname: '/**'
+      },
     ]
   }
 };
