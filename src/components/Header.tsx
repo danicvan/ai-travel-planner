@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaSearch } from "react-icons/fa";
 
 export default function Header() {
     return (
@@ -14,11 +15,15 @@ export default function Header() {
                 </div>
 
                 <div className="flex justify-between items-center max-w-7x1 gap-2">
-                    <div>
+                    <div className="relative">
                         <input
                             type="text"
                             placeholder="Search..."
-                            className="w-full p-2 rounded-md text-black border border-indigo-600"
+                            className="w-full p-2 pl-10 rounded-md text-black border border-indigo-600"
+                        />
+                        <FaSearch 
+                            className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
+                            size={16}
                         />
                     </div>
 
