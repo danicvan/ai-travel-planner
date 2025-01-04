@@ -1,7 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
 export default function Header() {
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+    const handleProfileClick = () => {
+        setIsProfileOpen(!isProfileOpen);
+    };
+
     return (
         <header>
             <div className="flex justify-between items-center max-w-7x1 mx-auto p-4">
@@ -28,6 +37,13 @@ export default function Header() {
                     </div>
 
                     <div>
+                        <div
+                            onClick={handleProfileClick}
+                            className="cursor-pointer"
+                        >
+
+                        </div>
+
                         <Image
                             src="https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                             alt="Profile photo"
@@ -38,6 +54,19 @@ export default function Header() {
                     </div>
                 </div>
             </div>
+
+            {isProfileOpen && (
+                <div>
+                    <h2>Profile</h2>
+                    <p>Name: John Doe</p>
+                    <p>Email: john.doe@example.com</p>
+                    <button 
+                        onClick={() => setIsProfileOpen(false)}
+                    >
+                        Close
+                    </button>
+                </div>
+            )}
         </header>
     );
 }
