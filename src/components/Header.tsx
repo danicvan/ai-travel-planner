@@ -41,27 +41,26 @@ export default function Header() {
                             onClick={handleProfileClick}
                             className="cursor-pointer"
                         >
-
+                            <Image
+                                src="https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                alt="Profile photo"
+                                width={100}
+                                height={100}
+                                className="w-14 h-14 rounded-full bg-cover bg-center"
+                            />
                         </div>
-
-                        <Image
-                            src="https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                            alt="Profile photo"
-                            width={100}
-                            height={100}
-                            className="w-14 h-14 rounded-full bg-cover bg-center"
-                        />
                     </div>
                 </div>
             </div>
 
             {isProfileOpen && (
-                <div>
-                    <h2>Profile</h2>
+                <div className="absolute top-16 right-4 bg-white shadow-lg rounded-lg p-4 w-64">
+                    <h2 className="text-lg font-bold mb-2">Profile</h2>
                     <p>Name: John Doe</p>
                     <p>Email: john.doe@example.com</p>
-                    <button 
+                    <button
                         onClick={() => setIsProfileOpen(false)}
+                        className="mt-4 p-2 bg-indigo-600 text-white rounded"
                     >
                         Close
                     </button>
