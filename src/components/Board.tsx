@@ -33,9 +33,17 @@ export default function Board() {
           className="border rounded p-2 w-64"
         />
       </header>
-      <p className="mb-4 text-gray-600">
-        Today, we have {lists[0].tasks.length} tasks in To Do, {lists[1].tasks.length} in In Progress, and {lists[2].tasks.length} in Done.
-      </p>
+      <div className="flex justify-between items-center mb-4">
+        <p className="text-gray-600">
+          Today, we have {lists[0].tasks.length} tasks in To Do, {lists[1].tasks.length} in In Progress, and {lists[2].tasks.length} in Done.
+        </p>
+        <button
+          onClick={() => setShowModal(true)}
+          className="bg-indigo-600 text-white px-4 py-2 rounded"
+        >
+          Create Task
+        </button>
+      </div>
       <div className="flex space-x-4">
         {lists.map((list) => (
           <List key={list.id} list={list} onAddTask={() => setShowModal(true)} />

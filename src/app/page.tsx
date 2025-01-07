@@ -36,15 +36,11 @@ export default function HomePage() {
 
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col">
-            {/* Header */}
             <Header />
-
-            {/* Page Content */}
             <section className="flex flex-col items-center mt-6 p-4 w-full max-w-7xl mx-auto">
                 <h1 className="text-2xl font-bold text-indigo-700 mb-4">Welcome to Trello AI</h1>
                 <GreetingMessage {...taskCounts} />
 
-                {/* Columns */}
                 <div className="flex flex-wrap justify-between w-full gap-4 mt-8">
                     {columns.map((column) => (
                         <div key={column.id} className="w-1/3 bg-white shadow rounded p-4">

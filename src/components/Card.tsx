@@ -2,7 +2,7 @@ import React from "react";
 
 interface CardProps {
   text: string;
-  imageUrl?: string; // Optional image for the card
+  imageUrl?: string;
 }
 
 const Card: React.FC<CardProps> = ({ text, imageUrl }) => {
