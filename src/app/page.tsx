@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import Header from "@/components/Header";
 import GreetingMessage from "@/components/GreetingMessage";
 import Card from "@/components/Card";
+import TaskModal from "@/components/TaskModal";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([
@@ -31,6 +32,8 @@ export default function HomePage() {
             tasks: [{ id: "6", text: "Task 6" }],
         },
     ]);
+
+    const [selectedTask, setSelectedTask] = useState(null);
 
     const handleDragEnd = (result: any) => {
         const { source, destination } = result;
@@ -71,7 +74,7 @@ export default function HomePage() {
                 />
 
                 <DragDropContext onDragEnd={handleDragEnd}>
-                    <div className="flex flex-wrap justify-between w-full gap-4 mt-8">
+                    <div className="flex flex-row justify-between w-full gap-4 mt-8">
                         {columns.map((column) => (
                             <Droppable key={column.id} droppableId={column.id}>
                                 {(provided) => (
@@ -81,7 +84,7 @@ export default function HomePage() {
                                         className="w-1/3 bg-white shadow rounded p-4"
                                     >
                                         <h2 className="text-lg font-bold mb-4">{column.title}</h2>
-                                        <ul className="space-y-2">
+                                        <ul className="space-y-2 h-64 overflow-y-auto">
                                             {column.tasks.map((task, index) => (
                                                 <Draggable
                                                     key={task.id}
@@ -94,6 +97,7 @@ export default function HomePage() {
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
                                                             className="p-2 bg-gray-100 rounded shadow"
+                                                            onClick={() => setSelectedTask(task)}
                                                         >
                                                             <Card
                                                                 text={task.text}
@@ -112,6 +116,14 @@ export default function HomePage() {
                     </div>
                 </DragDropContext>
             </section>
+
+            {/* Task Modal */}
+            {selectedTask && (
+                <TaskModal
+                    task={selectedTask}
+                    onClose={() => setSelectedTask(null)}
+                />
+            )}
 
             {/* Footer */}
             <footer className="mt-auto p-4 text-center text-sm text-gray-500">
