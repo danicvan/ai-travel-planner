@@ -66,12 +66,14 @@ export default function HomePage() {
         <main className="min-h-screen bg-gray-50 flex flex-col">
             <Header />
             <section className="flex flex-col items-center mt-6 p-4 w-full max-w-7xl mx-auto">
-                <h1 className="text-2xl font-bold text-indigo-700 mb-4">Welcome to Trello AI</h1>
-                <GreetingMessage
-                    toDo={columns[0].tasks.length}
-                    inProgress={columns[1].tasks.length}
-                    done={columns[2].tasks.length}
-                />
+                <div className="flex flex-row items-center w-full">
+                    <h1 className="text-2xl font-bold text-indigo-700 mb-4">Welcome to Trello AI</h1>
+                    <GreetingMessage
+                        toDo={columns[0].tasks.length}
+                        inProgress={columns[1].tasks.length}
+                        done={columns[2].tasks.length}
+                    />
+                </div>
 
                 <DragDropContext onDragEnd={handleDragEnd}>
                     <div className="flex flex-row justify-between w-full gap-4 mt-8">
