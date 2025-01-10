@@ -122,7 +122,7 @@ export default function HomePage() {
                                             {provided.placeholder}
                                         </ul>
                                         <button
-                                            className="mt-4 bg-indigo-600 text-white rounded p-2 hover:bg-indigo-500"
+                                            className="mt-4 bg-gray-200 text-black rounded p-2 hover:bg-gray-400 hover:text-white"
                                             onClick={() => handleAddTask(column.id)}
                                         >
                                             + Add To Card
