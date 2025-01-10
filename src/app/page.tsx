@@ -35,13 +35,11 @@ export default function HomePage() {
 
     const [selectedTask, setSelectedTask] = useState(null);
 
-    const handleDragEnd = (result: any) => {
+    const handleDragEnd = (result) => {
         const { source, destination } = result;
 
-        // If dropped outside any droppable area
         if (!destination) return;
 
-        // If the item is dropped in the same location, do nothing
         if (
             source.droppableId === destination.droppableId &&
             source.index === destination.index
@@ -49,17 +47,29 @@ export default function HomePage() {
             return;
         }
 
-        // Remove the task from the source column
         const sourceColumn = columns.find((col) => col.id === source.droppableId);
-        const taskToMove = sourceColumn!.tasks[source.index];
-        sourceColumn!.tasks.splice(source.index, 1);
+        const taskToMove = sourceColumn.tasks[source.index];
+        sourceColumn.tasks.splice(source.index, 1);
 
-        // Add the task to the destination column
         const destinationColumn = columns.find((col) => col.id === destination.droppableId);
-        destinationColumn!.tasks.splice(destination.index, 0, taskToMove);
+        destinationColumn.tasks.splice(destination.index, 0, taskToMove);
 
-        // Update state
         setColumns([...columns]);
+    };
+
+    const handleAddTask = (columnId) => {
+        const newTask = {
+            id: Date.now().toString(), // Unique ID for the new task
+            text: `New Task ${Date.now()}`,
+        };
+
+        setColumns((prevColumns) =>
+            prevColumns.map((column) =>
+                column.id === columnId
+                    ? { ...column, tasks: [...column.tasks, newTask] }
+                    : column
+            )
+        );
     };
 
     return (
@@ -83,10 +93,10 @@ export default function HomePage() {
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
-                                        className="w-1/3 bg-white shadow rounded p-4"
+                                        className="w-1/3 bg-white shadow rounded p-4 flex flex-col"
                                     >
                                         <h2 className="text-lg font-bold mb-4">{column.title}</h2>
-                                        <ul className="space-y-2 h-64 overflow-y-auto">
+                                        <ul className="space-y-2 h-64 overflow-y-auto flex-1">
                                             {column.tasks.map((task, index) => (
                                                 <Draggable
                                                     key={task.id}
@@ -111,6 +121,12 @@ export default function HomePage() {
                                             ))}
                                             {provided.placeholder}
                                         </ul>
+                                        <button
+                                            className="mt-4 bg-indigo-600 text-white rounded p-2 hover:bg-indigo-500"
+                                            onClick={() => handleAddTask(column.id)}
+                                        >
+                                            + Add To Card
+                                        </button>
                                     </div>
                                 )}
                             </Droppable>
@@ -119,15 +135,10 @@ export default function HomePage() {
                 </DragDropContext>
             </section>
 
-            {/* Task Modal */}
             {selectedTask && (
-                <TaskModal
-                    task={selectedTask}
-                    onClose={() => setSelectedTask(null)}
-                />
+                <TaskModal task={selectedTask} onClose={() => setSelectedTask(null)} />
             )}
 
-            {/* Footer */}
             <footer className="mt-auto p-4 text-center text-sm text-gray-500">
                 &copy; {new Date().getFullYear()} Trello AI. All rights reserved.
             </footer>
