@@ -35,7 +35,16 @@ export default function HomePage() {
 
     const [selectedTask, setSelectedTask] = useState(null);
 
-    const handleDragEnd = (result) => {
+    const deleteTask = (taskId: string) => {
+        setColumns((prevColumns) =>
+            prevColumns.map((column) => ({
+                ...column,
+                tasks: column.tasks.filter((task) => task.id !== taskId),
+            }))
+        );
+    };
+
+    const handleDragEnd = (result: any) => {
         const { source, destination } = result;
 
         if (!destination) return;
@@ -48,11 +57,11 @@ export default function HomePage() {
         }
 
         const sourceColumn = columns.find((col) => col.id === source.droppableId);
-        const taskToMove = sourceColumn.tasks[source.index];
-        sourceColumn.tasks.splice(source.index, 1);
+        const taskToMove = sourceColumn!.tasks[source.index];
+        sourceColumn!.tasks.splice(source.index, 1);
 
         const destinationColumn = columns.find((col) => col.id === destination.droppableId);
-        destinationColumn.tasks.splice(destination.index, 0, taskToMove);
+        destinationColumn!.tasks.splice(destination.index, 0, taskToMove);
 
         setColumns([...columns]);
     };
@@ -93,10 +102,10 @@ export default function HomePage() {
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
-                                        className="w-1/3 bg-white shadow rounded p-4 flex flex-col"
+                                        className="w-1/3 bg-white shadow rounded p-4"
                                     >
                                         <h2 className="text-lg font-bold mb-4">{column.title}</h2>
-                                        <ul className="space-y-2 h-64 overflow-y-auto flex-1">
+                                        <ul className="space-y-2 h-64 overflow-y-auto">
                                             {column.tasks.map((task, index) => (
                                                 <Draggable
                                                     key={task.id}
@@ -121,6 +130,7 @@ export default function HomePage() {
                                             ))}
                                             {provided.placeholder}
                                         </ul>
+
                                         <button
                                             className="mt-4 bg-gray-200 text-black rounded p-2 hover:bg-gray-400 hover:text-white"
                                             onClick={() => handleAddTask(column.id)}
@@ -136,7 +146,11 @@ export default function HomePage() {
             </section>
 
             {selectedTask && (
-                <TaskModal task={selectedTask} onClose={() => setSelectedTask(null)} />
+                <TaskModal
+                    task={selectedTask}
+                    onClose={() => setSelectedTask(null)}
+                    onDelete={deleteTask}
+                />
             )}
 
             <footer className="mt-auto p-4 text-center text-sm text-gray-500">
