@@ -68,8 +68,9 @@ export default function HomePage() {
 
     const handleAddTask = (columnId) => {
         const newTask = {
-            id: Date.now().toString(), // Unique ID for the new task
-            text: `New Task ${Date.now()}`,
+            id: Date.now().toString(),
+            // text: `New Task ${Date.now()}`,
+            text: `New Task`,
         };
 
         setColumns((prevColumns) =>
@@ -81,7 +82,7 @@ export default function HomePage() {
         );
     };
 
-    return (
+    return (    
         <main className="min-h-screen bg-gray-50 flex flex-col">
             <Header />
             <section className="flex flex-col items-center mt-6 p-4 w-full max-w-7xl mx-auto">
