@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface TaskModalProps {
     task: { id: string; text: string; imageUrl?: string } | null;
     onClose: () => void;
     onDelete: (taskId: string) => void;
+    onEdit: (taskId: string, newText: string) => void;
 }
 
-const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete }) => {
+const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete, onEdit }) => {
     if (!task) return null;
+
+    const [editedText, setEditedText] = useState(task.text);
+
+    const handleSave = () => {
+        onEdit(task.id, editedText); // Call the parent function to update the task
+        onClose();
+    };
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -16,9 +24,18 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete }) => {
                 <p className="mb-2">
                     <strong>Task ID:</strong> {task.id}
                 </p>
-                <p className="mb-2">
-                    <strong>Text:</strong> {task.text}
-                </p>
+                <div className="mb-2">
+                    <label htmlFor="taskText" className="block font-medium">
+                        Text:
+                    </label>
+                    <input
+                        id="taskText"
+                        type="text"
+                        value={editedText}
+                        onChange={(e) => setEditedText(e.target.value)}
+                        className="w-full px-2 py-1 border rounded"
+                    />
+                </div>
                 {task.imageUrl && (
                     <img src={task.imageUrl} alt={task.text} className="w-full rounded mt-4" />
                 )}
@@ -37,6 +54,12 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete }) => {
                         className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
                     >
                         Delete
+                    </button>
+                    <button
+                        onClick={handleSave}
+                        className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                    >
+                        Save
                     </button>
                 </div>
             </div>

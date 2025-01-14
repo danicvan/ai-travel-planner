@@ -44,6 +44,17 @@ export default function HomePage() {
         );
     };
 
+    const editTask = (taskId: string, newText: string) => {
+        setColumns((prevColumns) =>
+            prevColumns.map((column) => ({
+                ...column,
+                tasks: column.tasks.map((task) =>
+                    task.id === taskId ? { ...task, text: newText } : task
+                ),
+            }))
+        );
+    };
+
     const handleDragEnd = (result: any) => {
         const { source, destination } = result;
 
@@ -148,10 +159,11 @@ export default function HomePage() {
 
             {selectedTask && (
                 <TaskModal
-                    task={selectedTask}
-                    onClose={() => setSelectedTask(null)}
-                    onDelete={deleteTask}
-                />
+                task={selectedTask}
+                onClose={() => setSelectedTask(null)}
+                onDelete={deleteTask}
+                onEdit={editTask}
+            />
             )}
 
             <footer className="mt-auto p-4 text-center text-sm text-gray-500">
