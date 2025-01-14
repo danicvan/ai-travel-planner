@@ -13,7 +13,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete, onEdit }
     const [editedText, setEditedText] = useState(task.text);
 
     const handleSave = () => {
-        onEdit(task.id, editedText); // Call the parent function to update the task
+        onEdit(task.id, editedText);
         onClose();
     };
 

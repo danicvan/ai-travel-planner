@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import GreetingMessage from "@/components/GreetingMessage";
 import Card from "@/components/Card";
 import TaskModal from "@/components/TaskModal";
+import AddTaskModal from "@/components/AddTaskModal";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([
@@ -34,6 +35,8 @@ export default function HomePage() {
     ]);
 
     const [selectedTask, setSelectedTask] = useState(null);
+    const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
+    const [selectedColumnId, setSelectedColumnId] = useState("");
 
     const deleteTask = (taskId: string) => {
         setColumns((prevColumns) =>
@@ -52,6 +55,16 @@ export default function HomePage() {
                     task.id === taskId ? { ...task, text: newText } : task
                 ),
             }))
+        );
+    };
+
+    const addTask = (columnId: string, task: { id: number; text: string; image?: string}) => {
+        setColumns((prevColumns) => 
+            prevColumns.map((column) => 
+                column.id === columnId
+                    ? { ...column, tasks: [...column.tasks, task] }
+                    : column
+            )
         );
     };
 
@@ -77,11 +90,15 @@ export default function HomePage() {
         setColumns([...columns]);
     };
 
-    const handleAddTask = (columnId) => {
+    const handleOpenAddTaskModal = (columnId: string) => {
+        setSelectedColumnId(columnId);
+        setIsAddTaskModalOpen(true);
+    }
+
+    const handleAddTask = (columnId: string) => {
         const newTask = {
             id: Date.now().toString(),
-            // text: `New Task ${Date.now()}`,
-            text: `New Task`,
+            text: `Task`,
         };
 
         setColumns((prevColumns) =>
@@ -145,7 +162,7 @@ export default function HomePage() {
 
                                         <button
                                             className="mt-4 bg-gray-200 text-black rounded p-2 hover:bg-gray-400 hover:text-white"
-                                            onClick={() => handleAddTask(column.id)}
+                                            onClick={() => handleOpenAddTaskModal(column.id)}
                                         >
                                             + Add To Card
                                         </button>
@@ -159,11 +176,22 @@ export default function HomePage() {
 
             {selectedTask && (
                 <TaskModal
-                task={selectedTask}
-                onClose={() => setSelectedTask(null)}
-                onDelete={deleteTask}
-                onEdit={editTask}
-            />
+                    task={selectedTask}
+                    onClose={() => setSelectedTask(null)}
+                    onDelete={deleteTask}
+                    onEdit={editTask}
+                />
+            )}
+
+            {isAddTaskModalOpen && (
+                <AddTaskModal 
+                    lists={columns.map(({id, title}) => ({ id: Number(id), title}))}
+                    onClose={() => setIsAddTaskModalOpen(false)}
+                    onAddTask={(listId, task) => {
+                        addTask(listId.toString(), task);
+                        setIsAddTaskModalOpen(false);
+                    }}
+                />
             )}
 
             <footer className="mt-auto p-4 text-center text-sm text-gray-500">
