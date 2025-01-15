@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Dialog } from "@headlessui/react";
 
 interface TaskModalProps {
     task: { id: string; text: string; imageUrl?: string } | null;
