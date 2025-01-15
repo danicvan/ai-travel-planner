@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 
 interface TaskModalProps {
     task: { id: string; text: string; imageUrl?: string } | null;
@@ -8,7 +8,12 @@ interface TaskModalProps {
     onEdit: (taskId: string, newText: string) => void;
 }
 
-const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete, onEdit }) => {
+const TaskModal: React.FC<TaskModalProps> = ({
+    task,
+    onClose,
+    onDelete,
+    onEdit,
+}) => {
     const [editedText, setEditedText] = useState(task?.text || "");
 
     if (!task) return null;
@@ -22,19 +27,24 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete, onEdit }
         <Dialog
             open={Boolean(task)}
             onClose={onClose}
-            className="relative z-50"
+            className="relative z-50 focus:outline-none"
         >
-            <div className="fixed inset-0 bg-black bg-opacity-50" aria-hidden="true" />
-            <div className="fixed inset-0 flex items-center justify-center">
-                <DialogPanel className="bg-white p-6 rounded shadow-lg max-w-md w-full">
-                    <DialogTitle className="text-lg font-bold mb-4">Task Details</DialogTitle>
-                    <p className="mb-2">
+            <div className="fixed inset-0 flex items-center justify-center p-4">
+                <DialogPanel
+                    transition
+                    className="w-full max-w-lg h-auto rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+                >
+                    <DialogTitle as="h3" className="text-base/7 font-medium text-black">
+                        Task Details
+                    </DialogTitle>
+                    <p className="mt-2 text-sm/6 text-black/50">
+                        Your payment has been successfully submitted. We’ve sent you an
+                        email with all of the details of your order.
+                    </p>
+                    <p className="mt-2 text-sm/6 text-black/50 mt-4">
                         <strong>Task ID:</strong> {task.id}
                     </p>
-                    <div className="mb-2">
-                        <label htmlFor="taskText" className="block font-medium">
-                            Text:
-                        </label>
+                    <div className="mt-2 text-sm/6 text-black/50">
                         <input
                             id="taskText"
                             type="text"
@@ -44,30 +54,34 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete, onEdit }
                         />
                     </div>
                     {task.imageUrl && (
-                        <img src={task.imageUrl} alt={task.text} className="w-full rounded mt-4" />
+                        <img
+                            src={task.imageUrl}
+                            alt={task.text}
+                            className="w-full rounded mt-4"
+                        />
                     )}
-                    <div className="flex justify-between mt-4">
-                        <button
+                    <div className="flex justify-between mt-8">
+                        <Button
+                            className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[focus]:outline-1 data-[focus]:outline-white data-[open]:bg-gray-700"
                             onClick={onClose}
-                            className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:ring focus:outline-none"
                         >
                             Close
-                        </button>
-                        <button
+                        </Button>
+                        <Button
+                            className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[focus]:outline-1 data-[focus]:outline-white data-[open]:bg-gray-700"
                             onClick={() => {
                                 onDelete(task.id);
                                 onClose();
                             }}
-                            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 focus:ring focus:outline-none"
                         >
                             Delete
-                        </button>
-                        <button
+                        </Button>
+                         <Button
+                            className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[focus]:outline-1 data-[focus]:outline-white data-[open]:bg-gray-700"
                             onClick={handleSave}
-                            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 focus:ring focus:outline-none"
                         >
                             Save
-                        </button>
+                        </Button>
                     </div>
                 </DialogPanel>
             </div>
