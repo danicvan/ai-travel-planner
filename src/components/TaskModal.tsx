@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { Button, Description, Dialog, DialogPanel, DialogTitle, Field, Label, Textarea } from "@headlessui/react";
+import clsx from "clsx";
 
 interface TaskModalProps {
     task: { id: string; text: string; imageUrl?: string } | null;
@@ -41,17 +42,21 @@ const TaskModal: React.FC<TaskModalProps> = ({
                         Your payment has been successfully submitted. We’ve sent you an
                         email with all of the details of your order.
                     </p>
-                    <p className="mt-2 text-sm/6 text-black/50 mt-4">
-                        <strong>Task ID:</strong> {task.id}
-                    </p>
-                    <div className="mt-2 text-sm/6 text-black/50">
-                        <input
+                    <div className="w-full max-w-md px-4 mt-4">
+                        <Field>
+                            <Label className="text-sm/6 font-medium text-black">Task ID {task.id}</Label>
+                            <Description className="text-sm/6 text-black/50">This will be shown under the product title.</Description>
+                            <Textarea
+                            className={clsx(
+                              'mt-3 block w-full resize-none rounded-lg border-none bg-black/5 py-1.5 px-3 text-sm/6 text-black',
+                              'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
+                            )}
+                            rows={3}
                             id="taskText"
-                            type="text"
                             value={editedText}
                             onChange={(e) => setEditedText(e.target.value)}
-                            className="w-full px-2 py-1 border rounded focus:ring focus:outline-none"
-                        />
+                          />
+                        </Field>
                     </div>
                     {task.imageUrl && (
                         <img
