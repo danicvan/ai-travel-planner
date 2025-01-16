@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Dialog, DialogPanel, DialogTitle, Field, Label, Textarea, Button } from "@headlessui/react";
-import clsx from "clsx";
 
 interface AddTaskModalProps {
   lists: { id: number; title: string }[];
@@ -19,85 +17,70 @@ export default function AddTaskModal({ lists, onClose, onAddTask }: AddTaskModal
     onAddTask(selectedListId, { id: Date.now(), text: taskText, image: taskImage });
     setTaskText("");
     setTaskImage("");
-    onClose();
   };
 
   return (
-    <Dialog
-      open
-      onClose={onClose}
-      className="relative z-50 focus:outline-none"
-    >
-      <div className="fixed inset-0 flex items-center justify-center p-4 bg-black/50">
-        <DialogPanel
-          transition
-          className="w-full max-w-lg h-auto rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
-        >
-          <DialogTitle as="h3" className="text-base/7 font-medium text-black">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md">
+      <div className="w-full max-w-lg rounded-xl bg-white/5 p-6 backdrop-blur-2xl">
+        <h2 className="text-lg font-semibold text-black">Add Task</h2>
+        <p className="mt-1 text-sm text-black/50">
+          Create a new task by selecting a list and filling in the details.
+        </p>
+        <div className="mt-4">
+          <label className="block text-sm font-medium text-black">
+            Select List
+          </label>
+          <select
+            value={selectedListId}
+            onChange={(e) => setSelectedListId(Number(e.target.value))}
+            className="mt-2 block w-full rounded-lg bg-black/5 py-1.5 px-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/25"
+          >
+            {lists.map((list) => (
+              <option key={list.id} value={list.id}>
+                {list.title}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="mt-4">
+          <label className="block text-sm font-medium text-black">
+            Task Description
+          </label>
+          <input
+            type="text"
+            value={taskText}
+            onChange={(e) => setTaskText(e.target.value)}
+            placeholder="Enter task description"
+            className="mt-2 block w-full rounded-lg bg-black/5 py-1.5 px-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/25"
+          />
+        </div>
+        <div className="mt-4">
+          <label className="block text-sm font-medium text-black">
+            Task Image (Optional)
+          </label>
+          <input
+            type="text"
+            value={taskImage}
+            onChange={(e) => setTaskImage(e.target.value)}
+            placeholder="Enter image URL"
+            className="mt-2 block w-full rounded-lg bg-black/5 py-1.5 px-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/25"
+          />
+        </div>
+        <div className="mt-6 flex justify-end gap-4">
+          <button
+            onClick={onClose}
+            className="rounded-md bg-gray-700 py-1.5 px-3 text-sm font-semibold text-white focus:outline-none hover:bg-gray-600"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleAddTask}
+            className="rounded-md bg-gray-700 py-1.5 px-3 text-sm font-semibold text-white focus:outline-none hover:bg-gray-600"
+          >
             Add Task
-          </DialogTitle>
-          <div className="mt-4">
-            <Field>
-              <Label className="text-sm/6 font-medium text-black">
-                Select List
-              </Label>
-              <select
-                value={selectedListId}
-                onChange={(e) => setSelectedListId(Number(e.target.value))}
-                className="mt-2 block w-full rounded-lg border-none bg-black/5 py-1.5 px-3 text-sm/6 text-black focus:outline-none"
-              >
-                {lists.map((list) => (
-                  <option key={list.id} value={list.id}>
-                    {list.title}
-                  </option>
-                ))}
-              </select>
-            </Field>
-            <Field className="mt-4">
-              <Label className="text-sm/6 font-medium text-black">
-                Task Description
-              </Label>
-              <Textarea
-                className={clsx(
-                  "mt-2 block w-full resize-none rounded-lg border-none bg-black/5 py-1.5 px-3 text-sm/6 text-black",
-                  "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
-                )}
-                rows={4}
-                value={taskText}
-                onChange={(e) => setTaskText(e.target.value)}
-              />
-            </Field>
-            <Field className="mt-4">
-              <Label className="text-sm/6 font-medium text-black">
-                Task Image (Optional)
-              </Label>
-              <Textarea
-                className={clsx(
-                  "mt-2 block w-full resize-none rounded-lg border-none bg-black/5 py-1.5 px-3 text-sm/6 text-black",
-                  "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
-                )}
-                rows={2}
-                value={taskImage}
-                onChange={(e) => setTaskImage(e.target.value)}
-              />
-            </Field>
-          </div>
-          <div className="flex justify-between mt-8">
-            <Button
-              className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[focus]:outline-1 data-[focus]:outline-white"
-              onClick={onClose}
-            >
-              Cancel
-            </Button>
-            <Button
-              className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[focus]:outline-1 data-[focus]:outline-white"
-              onClick={handleAddTask}
-            >
-              Add Task
-            </Button>
-          </div>
-        </DialogPanel>
+          </button>
+        </div>
       </div>
-    </Dialog>
+    </div>
   );
 }
