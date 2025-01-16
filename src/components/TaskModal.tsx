@@ -51,7 +51,7 @@ const TaskModal: React.FC<TaskModalProps> = ({
                               'mt-3 block w-full resize-none rounded-lg border-none bg-black/5 py-1.5 px-3 text-sm/6 text-black',
                               'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
                             )}
-                            rows={3}
+                            rows={6}
                             id="taskText"
                             value={editedText}
                             onChange={(e) => setEditedText(e.target.value)}
