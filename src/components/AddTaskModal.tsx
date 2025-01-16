@@ -20,20 +20,20 @@ export default function AddTaskModal({ lists, onClose, onAddTask }: AddTaskModal
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md">
-      <div className="w-full max-w-lg rounded-xl bg-white/5 p-6 backdrop-blur-2xl">
-        <h2 className="text-lg font-semibold text-black">Add Task</h2>
-        <p className="mt-1 text-sm text-black/50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/70 backdrop-blur-sm">
+      <div className="w-full max-w-lg rounded-xl bg-white shadow-lg p-6">
+        <h2 className="text-lg font-semibold text-gray-900">Add Task</h2>
+        <p className="mt-1 text-sm text-gray-500">
           Create a new task by selecting a list and filling in the details.
         </p>
         <div className="mt-4">
-          <label className="block text-sm font-medium text-black">
+          <label className="block text-sm font-medium text-gray-700">
             Select List
           </label>
           <select
             value={selectedListId}
             onChange={(e) => setSelectedListId(Number(e.target.value))}
-            className="mt-2 block w-full rounded-lg bg-black/5 py-1.5 px-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/25"
+            className="mt-2 block w-full rounded-lg border border-gray-300 bg-gray-50 py-1.5 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           >
             {lists.map((list) => (
               <option key={list.id} value={list.id}>
@@ -43,7 +43,7 @@ export default function AddTaskModal({ lists, onClose, onAddTask }: AddTaskModal
           </select>
         </div>
         <div className="mt-4">
-          <label className="block text-sm font-medium text-black">
+          <label className="block text-sm font-medium text-gray-700">
             Task Description
           </label>
           <input
@@ -51,11 +51,11 @@ export default function AddTaskModal({ lists, onClose, onAddTask }: AddTaskModal
             value={taskText}
             onChange={(e) => setTaskText(e.target.value)}
             placeholder="Enter task description"
-            className="mt-2 block w-full rounded-lg bg-black/5 py-1.5 px-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/25"
+            className="mt-2 block w-full rounded-lg border border-gray-300 bg-gray-50 py-1.5 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
         </div>
         <div className="mt-4">
-          <label className="block text-sm font-medium text-black">
+          <label className="block text-sm font-medium text-gray-700">
             Task Image (Optional)
           </label>
           <input
@@ -63,19 +63,19 @@ export default function AddTaskModal({ lists, onClose, onAddTask }: AddTaskModal
             value={taskImage}
             onChange={(e) => setTaskImage(e.target.value)}
             placeholder="Enter image URL"
-            className="mt-2 block w-full rounded-lg bg-black/5 py-1.5 px-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/25"
+            className="mt-2 block w-full rounded-lg border border-gray-300 bg-gray-50 py-1.5 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
         </div>
         <div className="mt-6 flex justify-end gap-4">
           <button
             onClick={onClose}
-            className="rounded-md bg-gray-700 py-1.5 px-3 text-sm font-semibold text-white focus:outline-none hover:bg-gray-600"
+            className="rounded-md border border-gray-300 bg-white py-1.5 px-3 text-sm font-semibold text-gray-700 hover:bg-gray-100 focus:outline-none"
           >
             Cancel
           </button>
           <button
             onClick={handleAddTask}
-            className="rounded-md bg-gray-700 py-1.5 px-3 text-sm font-semibold text-white focus:outline-none hover:bg-gray-600"
+            className="rounded-md bg-blue-500 py-1.5 px-3 text-sm font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             Add Task
           </button>
