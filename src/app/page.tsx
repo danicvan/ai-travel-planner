@@ -58,9 +58,9 @@ export default function HomePage() {
         );
     };
 
-    const addTask = (columnId: string, task: { id: number; text: string; image?: string}) => {
-        setColumns((prevColumns) => 
-            prevColumns.map((column) => 
+    const addTask = (columnId: string, task: { id: number; text: string; image?: string }) => {
+        setColumns((prevColumns) =>
+            prevColumns.map((column) =>
                 column.id === columnId
                     ? { ...column, tasks: [...column.tasks, task] }
                     : column
@@ -93,29 +93,14 @@ export default function HomePage() {
     const handleOpenAddTaskModal = (columnId: string) => {
         setSelectedColumnId(columnId);
         setIsAddTaskModalOpen(true);
-    }
-
-    const handleAddTask = (columnId: string) => {
-        const newTask = {
-            id: Date.now().toString(),
-            text: `Task`,
-        };
-
-        setColumns((prevColumns) =>
-            prevColumns.map((column) =>
-                column.id === columnId
-                    ? { ...column, tasks: [...column.tasks, newTask] }
-                    : column
-            )
-        );
     };
 
-    return (    
-        <main className="min-h-screen bg-gray-50 flex flex-col">
+    return (
+        <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200 flex flex-col">
             <Header />
             <section className="flex flex-col items-center mt-6 p-4 w-full max-w-7xl mx-auto">
                 <div className="flex flex-row items-center w-full">
-                    <h1 className="text-2xl font-bold text-indigo-700 mb-4">Welcome to Trello AI</h1>
+                    <h1 className="text-3xl font-bold text-indigo-600 mb-4">Trello AI</h1>
                     <GreetingMessage
                         toDo={columns[0].tasks.length}
                         inProgress={columns[1].tasks.length}
@@ -131,10 +116,12 @@ export default function HomePage() {
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
-                                        className="w-1/3 bg-white shadow rounded p-4"
+                                        className="w-1/3 bg-white rounded-lg shadow-lg p-6 border border-gray-100"
                                     >
-                                        <h2 className="text-lg font-bold mb-4">{column.title}</h2>
-                                        <ul className="space-y-2 h-64 overflow-y-auto">
+                                        <h2 className="text-lg font-bold text-gray-700 mb-4">
+                                            {column.title}
+                                        </h2>
+                                        <ul className="space-y-2 h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
                                             {column.tasks.map((task, index) => (
                                                 <Draggable
                                                     key={task.id}
@@ -146,7 +133,7 @@ export default function HomePage() {
                                                             ref={provided.innerRef}
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
-                                                            className="p-2 bg-gray-100 rounded shadow"
+                                                            className="p-4 bg-gray-100 rounded shadow hover:bg-gray-200 cursor-pointer"
                                                             onClick={() => setSelectedTask(task)}
                                                         >
                                                             <Card
@@ -161,10 +148,10 @@ export default function HomePage() {
                                         </ul>
 
                                         <button
-                                            className="mt-4 bg-gray-200 text-black rounded p-2 hover:bg-gray-400 hover:text-white"
+                                            className="mt-4 w-full bg-indigo-500 text-white py-2 rounded-lg hover:bg-indigo-600 focus:outline-none"
                                             onClick={() => handleOpenAddTaskModal(column.id)}
                                         >
-                                            + Add To Card
+                                            + Add Task
                                         </button>
                                     </div>
                                 )}
@@ -184,8 +171,8 @@ export default function HomePage() {
             )}
 
             {isAddTaskModalOpen && (
-                <AddTaskModal 
-                    lists={columns.map(({id, title}) => ({ id: Number(id), title}))}
+                <AddTaskModal
+                    lists={columns.map(({ id, title }) => ({ id: Number(id), title }))}
                     onClose={() => setIsAddTaskModalOpen(false)}
                     onAddTask={(listId, task) => {
                         addTask(listId.toString(), task);
