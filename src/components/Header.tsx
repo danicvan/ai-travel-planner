@@ -1,16 +1,30 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
 
 export default function Header() {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
+    const profileRef = useRef(null);
 
     const handleProfileClick = () => {
         setIsProfileOpen(!isProfileOpen);
     }
+
+    const handleClickOutside = (event) => {
+        if (profileRef.current && !profileRef.current.contains(event.target)){
+            setIsProfileOpen(false);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     return (
         <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -40,7 +54,11 @@ export default function Header() {
                 </div>
 
                 {/* Profile */}
-                <div className="relative cursor-pointer" onClick={handleProfileClick}>
+                <div 
+                    className="relative cursor-pointer" 
+                    onClick={handleProfileClick}
+                    ref={profileRef}
+                >
                     <Image 
                         src="https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                         width={30}
@@ -65,7 +83,7 @@ export default function Header() {
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <p className="px-4 py-1 text-sm text-gray-500 hover:bg-gray-100">Log out</p>
+                                <p className="px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Log out</p>
                             </div>
                         </div>
                     )}
