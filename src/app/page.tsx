@@ -131,7 +131,7 @@ export default function HomePage() {
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
-                                        className="w-1/3 p-4 bg-white rounded-lg shadow-sm"
+                                        className="w-1/3 p-4 bg-white rounded-lg shadow-sm rounded-lg"
                                     >
                                         <h2 className="mb-3 text-sm font-medium text-gray-700">
                                             {column.title}
