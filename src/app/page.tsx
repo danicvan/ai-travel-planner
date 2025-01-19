@@ -46,13 +46,12 @@ export default function HomePage() {
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
     const [selectedColumnId, setSelectedColumnId] = useState("");
 
-    const deleteTask = (taskid: string) => {
-        setColumns(
-            columns.map((column) => ({
-                ...column,
-                tasks: column.tasks.filter((task) => task.id !== taskid)
-            }))
-        )
+    const deleteTask = (taskId: string) => {
+        setColumns((prevColumns) => 
+        prevColumns.map((column) => ({
+            ...column,
+            tasks: column.tasks.filter((task) => task.id !== taskId)
+        })))
     }
 
     const editTask = (taskId: string, newText: string) => {
