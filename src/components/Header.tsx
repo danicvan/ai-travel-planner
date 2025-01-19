@@ -10,7 +10,7 @@ export default function Header() {
 
     const handleProfileClick = () => {
         setIsProfileOpen(!isProfileOpen);
-    };
+    }
 
     return (
         <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -40,13 +40,35 @@ export default function Header() {
                 </div>
 
                 {/* Profile */}
-                <div className="relative cursor-pointer">
+                <div className="relative cursor-pointer" onClick={handleProfileClick}>
                     <Image 
                         src="https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                         width={30}
                         height={30}
-                        className="rounded-full w-10 h-10 border-2 border-indigo-500"
+                        className="rounded-full w-8 h-8 border-2 border-transparent hover:border-2 hover:border-stone-200"
                     />
+
+                    {isProfileOpen && (
+                        <div className="absolute py-6 right-0 mt-2 w-60 bg-white shadow-md rounded-lg">
+                            <p className="text-xs font-semibold text-gray-400 px-4">ACCOUNT</p>
+                            <div className="mt-4 flex items-center gap-2 px-4">
+                                <Image
+                                    src="https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                    width={40}
+                                    height={40}
+                                    alt="Profile"
+                                    className="rounded-full w-12 h-12"
+                                />
+                                <div>
+                                    <p className="text-sm text-gray-500">John.Doe</p>
+                                    <p className="text-xs text-gray-500">john.doe@email.com</p>
+                                </div>
+                            </div>
+                            <div className="mt-4">
+                                <p className="px-4 py-1 text-sm text-gray-500 hover:bg-gray-100">Log out</p>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </header>
