@@ -40,13 +40,12 @@ export default function Header() {
                 </div>
 
                 {/* Profile */}
-                <div onClick={handleProfileClick} className="relative cursor-pointer">
-                    <Image
+                <div className="relative cursor-pointer">
+                    <Image 
                         src="https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        alt="Profile photo"
-                        width={40}
-                        height={40}
-                        className="w-10 h-10 rounded-full object-cover border-2 border-indigo-600"
+                        width={30}
+                        height={30}
+                        className="rounded-full w-10 h-10 border-2 border-indigo-500"
                     />
                 </div>
             </div>
