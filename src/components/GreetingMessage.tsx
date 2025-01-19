@@ -12,7 +12,7 @@ export default function GreetingMessage({ toDo, inProgress, done }: TaskCounts) 
     } in Done. Have a productive day!`;
 
     return (
-        <div className="flex items-center justify-center h-screen bg-gradient-to-br from-indigo-100 to-indigo-200">
+        <div className="flex items-center justify-center">
             <div className="p-6 bg-white text-indigo-800 rounded-lg shadow-xl max-w-lg text-center">
                 <h1 className="text-2xl font-bold mb-4">Good Morning!</h1>
                 <p className="text-lg">{tasksMessage}</p>
