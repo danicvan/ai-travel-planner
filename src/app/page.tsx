@@ -47,21 +47,21 @@ export default function HomePage() {
     const [selectedColumnId, setSelectedColumnId] = useState("");
 
     const deleteTask = (taskId: string) => {
-        setColumns((prevColumns) => 
-        prevColumns.map((column) => ({
-            ...column,
-            tasks: column.tasks.filter((task) => task.id !== taskId)
-        })))
-    }
-
-    const editTask = (taskId: string, newText: string) => {
         setColumns((prevColumns) =>
             prevColumns.map((column) => ({
                 ...column,
-                tasks: column.tasks.map((task) =>
-                    task.id === taskId ? { ...task, text: newText } : task
-                ),
-            }))
+                tasks: column.tasks.filter((task) => task.id !==)
+            })))
+    }
+
+    const editTask = (taskId: string, newText: string) => {
+        setColumns((prevColumns) => 
+        prevColumns.map((column) => ({
+            ...column,
+            tasks: column.tasks.map((task) => 
+            task.id === taskId ? {...task, text: newText } : task
+            ),
+        }))
         );
     };
 
