@@ -65,18 +65,13 @@ export default function HomePage() {
         );
     };
 
-    const addTask = (
-        columnId: string,
-        task: { id: number; text: string; image?: string }
-    ) => {
-        setColumns((prevColumns) =>
-            prevColumns.map((column) =>
-                column.id === columnId
-                    ? { ...column, tasks: [...column.tasks, task] }
-                    : column
-            )
-        );
-    };
+    const addTask = (columnId: string, tasks: { id: number; text: string; image?: string}) => {
+        setColumns((prevColumns) => 
+        prevColumns.map((column) => 
+        column.id === columnId ? {...column, tasks: [...column.tasks, tasks]} : column
+        )
+        )
+    }
 
     const handleDragEnd = (result: any) => {
         const { source, destination } = result;
