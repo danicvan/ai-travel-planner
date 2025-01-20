@@ -50,7 +50,7 @@ export default function HomePage() {
         setColumns((prevColumns) =>
             prevColumns.map((column) => ({
                 ...column,
-                tasks: column.tasks.filter((task) => task.id !==)
+                tasks: column.tasks.filter((task) => task.id !== taskId)
             })))
     }
 
