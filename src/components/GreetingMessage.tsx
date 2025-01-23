@@ -41,7 +41,7 @@ export default function GreetingMessage({ toDo, inProgress, done }: TaskCounts) 
     const [taskMessage, setTaskMessage] = useState<string | null>(null);
 
     useEffect(() => {
-        const message = `Make a funny daily message for trello with this data: Todo: ${toDo}, In Progress: ${inProgress}, Done: ${ done === 1 ? '1' : done}.`
+        const message = `Make a short and funny daily message for trello with this data: Todo: ${toDo}, In Progress: ${inProgress}, Done: ${ done === 1 ? '1' : done}. I wanna only 2 rows.`
         console.log(`Request message is: ${message}`);
 
         fetchData(message).then((response) => {
