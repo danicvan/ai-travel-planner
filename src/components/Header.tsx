@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
 
-export default function Header() {
+export default function Header({ onSearch }) {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const profileRef = useRef(null);
     const [searchKey, setSearchKey] = useState("");
@@ -21,9 +21,11 @@ export default function Header() {
     }
     
     const handleSearch = (event) => {
-        setSearchKey(event.target.value);
-        console.log(`My key search is ${searchKey}...`);
-    }
+        const value = event.target.value;
+        setSearchKey(value);
+        onSearch(value);
+        console.log(`My key search is ${value}...`);
+    ;
 
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
@@ -52,7 +54,8 @@ export default function Header() {
                         type="text"
                         placeholder="Search..."
                         className="w-full px-4 py-2 pl-10 bg-gray-100 rounded-full text-sm text-gray-700 focus:outline-none focus:ring-indigo-500"
-                        onInput={handleSearch}
+                        onChange={handleSearch}
+                        value={searchKey}
                     />
                     <FaSearch
                         className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
