@@ -102,10 +102,23 @@ export default function HomePage() {
         setIsAddTaskModalOpen(true);
     };
 
+    const [searchKey, setSearchKey] = useState("");
+
+    const filterColumns = columns.map((column) => ({
+        ...column,
+        tasks: column.tasks.filter((task) => 
+            task.text.toLowerCase().includes(searchKey.toLowerCase())
+        ),
+    }));
+
+    const handleSearch = (value) => {
+        setSearchKey(value);
+    };
+
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
             {/* Header Component */}
-            <Header />
+            <Header onSearch={handleSearch}/>
 
             <section className="flex-grow flex flex-col items-center mt-6 w-full max-w-5xl mx-auto">
                 {/* Greeting Message */}
@@ -119,7 +132,7 @@ export default function HomePage() {
                 {/* Drag-and-Drop Context */}
                 <DragDropContext onDragEnd={handleDragEnd}>
                     <div className="flex flex-row gap-4 w-full mt-9">
-                        {columns.map((column) => (
+                        {filterColumns.map((column) => (
                             <Droppable key={column.id} droppableId={column.id}>
                                 {(provided) => (
                                     <div

@@ -24,8 +24,7 @@ export default function Header({ onSearch }) {
         const value = event.target.value;
         setSearchKey(value);
         onSearch(value);
-        console.log(`My key search is ${value}...`);
-    ;
+    };
 
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
