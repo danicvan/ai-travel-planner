@@ -8,6 +8,7 @@ import Link from "next/link";
 export default function Header() {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const profileRef = useRef(null);
+    const [searchKey, setSearchKey] = useState("");
 
     const handleProfileClick = () => {
         setIsProfileOpen(!isProfileOpen);
@@ -17,6 +18,11 @@ export default function Header() {
         if (profileRef.current && !profileRef.current.contains(event.target)){
             setIsProfileOpen(false);
         }
+    }
+    
+    const handleSearch = (event) => {
+        setSearchKey(event.target.value);
+        console.log(`My key search is ${searchKey}...`);
     }
 
     useEffect(() => {
@@ -46,6 +52,7 @@ export default function Header() {
                         type="text"
                         placeholder="Search..."
                         className="w-full px-4 py-2 pl-10 bg-gray-100 rounded-full text-sm text-gray-700 focus:outline-none focus:ring-indigo-500"
+                        onInput={handleSearch}
                     />
                     <FaSearch
                         className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
