@@ -7,6 +7,7 @@ import GreetingMessage from "@/components/GreetingMessage";
 import Card from "@/components/Card";
 import TaskModal from "@/components/TaskModal";
 import AddTaskModal from "@/components/AddTaskModal";
+import { databases } from "@/appwrite";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([
@@ -65,13 +66,32 @@ export default function HomePage() {
         );
     };
 
-    const addTask = (columnId: string, tasks: { id: number; text: string; image?: string}) => {
-        setColumns((prevColumns) => 
-        prevColumns.map((column) => 
-        column.id === columnId ? {...column, tasks: [...column.tasks, tasks]} : column
-        )
-        )
-    }
+    const addTask = async (listId: string, task: string) => {
+        try {
+            const response = await databases.createDocument(
+                "ai-travel-planner",
+                "tasks",
+                task,
+                {
+                    text: task,
+                    image: task,
+                    listId: listId,
+                }
+            );
+
+            console.log("Task added:", response);
+
+            setColumns((prevColumns) => 
+                prevColumns.map((column) =>
+                    column.id === listId
+                    ? { ...column, tasks: [...column.tasks, response] }
+                    : column
+                )
+            );
+        } catch (e) {
+            console.error("Failed to add task:", e);
+        }
+    };
 
     const handleDragEnd = (result: any) => {
         const { source, destination } = result;
