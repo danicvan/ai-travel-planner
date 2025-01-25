@@ -89,7 +89,7 @@ export default function HomePage() {
                 )
             );
         } catch (e) {
-            console.error("Failed to add task:", e);
+            console.error("Failed to add a new task:", e);
         }
     };
 
