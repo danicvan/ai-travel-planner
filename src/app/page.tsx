@@ -1,7 +1,7 @@
 "use client";
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import GreetingMessage from "@/components/GreetingMessage";
 import Card from "@/components/Card";

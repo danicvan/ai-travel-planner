@@ -8,4 +8,3 @@ client
     .setProject("ai-travel-planner-backend");
 
 export { client, databases };
-
