@@ -10,38 +10,29 @@ import AddTaskModal from "@/components/AddTaskModal";
 import { databases } from "@/appwrite";
 
 export default function HomePage() {
-    const [columns, setColumns] = useState([
-        {
-            id: "1",
-            title: "To Do",
-            tasks: [
-                { id: "1", text: "Task 1" },
-                {
-                    id: "2",
-                    text: "Task 2",
-                    imageUrl: "https://via.placeholder.com/150",
-                },
-                { id: "3", text: "Task 3" },
-            ],
-        },
-        {
-            id: "2",
-            title: "In Progress",
-            tasks: [
-                { id: "4", text: "Task 4" },
-                {
-                    id: "5",
-                    text: "Task 5",
-                    imageUrl: "https://via.placeholder.com/150",
-                },
-            ],
-        },
-        {
-            id: "3",
-            title: "Done",
-            tasks: [{ id: "6", text: "Task 6" }],
-        },
-    ]);
+    const [columns, setColumns] = useState([]);
+
+    useEffect(() => {
+        const fetchColumnsAndTasks = async () => {
+            try {
+                const columnsResponse = await databases.listDocuments("ai-travel-planner", "columns");
+                const tasksResponse = await databases.listDocuments("ai-travel-planner", "tasks");
+
+                const columnsWithTasks = columnsResponse.documents.map((column) => ({
+                    ...column,
+                    tasks: tasksResponse.documents.filter(
+                        (task) => task.columnId === column.id
+                    ),
+                }));
+
+                setColumns(columnsWithTasks);
+            } catch (e) {
+                console.error(`Failed to fetch columns and tasks`);
+            }
+         };
+
+         fetchColumnsAndTasks();
+    }, []);
 
     const [selectedTask, setSelectedTask] = useState(null);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
