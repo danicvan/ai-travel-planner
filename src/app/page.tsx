@@ -38,75 +38,30 @@ export default function HomePage() {
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
     const [selectedColumnId, setSelectedColumnId] = useState("");
 
-    const deleteTask = (taskId: string) => {
-        setColumns((prevColumns) =>
-            prevColumns.map((column) => ({
-                ...column,
-                tasks: column.tasks.filter((task) => task.id !== taskId)
-            })))
-    }
-
-    const editTask = (taskId: string, newText: string) => {
-        setColumns((prevColumns) => 
-        prevColumns.map((column) => ({
-            ...column,
-            tasks: column.tasks.map((task) => 
-            task.id === taskId ? {...task, text: newText } : task
-            ),
-        }))
-        );
-    };
-
-    const addTask = async (listId: string, task: string) => {
+    const addTask = async (listId, taskText) => {
         try {
-            const response = await databases.createDocument(
+            const response = databases.createDocument(
                 "ai-travel-planner",
                 "tasks",
-                task,
+                "unique()",
                 {
-                    text: task,
-                    image: task,
-                    listId: listId,
+                    text: taskText,
+                    columnId: listId,
+                    imageUrl: "", 
                 }
             );
 
-            console.log("Task added:", response);
-
             setColumns((prevColumns) => 
                 prevColumns.map((column) =>
-                    column.id === listId
+                    column.id === listId 
                     ? { ...column, tasks: [...column.tasks, response] }
                     : column
                 )
             );
         } catch (e) {
-            console.error("Failed to add a new task:", e);
+            console.error(`Failed to create task:`, e);
         }
-    };
-
-    const handleDragEnd = (result: any) => {
-        const { source, destination } = result;
-
-        if (!destination) return;
-
-        if (
-            source.droppableId === destination.droppableId &&
-            source.index === destination.index
-        ) {
-            return;
-        }
-
-        const sourceColumn = columns.find((col) => col.id === source.droppableId);
-        const taskToMove = sourceColumn!.tasks[source.index];
-        sourceColumn!.tasks.splice(source.index, 1);
-
-        const destinationColumn = columns.find(
-            (col) => col.id === destination.droppableId
-        );
-        destinationColumn!.tasks.splice(destination.index, 0, taskToMove);
-
-        setColumns([...columns]);
-    };
+    }
 
     const handleOpenAddTaskModal = (columnId: string) => {
         setSelectedColumnId(columnId);
