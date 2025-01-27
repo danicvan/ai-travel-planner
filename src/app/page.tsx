@@ -4,7 +4,6 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import GreetingMessage from "@/components/GreetingMessage";
-import Card from "@/components/Card";
 import TaskModal from "@/components/TaskModal";
 import AddTaskModal from "@/components/AddTaskModal";
 import { databases } from "@/appwrite";
@@ -36,7 +35,6 @@ export default function HomePage() {
 
     const [selectedTask, setSelectedTask] = useState(null);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
-    const [selectedColumnId, setSelectedColumnId] = useState("");
 
     const addTask = async (listId, taskText) => {
         try {
@@ -63,8 +61,7 @@ export default function HomePage() {
         }
     }
 
-    const handleOpenAddTaskModal = (columnId: string) => {
-        setSelectedColumnId(columnId);
+    const handleOpenAddTaskModal = () => {
         setIsAddTaskModalOpen(true);
     };
 
@@ -81,6 +78,44 @@ export default function HomePage() {
         ),
     }));
 
+    const handleDragEnd = async (result) => {
+        const { source, destination } = result;
+
+        if (!destination) return;
+
+        if (
+            source.droppableId === destination.droppableId &&
+            source.index === destination.index
+        ) {
+            return;
+        }
+
+        const sourceColumn = columns.find((col) => col.id === source.droppableId);
+        const taskToMove = sourceColumn.tasks[source.index];
+
+        sourceColumn.tasks.splice(source.index, 1);
+
+        const destinationColumn = columns.find(
+            (col) => col.id === destination.droppableId
+        );
+
+        destinationColumn.tasks.splice(destination.index, 0, taskToMove);
+
+        setColumns([...columns]);
+
+        try {
+            await databases.updateDocument(
+                "ai-travel-planner",
+                "tasks",
+                taskToMove.id,
+                { columnId: destination.droppableId }
+            );
+        } catch (error) {
+            console.error("Failed to update task column:", error);
+        }
+    };
+
+
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
             {/* Header Component */}
@@ -89,9 +124,9 @@ export default function HomePage() {
             <section className="flex-grow flex flex-col items-center mt-6 w-full max-w-5xl mx-auto">
                 {/* Greeting Message */}
                 <GreetingMessage
-                    toDo={columns[0].tasks.length}
-                    inProgress={columns[1].tasks.length}
-                    done={columns[2].tasks.length}
+                    toDo={columns[0]?.tasks.length || 0}
+                    inProgress={columns[1]?.tasks.length || 0}
+                    done={columns[2]?.tasks.length || 0}
                     className="mb-4 text-sm text-gray-500"
                 />
 
