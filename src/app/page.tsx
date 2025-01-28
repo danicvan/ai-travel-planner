@@ -114,6 +114,10 @@ export default function HomePage() {
             console.error("Failed to update task column:", error);
         }
     };
+
+    const addColumn = () => {
+        
+    }
     
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
@@ -179,8 +183,11 @@ export default function HomePage() {
                                 )}
                             </Droppable>
                         ))}
-                        <div className="w-1/3">
-                            <button>
+                        <div className="w-1/3 p-4 bg-gray-100 rounded-lg flex items-center justify-center">
+                            <button
+                                className="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
+                                onClick={addColumn}
+                            >
                                 + Add Column
                             </button>                            
                         </div>
