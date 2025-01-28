@@ -115,8 +115,22 @@ export default function HomePage() {
         }
     };
 
-    const addColumn = () => {
-        
+    const addColumn = async () => {
+        try {
+            const response = await databases.createDocument(
+                "ai-travel-planner",
+                "columns",
+                "unique()",
+                {
+                    title: "New Column",
+                    order: columns.length,
+                }
+            );
+
+            setColumns((prevColumns) => [...prevColumns, {...newColumn, tasks: [] }]);
+        } catch (e) {
+            console.error(`Failed to create a column`, e);
+        }
     }
     
     return (
