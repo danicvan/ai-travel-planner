@@ -114,8 +114,7 @@ export default function HomePage() {
             console.error("Failed to update task column:", error);
         }
     };
-
-
+    
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
             {/* Header Component */}
@@ -180,6 +179,11 @@ export default function HomePage() {
                                 )}
                             </Droppable>
                         ))}
+                        <div className="w-1/3">
+                            <button>
+                                + Add Column
+                            </button>                            
+                        </div>
                     </div>
                 </DragDropContext>
             </section>
