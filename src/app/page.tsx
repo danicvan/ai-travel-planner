@@ -117,19 +117,19 @@ export default function HomePage() {
 
     const addColumn = async () => {
         try {
-            const response = await databases.createDocument(
-                "ai-travel-planner",
+            const newColumn = await databases.createDocument(
+                "ai-travel-planner-backend",
                 "columns",
                 "unique()",
                 {
-                    title: "New Column",
+                    title: "New column",
                     order: columns.length,
                 }
-            );
+            )
 
-            setColumns((prevColumns) => [...prevColumns, {...newColumn, tasks: [] }]);
-        } catch (e) {
-            console.error(`Failed to create a column`, e);
+            setColumns((prevColumns) => [...prevColumns, { ...newColumn, tasks: [] }]);
+        } catch (error) {
+            console.error(`Failed to create column`, error);
         }
     }
     

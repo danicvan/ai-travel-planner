@@ -1,10 +1,11 @@
-import { Client, Databases } from "appwrite";
+import { Client, Account } from "appwrite";
 
 const client = new Client();
-const databases = new Databases(client);
 
 client
     .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("ai-travel-planner-backend");
 
-export { client, databases };
+const account = new Account(client);
+
+export { client, account };
