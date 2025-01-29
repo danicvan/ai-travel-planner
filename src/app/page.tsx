@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import GreetingMessage from "@/components/GreetingMessage";
 import TaskModal from "@/components/TaskModal";
 import AddTaskModal from "@/components/AddTaskModal";
-import databases from "@/appwrite";
+import { databases } from "@/appwrite";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([]);
@@ -118,10 +118,11 @@ export default function HomePage() {
     const addColumn = async () => {
         try {
             const newColumn = await databases.createDocument(
-                "ai-travel-planner-backend",
+                "ai-travel-planner",
                 "columns",
                 "unique()",
                 {
+                    id: "unique()",
                     title: "New column",
                     order: columns.length,
                 }
