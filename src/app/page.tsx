@@ -41,9 +41,10 @@ export default function HomePage() {
             const response = databases.createDocument(
                 "ai-travel-planner",
                 "tasks",
-                "unique()",
+                "ID.unique()",
                 {
                     text: taskText,
+                    id: "ID.unique()",
                     columnId: listId,
                     imageUrl: "", 
                 }
@@ -120,9 +121,9 @@ export default function HomePage() {
             const newColumn = await databases.createDocument(
                 "ai-travel-planner",
                 "columns",
-                "unique()",
+                "ID.unique()",
                 {
-                    id: "unique()",
+                    id: "ID.unique()",
                     title: "New column",
                     order: columns.length,
                 }
@@ -226,7 +227,7 @@ export default function HomePage() {
                     lists={columns.map(({ id, title }) => ({ id: Number(id), title }))}
                     onClose={() => setIsAddTaskModalOpen(false)}
                     onAddTask={(listId, task) => {
-                        addTask(listId.toString(), task);
+                        addTask(listId.toString(), task.toString());
                         setIsAddTaskModalOpen(false);
                     }}
                 />
