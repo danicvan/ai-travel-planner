@@ -41,8 +41,9 @@ export default function HomePage() {
             const response = databases.createDocument(
                 "ai-travel-planner",
                 "tasks",
-                "unique()",
+                "1",
                 {
+                    id: "unique()",
                     text: taskText,
                     columnId: listId,
                     imageUrl: "", 
