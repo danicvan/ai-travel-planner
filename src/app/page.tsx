@@ -43,6 +43,7 @@ export default function HomePage() {
                 "tasks",
                 "ID.unique()",
                 {
+                    id: "unique()",
                     text: task.text,
                     columnId: listId,
                     imageUrl: task.image || "",
@@ -120,9 +121,8 @@ export default function HomePage() {
             const newColumn = await databases.createDocument(
                 "ai-travel-planner",
                 "columns",
-                "ID.unique()",
+                "unique()",
                 {
-                    id: "ID.unique()",
                     title: "New column",
                     order: columns.length,
                 }
