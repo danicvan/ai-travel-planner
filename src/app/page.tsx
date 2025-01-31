@@ -36,17 +36,16 @@ export default function HomePage() {
     const [selectedTask, setSelectedTask] = useState(null);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
-    const addTask = async (listId, taskText) => {
+    const addTask = async (listId, task) => {
         try {
             const response = databases.createDocument(
                 "ai-travel-planner",
                 "tasks",
-                "1",
+                "ID.unique()",
                 {
-                    id: "unique()",
-                    text: taskText,
+                    text: task.text,
                     columnId: listId,
-                    imageUrl: "", 
+                    imageUrl: task.image || "",
                 }
             );
 
@@ -121,9 +120,9 @@ export default function HomePage() {
             const newColumn = await databases.createDocument(
                 "ai-travel-planner",
                 "columns",
-                "unique()",
+                "ID.unique()",
                 {
-                    id: "unique()",
+                    id: "ID.unique()",
                     title: "New column",
                     order: columns.length,
                 }
