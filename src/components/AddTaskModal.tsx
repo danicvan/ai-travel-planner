@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 interface AddTaskModalProps {
-  lists: { id: number; title: string }[];
+  lists: { id: string; title: string }[];
   onClose: () => void;
   onAddTask: (listId: string, task: { id: number; text: string; image?: string }) => void;
 }
