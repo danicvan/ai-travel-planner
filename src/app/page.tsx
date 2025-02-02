@@ -38,13 +38,15 @@ export default function HomePage() {
 
     const addTask = async (listId, task) => {
         try {
-            const response = databases.createDocument(
+            console.log(`listId`, listId);
+            console.log(`task`, task);
+            const response = await databases.createDocument(
                 "ai-travel-planner",
                 "tasks",
                 "unique()",
                 {
                     text: task.text,
-                    columnId: parseInt(listId),
+                    columnId: task.id,
                     imageUrl: task.image || "",
                 }
             );
@@ -127,7 +129,11 @@ export default function HomePage() {
                 }
             )
 
+            console.log(`newColumn: `, newColumn);
+            console.log(`The new column id is ${newColumn.$id}`);
+
             setColumns((prevColumns) => [...prevColumns, { ...newColumn, tasks: [] }]);
+            console.log(`columns is:`, columns);
         } catch (error) {
             console.error(`Failed to create column`, error);
         }
@@ -222,7 +228,7 @@ export default function HomePage() {
             {/* Add Task Modal */}
             {isAddTaskModalOpen && (
                 <AddTaskModal
-                    lists={columns.map(({ id, title }) => ({ id: Number(id), title }))}
+                    lists={filterColumns.map(({ $id, title }) => ({ id: Number($id), title }))}
                     onClose={() => setIsAddTaskModalOpen(false)}
                     onAddTask={(listId, task) => {
                         addTask(listId, task);
