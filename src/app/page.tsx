@@ -55,12 +55,15 @@ export default function HomePage() {
 
             setColumns((prevColumns) => 
                 prevColumns.map((column) =>
-                    column.id === listId 
+                    column.$id === listId 
                     ? { ...column, tasks: [...column.tasks, response] }
                     : column
                 )
             );
 
+            columns.map((column) => {
+                console.log(`column: `, column.$id)
+            })
             console.log(`my new tasks on column is:`, columns);
         } catch (e) {
             console.error(`Failed to create task:`, e);
