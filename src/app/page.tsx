@@ -51,6 +51,8 @@ export default function HomePage() {
                 }
             );
 
+            console.log(`response is: `, response);
+
             setColumns((prevColumns) => 
                 prevColumns.map((column) =>
                     column.id === listId 
@@ -58,6 +60,8 @@ export default function HomePage() {
                     : column
                 )
             );
+
+            console.log(`my new tasks on column is:`, columns);
         } catch (e) {
             console.error(`Failed to create task:`, e);
         }
@@ -228,7 +232,7 @@ export default function HomePage() {
             {/* Add Task Modal */}
             {isAddTaskModalOpen && (
                 <AddTaskModal
-                    lists={filterColumns.map(({ $id, title }) => ({ id: Number($id), title }))}
+                    lists={filterColumns.map(({ $id, title }) => ({ id: $id, title }))}
                     onClose={() => setIsAddTaskModalOpen(false)}
                     onAddTask={(listId, task) => {
                         addTask(listId, task);

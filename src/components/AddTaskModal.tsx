@@ -3,10 +3,11 @@ import { useState } from "react";
 interface AddTaskModalProps {
   lists: { id: number; title: string }[];
   onClose: () => void;
-  onAddTask: (listId: number, task: { id: number; text: string; image?: string }) => void;
+  onAddTask: (listId: string, task: { id: number; text: string; image?: string }) => void;
 }
 
 export default function AddTaskModal({ lists, onClose, onAddTask }: AddTaskModalProps) {
+  console.log(`this is my addTaskModal by list: `,lists[0].id);
   const [selectedListId, setSelectedListId] = useState(lists[0].id);
   const [taskText, setTaskText] = useState("");
   const [taskImage, setTaskImage] = useState<string | undefined>("");
