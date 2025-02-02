@@ -17,14 +17,18 @@ export default function HomePage() {
                 const columnsResponse = await databases.listDocuments("ai-travel-planner", "columns");
                 const tasksResponse = await databases.listDocuments("ai-travel-planner", "tasks");
 
+                console.log(`columnsResponse: `, columnsResponse);
+                console.log(`tasksResponse: `, tasksResponse);
+
                 const columnsWithTasks = columnsResponse.documents.map((column) => ({
                     ...column,
                     tasks: tasksResponse.documents.filter(
-                        (task) => task.columnId === column.id
+                        (task) => task.columnId === column.$id
                     ),
                 }));
 
                 setColumns(columnsWithTasks);
+                console.log(`columnsWithTasks is:`, columnsWithTasks)
             } catch (e) {
                 console.error(`Failed to fetch columns and tasks`);
             }
