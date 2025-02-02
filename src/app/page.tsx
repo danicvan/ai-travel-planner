@@ -46,7 +46,7 @@ export default function HomePage() {
                 "unique()",
                 {
                     text: task.text,
-                    columnId: task.id,
+                    columnId: listId,
                     imageUrl: task.image || "",
                 }
             );
