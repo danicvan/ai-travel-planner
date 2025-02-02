@@ -38,7 +38,7 @@ export default function HomePage() {
          fetchColumnsAndTasks();
     }, []);
 
-    const [isAddColumnModalOpen, setIsAddColumnModalOpen ] = useState(false);
+    const [isAddColumnModalOpen, setIsAddColumnModalOpen ] = useState(true);
 
     const handleAddColumnModal = () => {
         setIsAddColumnModalOpen(true);
