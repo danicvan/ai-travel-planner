@@ -33,12 +33,12 @@ export default function AddTaskModal({ lists, onClose, onAddTask }: AddTaskModal
           </label>
           <select
             value={selectedListId}
-            onChange={(e) => setSelectedListId(Number(e.target.value))}
+            onChange={(e) => setSelectedListId(e.target.value)}
             className="mt-2 block w-full rounded-lg border border-gray-300 bg-gray-50 py-1.5 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           >
             {lists.map((list) => (
               <option key={list.id} value={list.id}>
-                {list.title}
+                {list.id}
               </option>
             ))}
           </select>
