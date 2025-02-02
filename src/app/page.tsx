@@ -7,6 +7,7 @@ import GreetingMessage from "@/components/GreetingMessage";
 import TaskModal from "@/components/TaskModal";
 import AddTaskModal from "@/components/AddTaskModal";
 import { databases } from "@/appwrite";
+import AddColumnModal from "@/components/AddColumnModal";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([]);
@@ -36,6 +37,8 @@ export default function HomePage() {
 
          fetchColumnsAndTasks();
     }, []);
+
+    const [isAddColumnModalOpen, setIsAddCoolumnModalOpen ] = useState(false);
 
     const [selectedTask, setSelectedTask] = useState(null);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
@@ -140,7 +143,6 @@ export default function HomePage() {
                 }
             )
 
-            console.log(`newColumn: `, newColumn);
             console.log(`The new column id is ${newColumn.$id}`);
 
             setColumns((prevColumns) => [...prevColumns, { ...newColumn, tasks: [] }]);
@@ -245,6 +247,13 @@ export default function HomePage() {
                         addTask(listId, task);
                         setIsAddTaskModalOpen(false);
                     }}
+                />
+            )}
+
+            {/* Add Column Modal */}
+            {isAddColumnModalOpen && (
+                <AddColumnModal
+
                 />
             )}
 
