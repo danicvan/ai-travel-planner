@@ -38,7 +38,11 @@ export default function HomePage() {
          fetchColumnsAndTasks();
     }, []);
 
-    const [isAddColumnModalOpen, setIsAddCoolumnModalOpen ] = useState(false);
+    const [isAddColumnModalOpen, setIsAddColumnModalOpen ] = useState(false);
+
+    const handleAddColumnModal = () => {
+        setIsAddColumnModalOpen(true);
+    };
 
     const [selectedTask, setSelectedTask] = useState(null);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
@@ -208,7 +212,7 @@ export default function HomePage() {
                                         {/* Add Task Button */}
                                         <button
                                             className="mt-4 w-full bg-gray-50 border border-gray-200 text-sm text-gray-600 rounded-lg py-2 hover:bg-gray-100"
-                                            onClick={() => handleOpenAddTaskModal(column.id)}
+                                            onClick={() => handleOpenAddTaskModal()}
                                         >
                                             + Add Task
                                         </button>
@@ -219,7 +223,8 @@ export default function HomePage() {
                         <div className="w-1/3 p-4 bg-gray-100 rounded-lg flex items-center justify-center">
                             <button
                                 className="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
-                                onClick={addColumn}
+                                onClick={() => handleAddColumnModal()}
+
                             >
                                 + Add Column
                             </button>                            
