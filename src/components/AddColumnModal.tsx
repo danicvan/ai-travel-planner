@@ -2,14 +2,18 @@ import { useState } from "react";
 
 interface AddColumnProps {
     onClose: () => void;
+    onAddColumn: (columnName: string) => void;
 }
 
-export default function AddColumnModal({ onClose } : AddColumnProps) {
+export default function AddColumnModal({ onClose, onAddColumn } : AddColumnProps) {
     const [ columnName, setColumnName ] = useState("");
 
     const handleAddColumn = () => {
         if (!columnName.trim()) return;
-    }
+
+        onAddColumn(columnName);
+        setColumnName("");
+    };
 
     return (
         <div className="fixed inset-0 z-50 flex items justify-center p-4 bg-white/70 backdrop-blur-sm">

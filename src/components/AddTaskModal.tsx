@@ -38,7 +38,7 @@ export default function AddTaskModal({ lists, onClose, onAddTask }: AddTaskModal
           >
             {lists.map((list) => (
               <option key={list.id} value={list.id}>
-                {list.id}
+                {list.title}
               </option>
             ))}
           </select>

@@ -38,11 +38,32 @@ export default function HomePage() {
          fetchColumnsAndTasks();
     }, []);
 
-    const [isAddColumnModalOpen, setIsAddColumnModalOpen ] = useState(true);
+    const [isAddColumnModalOpen, setIsAddColumnModalOpen ] = useState(false);
 
     const handleAddColumnModal = () => {
         setIsAddColumnModalOpen(true);
     };
+
+    const addColumn = async (columnName) => {
+        try {
+            const newColumn = await databases.createDocument(
+                "ai-travel-planner",
+                "columns",
+                "unique()",
+                {
+                    title: columnName,
+                    order: columns.length,
+                }
+            )
+
+            console.log(`The new column id is ${newColumn.$id}`);
+
+            setColumns((prevColumns) => [...prevColumns, { ...newColumn, tasks: [] }]);
+            console.log(`columns is:`, columns);
+        } catch (error) {
+            console.error(`Failed to create column`, error);
+        }
+    }
 
     const [selectedTask, setSelectedTask] = useState(null);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
@@ -135,26 +156,7 @@ export default function HomePage() {
         }
     };
 
-    const addColumn = async () => {
-        try {
-            const newColumn = await databases.createDocument(
-                "ai-travel-planner",
-                "columns",
-                "unique()",
-                {
-                    title: "New column",
-                    order: columns.length,
-                }
-            )
-
-            console.log(`The new column id is ${newColumn.$id}`);
-
-            setColumns((prevColumns) => [...prevColumns, { ...newColumn, tasks: [] }]);
-            console.log(`columns is:`, columns);
-        } catch (error) {
-            console.error(`Failed to create column`, error);
-        }
-    }
+    
     
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
@@ -258,7 +260,11 @@ export default function HomePage() {
             {/* Add Column Modal */}
             {isAddColumnModalOpen && (
                 <AddColumnModal
-
+                    onClose={() => setIsAddColumnModalOpen(false)}
+                    onAddColumn={(columnName) => {
+                        addColumn(columnName);
+                        setIsAddColumnModalOpen(false);
+                    }}
                 />
             )}
 
