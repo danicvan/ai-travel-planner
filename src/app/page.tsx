@@ -191,8 +191,8 @@ export default function HomePage() {
                                         <ul className="space-y-2">
                                             {column.tasks.map((task, index) => (
                                                 <Draggable
-                                                    key={task.id}
-                                                    draggableId={task.id}
+                                                    key={task.$id}
+                                                    draggableId={task.$id}
                                                     index={index}
                                                 >
                                                     {(provided) => (
