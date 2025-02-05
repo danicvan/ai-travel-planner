@@ -29,7 +29,7 @@ const TaskModal: React.FC<TaskModalProps> = ({
   if (!task) return null;
 
   const handleSave = () => {
-    onEdit(task.id, editedText);
+    onEdit(task.$id, editedText);
     onClose();
   };
 
@@ -50,7 +50,7 @@ const TaskModal: React.FC<TaskModalProps> = ({
           <div className="mt-4">
             <Field>
               <Label className="block text-sm font-medium text-gray-700">
-                Task ID {task.id}
+                Task ID {task.$id}
               </Label>
               <Description className="text-sm text-gray-500">
                 This will be shown under the product title.
@@ -83,7 +83,7 @@ const TaskModal: React.FC<TaskModalProps> = ({
             <Button
               className="rounded-md border border-red-500 bg-red-50 py-1.5 px-3 text-sm font-semibold text-red-600 hover:bg-red-100 focus:outline-none"
               onClick={() => {
-                onDelete(task.id);
+                onDelete(task.$id);
                 onClose();
               }}
             >

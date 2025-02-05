@@ -105,6 +105,22 @@ export default function HomePage() {
     const handleOpenAddTaskModal = () => {
         setIsAddTaskModalOpen(true);
     };
+    
+    const handleEditTask = async (taskId) => {
+        if (!taskId) return;
+    }
+
+    const handleDeleteTask = async (taskId) => {
+        if (!taskId) return;
+
+        const response = await databases.deleteDocument(
+            `ai-travel-planner`,
+            `tasks`,
+            taskId,
+        )
+
+        console.log(response);
+    }
 
     const [searchKey, setSearchKey] = useState("");
 
@@ -242,9 +258,9 @@ export default function HomePage() {
             {selectedTask && (
                 <TaskModal
                     task={selectedTask}
-                    onClose={() => setSelectedTask(null)}
-                    onDelete={deleteTask}
-                    onEdit={editTask}
+                    onClose={() => setSelectedTask(true)}
+                    onDelete={handleDeleteTask}
+                    onEdit={handleEditTask}
                 />
             )}
 
