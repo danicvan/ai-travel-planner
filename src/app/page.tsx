@@ -131,24 +131,29 @@ export default function HomePage() {
             return;
         }
 
-        const sourceColumn = columns.find((col) => col.id === source.droppableId);
+        const sourceColumn = columns.find((col) => col.$id === source.droppableId);
+        console.log(`sourceColumn: ` + sourceColumn);
+
         const taskToMove = sourceColumn.tasks[source.index];
+        console.log(`taskToMove`);
 
         sourceColumn.tasks.splice(source.index, 1);
 
         const destinationColumn = columns.find(
-            (col) => col.id === destination.droppableId
+            (col) => col.$id === destination.droppableId
         );
 
         destinationColumn.tasks.splice(destination.index, 0, taskToMove);
 
         setColumns([...columns]);
 
+        console.log(`taskMove.$id`, taskToMove.$id);
+
         try {
             await databases.updateDocument(
                 "ai-travel-planner",
                 "tasks",
-                taskToMove.id,
+                taskToMove.$id,
                 { columnId: destination.droppableId }
             );
         } catch (error) {
@@ -156,8 +161,6 @@ export default function HomePage() {
         }
     };
 
-    
-    
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
             {/* Header Component */}
@@ -176,7 +179,7 @@ export default function HomePage() {
                 <DragDropContext onDragEnd={handleDragEnd}>
                     <div className="flex flex-row gap-4 w-full mt-9">
                         {filterColumns.map((column) => (
-                            <Droppable key={column.id} droppableId={column.id}>
+                            <Droppable key={column.$id} droppableId={column.$id}>
                                 {(provided) => (
                                     <div
                                         ref={provided.innerRef}
