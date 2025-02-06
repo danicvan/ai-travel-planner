@@ -66,6 +66,7 @@ export default function HomePage() {
     }
 
     const [selectedTask, setSelectedTask] = useState(null);
+    const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
     const addTask = async (listId, task) => {
@@ -105,14 +106,27 @@ export default function HomePage() {
     const handleOpenAddTaskModal = () => {
         setIsAddTaskModalOpen(true);
     };
+
+    const handleSelectedTask = (task) => {
+        setSelectedTask(task);
+        setIsTaskModalOpen(true);
+    }
+
+    const handleCloseTask = () => {
+        setIsTaskModalOpen(false);
+    }
     
     const handleEditTask = async (taskId) => {
         if (!taskId) return;
     }
 
     const handleDeleteTask = async (taskId) => {
+        console.log(`Button delete clicked!`);
         if (!taskId) return;
 
+        console.log(`taskId is:`, taskId);
+
+        console.log(`Before databases.deleteDocument process`);
         const response = await databases.deleteDocument(
             `ai-travel-planner`,
             `tasks`,
@@ -120,6 +134,7 @@ export default function HomePage() {
         )
 
         console.log(response);
+        setColumns((prevColumns) => )
     }
 
     const [searchKey, setSearchKey] = useState("");
@@ -220,7 +235,7 @@ export default function HomePage() {
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
                                                             className="p-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200"
-                                                            onClick={() => setSelectedTask(task)}
+                                                            onClick={() => handleSelectedTask(task)}
                                                         >
                                                             {task.text}
                                                         </li>
@@ -255,12 +270,12 @@ export default function HomePage() {
             </section>
 
             {/* Task Modal */}
-            {selectedTask && (
+            {isTaskModalOpen && (
                 <TaskModal
                     task={selectedTask}
-                    onClose={() => setSelectedTask(true)}
-                    onDelete={handleDeleteTask}
-                    onEdit={handleEditTask}
+                    onClose={handleCloseTask}
+                    onDelete={() => handleDeleteTask(selectedTask.$id)}
+                    onEdit={() => handleEditTask(selectedTask.$id)}
                 />
             )}
 
