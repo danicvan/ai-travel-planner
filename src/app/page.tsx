@@ -65,7 +65,7 @@ export default function HomePage() {
         }
     }
 
-    const [selectedTask, setSelectedTask] = useState(null);
+    const [selectedTask, setSelectedTask] = useState([]);
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
@@ -107,8 +107,8 @@ export default function HomePage() {
         setIsAddTaskModalOpen(true);
     };
 
-    const handleSelectedTask = (task) => {
-        setSelectedTask(task);
+    const handleSelectedTask = (task, columnId) => {
+        setSelectedTask([task, columnId]);
         setIsTaskModalOpen(true);
     }
 
@@ -120,21 +120,31 @@ export default function HomePage() {
         if (!taskId) return;
     }
 
-    const handleDeleteTask = async (taskId) => {
+    const handleDeleteTask = async (task) => {
         console.log(`Button delete clicked!`);
-        if (!taskId) return;
+        if (!task[0].$id) return;
 
-        console.log(`taskId is:`, taskId);
+        console.log(`task[0].$id is:`, task[0].$id);
 
         console.log(`Before databases.deleteDocument process`);
         const response = await databases.deleteDocument(
             `ai-travel-planner`,
             `tasks`,
-            taskId,
+            task[0].$id,
         )
 
-        console.log(response);
-        setColumns((prevColumns) => )
+        console.log(`response of deleteDocument: `, response);
+
+        console.log(`the column selected is: `, task[1]);
+        console.log(`column is:`, columns);
+        console.log(`column[0] is:`, columns[0].tasks);
+
+        setColumns((prevColumns) => 
+            prevColumns.map((column) => 
+                column.$id === task[1]
+                ? {...column, tasks: [...column.tasks.filter((c) => c.$id !== task[0].$id)]} : {...column}
+            )
+        )
     }
 
     const [searchKey, setSearchKey] = useState("");
@@ -235,7 +245,7 @@ export default function HomePage() {
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
                                                             className="p-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200"
-                                                            onClick={() => handleSelectedTask(task)}
+                                                            onClick={() => handleSelectedTask(task, column.$id)}
                                                         >
                                                             {task.text}
                                                         </li>
@@ -274,8 +284,8 @@ export default function HomePage() {
                 <TaskModal
                     task={selectedTask}
                     onClose={handleCloseTask}
-                    onDelete={() => handleDeleteTask(selectedTask.$id)}
-                    onEdit={() => handleEditTask(selectedTask.$id)}
+                    onDelete={() => handleDeleteTask(selectedTask)}
+                    onEdit={() => handleEditTask(selectedTask)}
                 />
             )}
 
