@@ -16,6 +16,7 @@ interface TaskModalProps {
   onClose: () => void;
   onDelete: (taskId: string) => void;
   onEdit: (taskId: string, newText: string) => void;
+  textDetail: string;
 }
 
 const TaskModal: React.FC<TaskModalProps> = ({
@@ -24,12 +25,14 @@ const TaskModal: React.FC<TaskModalProps> = ({
   onDelete,
   onEdit,
 }) => {
-  const [editedText, setEditedText] = useState(task?.text || "");
+  console.log(`task is:`, task);
+  const [editedText, setEditedText] = useState(task[0]?.textDetail || "");
 
   if (!task) return null;
 
   const handleSave = () => {
-    onEdit(task.$id, editedText);
+    console.log(`my taskId on taskModal component is`, task[0], task);
+    onEdit(task[0].$id, editedText);
     onClose();
   };
 

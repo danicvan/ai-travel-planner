@@ -108,6 +108,7 @@ export default function HomePage() {
     };
 
     const handleSelectedTask = (task, columnId) => {
+        console.log(`My task is`, task);
         setSelectedTask([task, columnId]);
         setIsTaskModalOpen(true);
     }
@@ -116,8 +117,21 @@ export default function HomePage() {
         setIsTaskModalOpen(false);
     }
     
-    const handleEditTask = async (taskId) => {
-        if (!taskId) return;
+    const handleEditTask = async (taskId: string, text:string) => {
+        console.log(`My taskId and text are:`, taskId, text);
+        if (!taskId || !text) return;
+        console.log(`My taskId and text are:`, taskId, text);
+
+        const response = await databases.updateDocument(
+            `ai-travel-planner`,
+            `tasks`,
+            taskId,
+            {
+                textDetail: text,
+            }
+        );
+
+        console.log(`My response is`, response);
     }
 
     const handleDeleteTask = async (task) => {
@@ -285,7 +299,8 @@ export default function HomePage() {
                     task={selectedTask}
                     onClose={handleCloseTask}
                     onDelete={() => handleDeleteTask(selectedTask)}
-                    onEdit={() => handleEditTask(selectedTask)}
+                    onEdit={(taskId, text) => handleEditTask(taskId, text)}
+                    textDetail={selectedTask[0].textDetail}
                 />
             )}
 
