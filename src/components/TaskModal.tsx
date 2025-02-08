@@ -17,6 +17,7 @@ interface TaskModalProps {
   onDelete: (taskId: string) => void;
   onEdit: (taskId: string, newText: string) => void;
   textDetail: string;
+  columnId: string;
 }
 
 const TaskModal: React.FC<TaskModalProps> = ({
@@ -24,9 +25,11 @@ const TaskModal: React.FC<TaskModalProps> = ({
   onClose,
   onDelete,
   onEdit,
+  columnId
 }) => {
   console.log(`task is:`, task);
   const [editedText, setEditedText] = useState(task[0]?.textDetail || "");
+  console.log(`columnId`, columnId);
 
   if (!task) return null;
 

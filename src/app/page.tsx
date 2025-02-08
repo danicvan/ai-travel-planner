@@ -117,7 +117,7 @@ export default function HomePage() {
         setIsTaskModalOpen(false);
     }
     
-    const handleEditTask = async (taskId: string, text:string) => {
+    const handleEditTask = async (taskId: string, text:string, columnId: string) => {
         console.log(`My taskId and text are:`, taskId, text);
         if (!taskId || !text) return;
         console.log(`My taskId and text are:`, taskId, text);
@@ -132,6 +132,8 @@ export default function HomePage() {
         );
 
         console.log(`My response is`, response);
+
+
     }
 
     const handleDeleteTask = async (task) => {
@@ -299,7 +301,7 @@ export default function HomePage() {
                     task={selectedTask}
                     onClose={handleCloseTask}
                     onDelete={() => handleDeleteTask(selectedTask)}
-                    onEdit={(taskId, text) => handleEditTask(taskId, text)}
+                    onEdit={(taskId, text, selectedTask[0].tasks?.columnId) => handleEditTask(taskId, text, columnId)}
                     textDetail={selectedTask[0].textDetail}
                 />
             )}
