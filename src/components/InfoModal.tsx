@@ -41,7 +41,7 @@ const InfoModal: React.FC<InfoModalProps> = ({
             <Description>{text}</Description>
             <p>{text}</p>
             <div className="flex gap-4">
-              <button onClick={() => setIsOpen(false)}>Cancel</button>
+              <button onClick={() => setIsOpen(false)}>Okay</button>
             </div>
           </DialogPanel>
         </div>
@@ -49,4 +49,4 @@ const InfoModal: React.FC<InfoModalProps> = ({
     )
 }
 
-
+export default InfoModal;

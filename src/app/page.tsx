@@ -8,6 +8,7 @@ import TaskModal from "@/components/TaskModal";
 import AddTaskModal from "@/components/AddTaskModal";
 import { databases } from "@/appwrite";
 import AddColumnModal from "@/components/AddColumnModal";
+import InfoModal from "@/components/InfoModal";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([]);
@@ -229,6 +230,16 @@ export default function HomePage() {
         }
     };
 
+    const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+    const [titleInfoModal, setTitleInfoModal] = useState("");
+    const [textInfoModal, setTextInfoModal] = useState("");
+
+    const handleCloseInfoModal = () => {
+        setTitleInfoModal("");
+        setTextInfoModal("");
+        setIsInfoModalOpen(false);
+    }
+
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
             {/* Header Component */}
@@ -340,6 +351,15 @@ export default function HomePage() {
                 />
             )}
 
+            {/* Info Modal */}
+            {isInfoModalOpen && (
+                <InfoModal
+                    title={titleInfoModal}
+                    text={textInfoModal}
+                    onClose={() => handleCloseInfoModal()}
+                />
+            )}
+
             {/* Footer */}
             <footer className="py-4 text-center text-xs text-gray-500">
                 &copy; {new Date().getFullYear()} Trello AI
@@ -347,3 +367,5 @@ export default function HomePage() {
         </main>
     );
 }
+
+
