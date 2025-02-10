@@ -61,6 +61,10 @@ export default function HomePage() {
 
             setColumns((prevColumns) => [...prevColumns, { ...newColumn, tasks: [] }]);
             console.log(`columns is:`, columns);
+
+            setIsInfoModalOpen(true);
+            setTitleInfoModal("Column");
+            setTextInfoModal(`Added successfully`);
         } catch (error) {
             console.error(`Failed to create column`, error);
         }
@@ -96,7 +100,7 @@ export default function HomePage() {
             );
 
             setTitleInfoModal("Task");
-            setTextInfoModal("Added succefully.");
+            setTextInfoModal("Added successfully");
             setIsInfoModalOpen(true);
 
         } catch (e) {
@@ -145,6 +149,10 @@ export default function HomePage() {
             }))
         )
 
+        setIsInfoModalOpen(true);
+        setTitleInfoModal("Task");
+        setTextInfoModal(`Edited successfully`);
+
         console.log(`columns: `, columns);
     }
 
@@ -173,6 +181,10 @@ export default function HomePage() {
                 ? {...column, tasks: [...column.tasks.filter((c) => c.$id !== task[0].$id)]} : {...column}
             )
         )
+
+        setIsInfoModalOpen(true);
+        setTitleInfoModal("Task");
+        setTextInfoModal(`Deleted successfully`);
     }
 
     const [searchKey, setSearchKey] = useState("");
