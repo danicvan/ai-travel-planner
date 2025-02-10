@@ -2,7 +2,8 @@ import {
     Description,
     Dialog,
     DialogPanel,
-    DialogTitle
+    DialogTitle,
+    Button,
 } from "@headlessui/react";
 import { useState } from "react";
 
@@ -28,13 +29,23 @@ const InfoModal: React.FC<InfoModalProps> = ({
             onClose={onClose}
             className="relative z-50"
         >
-        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <DialogPanel className="max-w-lg space-y-4 border bg-white p-12">
-            <DialogTitle className="font-bold">{title}</DialogTitle>
-            <Description>{text}</Description>
-            <p>{text}</p>
-            <div className="flex gap-4">
-              <button onClick={() => onClose()}>Okay</button>
+        <div className="fixed inset-0 flex w-screen items-center justify-center p-4 bg-white/70 backdrop-blur-sm">
+          <DialogPanel className="w-full max-w-lg rounded-x1 bg-white shadow-lg p-6">
+            <DialogTitle as="h3" className="text-lg font-semibold text-gray-900">
+                {title}
+            </DialogTitle>
+            <Description className="mt-2 text-sm text-gray-500">
+                {text}
+            </Description>
+            <div className="flex justify-end gap-4 mt-6">
+                <Button
+                    className="rounded-md bg-blue-500 py-1.5 px-3 text-sm font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    onClick={() => {
+                        onClose()
+                    }}
+                >
+                    Close
+                </Button>
             </div>
           </DialogPanel>
         </div>
