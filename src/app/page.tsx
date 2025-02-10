@@ -95,10 +95,10 @@ export default function HomePage() {
                 )
             );
 
-            columns.map((column) => {
-                console.log(`column: `, column.$id)
-            })
-            console.log(`my new tasks on column is:`, columns);
+            setTitleInfoModal("Task");
+            setTextInfoModal("Added succefully.");
+            setIsInfoModalOpen(true);
+
         } catch (e) {
             console.error(`Failed to create task:`, e);
         }

@@ -22,16 +22,9 @@ const InfoModal: React.FC<InfoModalProps> = ({
 
     if (!title || !text) return;
 
-    const [isOpen, setIsOpen] = useState(false);
-
-    const handleClose = () => {
-        console.log(`close InfoModal...`);
-        onClose();
-    }
-
     return (
         <Dialog
-            open={isOpen}
+            open={true}
             onClose={onClose}
             className="relative z-50"
         >
@@ -41,7 +34,7 @@ const InfoModal: React.FC<InfoModalProps> = ({
             <Description>{text}</Description>
             <p>{text}</p>
             <div className="flex gap-4">
-              <button onClick={() => setIsOpen(false)}>Okay</button>
+              <button onClick={() => onClose()}>Okay</button>
             </div>
           </DialogPanel>
         </div>
