@@ -136,7 +136,7 @@ export default function HomePage() {
         setColumns((prevColumns) => 
             prevColumns.map((column) => ({
                 ...column,
-                task: column.tasks.map((task) =>
+                tasks: column.tasks.map((task) =>
                     task.$id === taskId 
                     ? {...task, textDetail: text}
                     : task
