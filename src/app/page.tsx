@@ -108,6 +108,12 @@ export default function HomePage() {
         }
     }
 
+    const handleSelectedColumn = () => {
+        setIsInfoModalOpen(true);
+        setTitleInfoModal(`Column`);
+        setTextInfoModal(`Modal open`);
+    }
+
     const handleOpenAddTaskModal = () => {
         setIsAddTaskModalOpen(true);
     };
@@ -280,6 +286,12 @@ export default function HomePage() {
                                         <h2 className="mb-3 text-sm font-medium text-gray-700">
                                             {column.title}
                                         </h2>
+
+                                        <span
+                                            onClick={() => handleSelectedColumn(column.$id)}
+                                        >
+                                            ...
+                                        </span>
 
                                         {/* Tasks List */}
                                         <ul className="space-y-2">
