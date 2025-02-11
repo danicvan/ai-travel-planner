@@ -283,15 +283,18 @@ export default function HomePage() {
                                         {...provided.droppableProps}
                                         className="w-1/3 p-4 bg-white rounded-lg shadow-sm rounded-lg"
                                     >
-                                        <h2 className="mb-3 text-sm font-medium text-gray-700">
-                                            {column.title}
-                                        </h2>
+                                        <div className="flex items-center justify-end gap-2">
+                                            <h2 className="mb-3 text-sm font-medium text-gray-700">
+                                                {column.title}
+                                            </h2>
 
-                                        <span
-                                            onClick={() => handleSelectedColumn(column.$id)}
-                                        >
-                                            ...
-                                        </span>
+                                            <span
+                                                className="cursor-pointer hover:bg-gray-200 p-2 rounded-lg"
+                                                onClick={() => handleSelectedColumn(column.$id)}
+                                            >
+                                                ...
+                                            </span>
+                                        </div>
 
                                         {/* Tasks List */}
                                         <ul className="space-y-2">
