@@ -274,7 +274,7 @@ export default function HomePage() {
 
                 {/* Drag-and-Drop Context */}
                 <DragDropContext onDragEnd={handleDragEnd}>
-                    <div className="flex flex-row gap-4 w-full mt-9 overflow-x-auto">
+                    <div className="flex flex-row gap-4 w-full mt-9 overflow-x-auto h-full">
                         {filterColumns.map((column) => (
                             <Droppable key={column.$id} droppableId={column.$id}>
                                 {(provided) => (
