@@ -263,7 +263,7 @@ export default function HomePage() {
             {/* Header Component */}
             <Header onSearch={handleSearch}/>
 
-            <section className="flex-grow flex flex-col items-center mt-6 w-full max-w-5xl mx-auto">
+            <section className="flex-grow flex flex-col items-center mt-6 w-full mx-auto px-4">
                 {/* Greeting Message */}
                 <GreetingMessage
                     toDo={columns[0]?.tasks.length || 0}
@@ -274,16 +274,16 @@ export default function HomePage() {
 
                 {/* Drag-and-Drop Context */}
                 <DragDropContext onDragEnd={handleDragEnd}>
-                    <div className="flex flex-row gap-4 w-full mt-9">
+                    <div className="flex flex-row gap-4 w-full mt-9 overflow-x-auto">
                         {filterColumns.map((column) => (
                             <Droppable key={column.$id} droppableId={column.$id}>
                                 {(provided) => (
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
-                                        className="w-1/3 p-4 bg-white rounded-lg shadow-sm rounded-lg"
+                                        className="w-32 p-4 bg-white rounded-lg shadow-sm rounded-lg"
                                     >
-                                        <div className="flex items-center justify-end gap-2">
+                                        <div className="flex items-center justify-end gap-2 ">
                                             <h2 className="mb-3 text-sm font-medium text-gray-700">
                                                 {column.title}
                                             </h2>
