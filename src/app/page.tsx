@@ -281,15 +281,15 @@ export default function HomePage() {
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
-                                        className="w-32 p-4 bg-white rounded-lg shadow-sm rounded-lg"
+                                        className="w-full bg-white rounded-xl shadow-sm rounded-lg px-2 py-2 flex flex-col justify-between"
                                     >
-                                        <div className="flex items-center justify-end gap-2 ">
-                                            <h2 className="mb-3 text-sm font-medium text-gray-700">
+                                        <div className="flex items-center justify-between w-72 py-2 px-3 text-center">
+                                            <h2 className="text-sm font-semibold text-gray-700">
                                                 {column.title}
                                             </h2>
 
                                             <span
-                                                className="cursor-pointer hover:bg-gray-200 p-2 rounded-lg"
+                                                className="cursor-pointer hover:bg-gray-200 rounded-lg"
                                                 onClick={() => handleSelectedColumn(column.$id)}
                                             >
                                                 ...
@@ -297,7 +297,7 @@ export default function HomePage() {
                                         </div>
 
                                         {/* Tasks List */}
-                                        <ul className="space-y-2">
+                                        <ul className="space-y-2 mb-2">
                                             {column.tasks.map((task, index) => (
                                                 <Draggable
                                                     key={task.$id}
@@ -309,7 +309,7 @@ export default function HomePage() {
                                                             ref={provided.innerRef}
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
-                                                            className="p-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200"
+                                                            className="py-2 px-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200 hover:cursor-pointer"
                                                             onClick={() => handleSelectedTask(task, column.$id)}
                                                         >
                                                             {task.text}
@@ -322,7 +322,7 @@ export default function HomePage() {
 
                                         {/* Add Task Button */}
                                         <button
-                                            className="mt-4 w-full bg-gray-50 border border-gray-200 text-sm text-gray-600 rounded-lg py-2 hover:bg-gray-100"
+                                            className="w-full text-sm text-gray-600 text-left rounded-lg py-2 px-3 hover:bg-gray-100 hover:cursor-pointer"
                                             onClick={() => handleOpenAddTaskModal()}
                                         >
                                             + Add Task
