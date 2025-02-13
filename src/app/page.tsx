@@ -258,6 +258,21 @@ export default function HomePage() {
         setIsInfoModalOpen(false);
     }
 
+    const [titles, setTitles] = useState(
+        filterColumns.reduce((acc, column)=> {
+            acc[column.$id] = column.title;
+            return acc;
+        }, {})
+    );
+
+    const handleColumnTitle = (columnId: string, event) => {
+        const newTitle = event.target.value;
+        setTitles((prev) => ({
+            ...prev,
+            [columnId]: newTitle
+        }));
+    };
+
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
             {/* Header Component */}
@@ -284,8 +299,11 @@ export default function HomePage() {
                                         className="w-full bg-white rounded-xl shadow-sm rounded-lg px-2 py-2 flex flex-col justify-between"
                                     >
                                         <div className="flex items-center justify-between w-72 py-2 px-2 text-center gap-1">
-                                            <textarea className="h-8 p-2 text-left leading-tight text-sm font-semibold text-gray-700 bg-transparent resize-none w-full border border-transparent ">
-                                                {column.title}
+                                            <textarea 
+                                                className="h-8 p-2 text-left leading-tight text-sm font-semibold text-gray-700 bg-transparent resize-none w-full border border-transparent"
+                                                value={titles[column.$id]}
+                                                onChange={(e) => handleColumnTitle(column.$id, e)}
+                                            >
                                             </textarea>
 
                                             <span
