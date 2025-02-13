@@ -283,13 +283,13 @@ export default function HomePage() {
                                         {...provided.droppableProps}
                                         className="w-full bg-white rounded-xl shadow-sm rounded-lg px-2 py-2 flex flex-col justify-between"
                                     >
-                                        <div className="flex items-center justify-between w-72 py-2 px-3 text-center">
-                                            <h2 className="text-sm font-semibold text-gray-700">
+                                        <div className="flex items-center justify-between w-72 py-2 px-2 text-center gap-1">
+                                            <textarea className="h-8 p-2 text-left leading-tight text-sm font-semibold text-gray-700 bg-transparent resize-none w-full border border-transparent ">
                                                 {column.title}
-                                            </h2>
+                                            </textarea>
 
                                             <span
-                                                className="cursor-pointer hover:bg-gray-200 rounded-lg"
+                                                className="cursor-pointer hover:bg-gray-200 rounded-lg py-1 px-2"
                                                 onClick={() => handleSelectedColumn(column.$id)}
                                             >
                                                 ...
@@ -309,7 +309,7 @@ export default function HomePage() {
                                                             ref={provided.innerRef}
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
-                                                            className="py-2 px-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200 hover:cursor-pointer"
+                                                            className="py-2 px-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200"
                                                             onClick={() => handleSelectedTask(task, column.$id)}
                                                         >
                                                             {task.text}
