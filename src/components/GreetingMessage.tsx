@@ -52,9 +52,9 @@ export default function GreetingMessage({ toDo, inProgress, done }: TaskCounts) 
     }, [toDo, inProgress, done]);
 
     return (
-        <div className="flex items-center justify-center">
-            <div className="p-6 bg-white text-indigo-800 rounded-lg shadow-sm max-w-lg text-center">
-                <p className="text-lg">{taskMessage || `Loading message...`}</p>
+        <div className="w-full flex items-center justify-center">
+            <div className="p-4 bg-white text-indigo-800 rounded-lg shadow-sm text-center">
+                <p className="text-md">{taskMessage || `Loading message...`}</p>
             </div>
         </div>
     );
