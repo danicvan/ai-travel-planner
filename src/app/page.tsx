@@ -265,12 +265,22 @@ export default function HomePage() {
         }, {})
     );
 
+    console.log(`fullFilterColumns`, filterColumns);
+
+    useEffect(() => {
+        console.log(`updates titles:`, titles);
+    }, [titles]);
+
     const handleColumnTitle = (columnId: string, event) => {
+        console.log(`handleColumnTitle is`, columnId);
         const newTitle = event.target.value;
+        console.log(`newTile:`, newTitle);
         setTitles((prev) => ({
             ...prev,
             [columnId]: newTitle
         }));
+        
+        console.log(`titles is (before state update):`, titles);
     };
 
     return (
@@ -301,7 +311,7 @@ export default function HomePage() {
                                         <div className="flex items-center justify-between w-72 py-2 px-2 text-center gap-1">
                                             <textarea 
                                                 className="h-8 p-2 text-left leading-tight text-sm font-semibold text-gray-700 bg-transparent resize-none w-full border border-transparent"
-                                                value={titles[column.$id]}
+                                                value={titles[column.$id] ?? column.title}
                                                 onChange={(e) => handleColumnTitle(column.$id, e)}
                                             >
                                             </textarea>
