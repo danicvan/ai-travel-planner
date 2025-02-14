@@ -271,9 +271,20 @@ export default function HomePage() {
         console.log(`updates titles:`, titles);
     }, [titles]);
 
-    const handleColumnTitle = (columnId: string, event) => {
+    const handleColumnTitle = async (columnId: string, event) => {
         console.log(`handleColumnTitle is`, columnId);
         const newTitle = event.target.value;
+        const response = await databases.updateDocument(
+            `ai-travel-planner`,
+            `columns`,
+            columnId,
+            {
+                title: newTitle
+            }
+        );
+
+        console.log(`response`, response);
+
         console.log(`newTile:`, newTitle);
         setTitles((prev) => ({
             ...prev,
