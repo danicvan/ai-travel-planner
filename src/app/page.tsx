@@ -299,7 +299,7 @@ export default function HomePage() {
             {/* Header Component */}
             <Header onSearch={handleSearch}/>
 
-            <section className="flex-grow flex flex-col items-center mt-6 w-full mx-auto px-4">
+            <section className="flex-grow flex flex-col items-center w-full">
                 {/* Greeting Message */}
                 <GreetingMessage
                     toDo={columns[0]?.tasks.length || 0}
@@ -310,7 +310,7 @@ export default function HomePage() {
 
                 {/* Drag-and-Drop Context */}
                 <DragDropContext onDragEnd={handleDragEnd}>
-                    <div className="flex flex-row gap-4 w-full mt-9 overflow-x-auto h-full">
+                    <div className="flex flex-row gap-4 w-full overflow-x-auto h-full my-3 ml-8">
                         {filterColumns.map((column) => (
                             <Droppable key={column.$id} droppableId={column.$id}>
                                 {(provided) => (

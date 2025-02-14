@@ -34,7 +34,7 @@ export default function Header({ onSearch }) {
     }, []);
 
     return (
-        <header className="bg-white shadow-sm sticky top-0 z-50">
+        <header className="bg-gray-400 sticky top-0 z-50">
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-3">
                 {/* Logo */}
                 <Link href="/">
