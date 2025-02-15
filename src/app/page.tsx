@@ -9,6 +9,7 @@ import AddTaskModal from "@/components/AddTaskModal";
 import { databases } from "@/appwrite";
 import AddColumnModal from "@/components/AddColumnModal";
 import InfoModal from "@/components/InfoModal";
+import ColumnModal from "@/components/ColumnModal";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([]);
@@ -294,6 +295,20 @@ export default function HomePage() {
         console.log(`titles is (before state update):`, titles);
     };
 
+    const [isColumnModalOpen, setColumnModalOpen] = useState(false);
+
+    const handleCloseColumnModal = () => {
+        console.log(`Close Column Modal button was clicked!`);
+    }
+
+    const handleDeleteColumnModal = () => {
+        console.log(`Close Column Modal button was clicked!`);
+    }
+
+    const handleSaveColumnModal = () => {
+        console.log(`Save Column Modal button was clicked!`);
+    }
+
     return (
         <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
             {/* Header Component */}
@@ -423,6 +438,17 @@ export default function HomePage() {
                     title={titleInfoModal}
                     text={textInfoModal}
                     onClose={() => handleCloseInfoModal()}
+                />
+            )}
+
+            {/* Column Modal */}
+            {isColumnModalOpen && (
+                <ColumnModal 
+                    id={`id`}
+                    title={`title`}
+                    onClose={() => handleCloseColumnModal()}
+                    onDelete={() => handleDeleteColumnModal()}
+                    onSave={() => handleSaveColumnModal()}
                 />
             )}
 

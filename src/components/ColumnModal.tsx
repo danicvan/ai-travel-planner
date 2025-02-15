@@ -8,6 +8,7 @@ interface ColumnModalProps {
 
 const ColumnModal: React.FC<ColumnModalProps> = ({
     id,
+    title,
     onClose,
     onDelete,
     onSave
