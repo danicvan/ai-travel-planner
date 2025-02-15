@@ -1,9 +1,11 @@
+import { useState } from "react";
+
 interface ColumnModalProps {
     id: string;
     title: string;
     onClose: () => void;
-    onDelete: () => void;
-    onSave: () => void;
+    onDelete: (columndId: string) => void;
+    onSave: (columndId: string, newTitle: string) => void;
 }
 
 const ColumnModal: React.FC<ColumnModalProps> = ({
@@ -15,6 +17,11 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
 }) => {
     console.log(`call ColumModal component`);
 
+    const [newTitle, setNewTitle] = useState(``);
+    const handleSave = () => {
+        newTitle === title ? onSave(id, newTitle) : ''
+    }
+    
     return (
         <div>
             <h1>Column Modal component called</h1>
