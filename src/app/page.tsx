@@ -110,9 +110,7 @@ export default function HomePage() {
     }
 
     const handleSelectedColumn = () => {
-        setIsInfoModalOpen(true);
-        setTitleInfoModal(`Column`);
-        setTextInfoModal(`Modal open`);
+        setIsColumnModalOpen(true);
     }
 
     const handleOpenAddTaskModal = () => {
@@ -295,7 +293,7 @@ export default function HomePage() {
         console.log(`titles is (before state update):`, titles);
     };
 
-    const [isColumnModalOpen, setColumnModalOpen] = useState(false);
+    const [isColumnModalOpen, setIsColumnModalOpen] = useState(false);
 
     const handleCloseColumnModal = () => {
         console.log(`Close Column Modal button was clicked!`);
