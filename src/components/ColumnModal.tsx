@@ -32,6 +32,8 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                     placeholder="Description"
                     onChange={(e) => setNewTitle(e.target.value)}
                     value={newTitle}
+                    id="columnTile"
+                    name="columnTitle"
                 >
                 </textarea>
             </div>

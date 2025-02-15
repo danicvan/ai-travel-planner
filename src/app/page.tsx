@@ -109,7 +109,7 @@ export default function HomePage() {
         }
     }
 
-    const handleSelectedColumn = () => {
+    const handleSelectedColumn = (columnId: string) => {
         setIsColumnModalOpen(true);
     }
 
