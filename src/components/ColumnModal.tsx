@@ -19,7 +19,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
 
     const [newTitle, setNewTitle] = useState('');
     const handleSave = () => {
-        newTitle === title ? onSave(id, newTitle) : ''
+        newTitle === title ? onSave(id, newTitle) : '';
     }
 
     return (
@@ -35,6 +35,11 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                 >
                 </textarea>
             </div>
+            <button
+                onClick={() => handleSave()}
+            >
+                Save
+            </button>
         </div>
     )
 }

@@ -303,8 +303,10 @@ export default function HomePage() {
         console.log(`Close Column Modal button was clicked!`);
     }
 
-    const handleSaveColumnModal = (columnId: string) => {
-        console.log(`Save Column Modal button was clicked with the columnId:`, columnId);
+    const handleSaveColumnModal = (columnId: string, newTitle: string) => {
+        console.log('Save column button was clicked: ');
+        console.log('columnId', columnId);
+        console.log('newTitle', newTitle);
     }
 
     return (
@@ -446,7 +448,7 @@ export default function HomePage() {
                     title={`title`}
                     onClose={() => handleCloseColumnModal()}
                     onDelete={() => handleDeleteColumnModal()}
-                    onSave={(columnId) => handleSaveColumnModal(columnId)}
+                    onSave={(columnId, newTitle) => handleSaveColumnModal(columnId, newTitle)}
                 />
             )}
 
