@@ -109,8 +109,10 @@ export default function HomePage() {
         }
     }
 
+    const [columnSelected, setColumnSelected] = useState('');
     const handleSelectedColumn = (columnId: string) => {
         setIsColumnModalOpen(true);
+        setColumnSelected(columnId);
     }
 
     const handleOpenAddTaskModal = () => {
@@ -444,7 +446,7 @@ export default function HomePage() {
             {/* Column Modal */}
             {isColumnModalOpen && (
                 <ColumnModal 
-                    id={`id`}
+                    id={columnSelected}
                     title={`title`}
                     onClose={() => handleCloseColumnModal()}
                     onDelete={() => handleDeleteColumnModal()}
