@@ -302,10 +302,16 @@ export default function HomePage() {
         console.log(`Close Column Modal button was clicked!`);
     }
 
-    const handleDeleteColumnModal = (columnId: string) => {
+    const handleDeleteColumnModal = async (columnId: string) => {
         if (!columnId) return;
 
-        
+        const response = await databases.deleteDocument(
+            'ai-travel-planner',
+            'columns',
+            columnId,
+        );
+
+        console.log('delete column response is', response);
     }
 
     const handleSaveColumnModal = async (columnId: string, newTitle: string) => {
