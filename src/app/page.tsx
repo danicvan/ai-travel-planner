@@ -305,16 +305,26 @@ export default function HomePage() {
         console.log(`Close Column Modal button was clicked!`);
     }
 
-    const handleSaveColumnModal = (columnId: string, newTitle: string) => {
+    const handleSaveColumnModal = async (columnId: string, newTitle: string) => {
         
         if (!columnId || !newTitle) {
             console.log('columnId or newTitle not founded.');
             return;
         }
 
-
         console.log('columnId', columnId);
         console.log('newTitle', newTitle);
+
+        const response = await databases.updateDocument(
+            'ai-travel-planner',
+            'columns',
+            columnId,
+            {
+                title : newTitle
+            }
+        );
+
+        console.log('my column response is: ', response);  
     }
 
     return (
