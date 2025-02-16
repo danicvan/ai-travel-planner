@@ -42,6 +42,11 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
             >
                 Save
             </button>
+            <button
+                onClick={() => onDelete(id)}
+            >
+                Delete
+            </button>
         </div>
     )
 }
