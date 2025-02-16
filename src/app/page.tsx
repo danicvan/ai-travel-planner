@@ -312,11 +312,14 @@ export default function HomePage() {
         );
 
         console.log('delete column response is', response);
+
+        
     }
 
     const handleSaveColumnModal = async (columnId: string, newTitle: string) => {
         if (!columnId || !newTitle) {
             console.log('columnId or newTitle not founded.');
+            setIsColumnModalOpen(false);
             return;
         }
 
