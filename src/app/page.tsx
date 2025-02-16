@@ -306,7 +306,13 @@ export default function HomePage() {
     }
 
     const handleSaveColumnModal = (columnId: string, newTitle: string) => {
-        console.log('Save column button was clicked: ');
+        
+        if (!columnId || !newTitle) {
+            console.log('columnId or newTitle not founded.');
+            return;
+        }
+
+
         console.log('columnId', columnId);
         console.log('newTitle', newTitle);
     }
