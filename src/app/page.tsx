@@ -10,6 +10,7 @@ import { databases } from "@/appwrite";
 import AddColumnModal from "@/components/AddColumnModal";
 import InfoModal from "@/components/InfoModal";
 import ColumnModal from "@/components/ColumnModal";
+import PreviousMap_ from "postcss/lib/previous-map";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([]);
@@ -306,7 +307,6 @@ export default function HomePage() {
     }
 
     const handleSaveColumnModal = async (columnId: string, newTitle: string) => {
-        
         if (!columnId || !newTitle) {
             console.log('columnId or newTitle not founded.');
             return;
@@ -325,6 +325,13 @@ export default function HomePage() {
         );
 
         console.log('my column response is: ', response);  
+
+        setTitles((prev) => ({
+            ...prev,
+            [columnId]: newTitle
+        }));
+
+        setIsColumnModalOpen(false);
     }
 
     return (
