@@ -24,9 +24,9 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/70 backdrop-blur-sm">
-            <h2 className="text-lg max-w-lg rounded-xl bg-white shadow-lg p-6">Column Options</h2>
-            <div>
-                <label>Title</label>
+            <h2 className="text-lg font-semibold text-gray-900">Column Options</h2>
+            <div className="mt-4">
+                <label className="block text-sm font-medium text-gray-700">Title</label>
                 <textarea
                     rows={1}
                     placeholder="Description"
