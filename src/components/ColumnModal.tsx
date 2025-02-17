@@ -30,12 +30,11 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                     <label className="block text-sm font-medium text-gray-700">Title</label>
                     <textarea
                         rows={1}
-                        placeholder="Description"
                         onChange={(e) => setNewTitle(e.target.value)}
                         value={newTitle}
                         id="columnTile"
                         name="columnTitle"
-                        className="mt-2 block w-full rounded-lg border-gray-300 bg-gray-50 py-1.5 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        className="resine-none mt-3 block w-full rounded-lg border border-gray-300 bg-gray-50 py-1.5 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     >
                     </textarea>
                 </div>
