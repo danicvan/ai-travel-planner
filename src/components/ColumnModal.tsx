@@ -23,7 +23,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
     }
 
     return (
-        <div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/70 backdrop-blur-sm">
             <h2>Column Options</h2>
             <div>
                 <label>Title</label>
