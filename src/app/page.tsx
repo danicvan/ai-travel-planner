@@ -312,8 +312,13 @@ export default function HomePage() {
         );
 
         console.log('delete column response is', response);
+        console.log('column is:', columns);
 
-        
+        setColumns((prevColumns) => 
+            prevColumns.filter((e) => e.$id !== columnId)
+        )
+
+        console.log('new columns is:', columns);
     }
 
     const handleSaveColumnModal = async (columnId: string, newTitle: string) => {
