@@ -39,7 +39,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                     >
                     </textarea>
                 </div>
-                <div className="">
+                <div className="mt-6 flex justify-end gap-4">
                 <button
                     onClick={() => handleSave()}
                 >
