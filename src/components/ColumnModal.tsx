@@ -39,6 +39,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                     >
                     </textarea>
                 </div>
+                <div className="">
                 <button
                     onClick={() => handleSave()}
                 >
@@ -49,6 +50,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                 >
                     Delete
                 </button>
+                </div>
             </div>
         </div>
     )
