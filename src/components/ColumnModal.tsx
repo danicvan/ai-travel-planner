@@ -40,17 +40,17 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                     </textarea>
                 </div>
                 <div className="mt-6 flex justify-end gap-4">
+                <button
+                        onClick={() => onDelete(id)}
+                        className="rounded-md border border-red-500 bg-red-50 py-1.5 px-3 text-sm font-semibold text-red-600 hover:bg-red-100 focus:outline-none "
+                    >
+                        Delete
+                    </button>
                     <button
                         onClick={() => handleSave()}
                         className="rounded-md bg-blue-500 py-1.5 px-3 text-sm font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     >
                         Save
-                    </button>
-                    <button
-                        onClick={() => onDelete(id)}
-                        className="rounded-md border border-red-500 bg-red-50 py-1.5 px-3 text-sm font-semibold text-red-600 hover:bg-red-100 focus:outline-none "
-                    >
-                        Delete
                     </button>
                 </div>
             </div>
