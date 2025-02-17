@@ -48,6 +48,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                     </button>
                     <button
                         onClick={() => onDelete(id)}
+                        className="rounded-md border border-red-500 bg-red-50 py-1.5 px-3 text-sm font-semibold text-red-600 hover:bg-red-100 focus:outline-none "
                     >
                         Delete
                     </button>
