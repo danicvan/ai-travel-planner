@@ -376,9 +376,9 @@ export default function HomePage() {
                                             {...provided.droppableProps}
                                             className="min-h-16 h-auto min-w-72 bg-white rounded-xl shadow-sm rounded-lg px-2 py-2 flex flex-col justify-between"
                                         >
-                                            <div className="w-full flex items-center justify-between w-72 py-2 px-2 text-center gap-1">
+                                            <div className="w-full flex items-center justify-between w-72 py-2 text-center gap-1">
                                                 <textarea 
-                                                    className="h-8 p-2 text-left leading-tight text-sm font-semibold text-gray-700 bg-transparent resize-none w-full border border-transparent"
+                                                    className="h-8 py-2 px-3 text-left leading-tight text-sm font-semibold text-gray-700 bg-transparent resize-none w-full border border-transparent"
                                                     value={titles[column.$id] ?? column.title}
                                                     onChange={(e) => handleColumnTitle(column.$id, e)}
                                                 >
