@@ -393,7 +393,7 @@ export default function HomePage() {
                                             </div>
 
                                             {/* Tasks List */}
-                                            <ul className="space-y-2 mb-2">
+                                            <ul>
                                                 {column.tasks.map((task, index) => (
                                                     <Draggable
                                                         key={task.$id}
@@ -405,7 +405,7 @@ export default function HomePage() {
                                                                 ref={provided.innerRef}
                                                                 {...provided.draggableProps}
                                                                 {...provided.dragHandleProps}
-                                                                className="py-2 px-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200"
+                                                                className="mb-2 py-2 px-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200"
                                                                 onClick={() => handleSelectedTask(task, column.$id)}
                                                             >
                                                                 {task.text}
