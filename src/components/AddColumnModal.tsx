@@ -16,7 +16,7 @@ export default function AddColumnModal({ onClose, onAddColumn } : AddColumnProps
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items justify-center p-4 bg-white/70 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/70 backdrop-blur-sm">
             <div className="w-full max-w-lg roundex-xl bg-white shadow-lg p-6">
                 <h2 className="text-lg font-semibold text-gray-900">Add Column</h2>
                 <p className="mt-1 text-sm text-gray-500">
