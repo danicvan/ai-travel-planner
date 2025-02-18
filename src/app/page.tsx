@@ -373,7 +373,7 @@ export default function HomePage() {
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
-                                        className="w-full bg-white rounded-xl shadow-sm rounded-lg px-2 py-2 flex flex-col justify-between"
+                                        className="min-w-72 bg-white rounded-xl shadow-sm rounded-lg px-2 py-2 flex flex-col justify-between"
                                     >
                                         <div className="w-full flex items-center justify-between w-72 py-2 px-2 text-center gap-1">
                                             <textarea 
