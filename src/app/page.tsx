@@ -428,7 +428,8 @@ export default function HomePage() {
                                 </Droppable>
                             </li>
                         ))}
-                        <div className="min-w-72 p-4 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <div>
+                        <div className="min-w-72 h-auto p-4 bg-gray-100 rounded-lg flex items-center justify-center">
                             <button
                                 className="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
                                 onClick={() => handleAddColumnModal()}
@@ -436,6 +437,7 @@ export default function HomePage() {
                             >
                                 + Add Column
                             </button>                            
+                        </div>
                         </div>
                     </div>
                 </DragDropContext>
