@@ -368,64 +368,64 @@ export default function HomePage() {
                 <DragDropContext onDragEnd={handleDragEnd}>
                     <div className="flex flex-row gap-4 w-full overflow-x-auto h-full my-3 ml-8">
                         {filterColumns.map((column) => (
-                            <li>
-                            <Droppable key={column.$id} droppableId={column.$id}>
-                                {(provided) => (
-                                    <div
-                                        ref={provided.innerRef}
-                                        {...provided.droppableProps}
-                                        className="min-h-16 h-auto min-w-72 bg-white rounded-xl shadow-sm rounded-lg px-2 py-2 flex flex-col justify-between"
-                                    >
-                                        <div className="w-full flex items-center justify-between w-72 py-2 px-2 text-center gap-1">
-                                            <textarea 
-                                                className="h-8 p-2 text-left leading-tight text-sm font-semibold text-gray-700 bg-transparent resize-none w-full border border-transparent"
-                                                value={titles[column.$id] ?? column.title}
-                                                onChange={(e) => handleColumnTitle(column.$id, e)}
-                                            >
-                                            </textarea>
-
-                                            <span
-                                                className="cursor-pointer hover:bg-gray-200 rounded-lg py-1 px-2"
-                                                onClick={() => handleSelectedColumn(column.$id)}
-                                            >
-                                                ...
-                                            </span>
-                                        </div>
-
-                                        {/* Tasks List */}
-                                        <ul className="space-y-2 mb-2">
-                                            {column.tasks.map((task, index) => (
-                                                <Draggable
-                                                    key={task.$id}
-                                                    draggableId={task.$id}
-                                                    index={index}
-                                                >
-                                                    {(provided) => (
-                                                        <li
-                                                            ref={provided.innerRef}
-                                                            {...provided.draggableProps}
-                                                            {...provided.dragHandleProps}
-                                                            className="py-2 px-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200"
-                                                            onClick={() => handleSelectedTask(task, column.$id)}
-                                                        >
-                                                            {task.text}
-                                                        </li>
-                                                    )}
-                                                </Draggable>
-                                            ))}
-                                            {provided.placeholder}
-                                        </ul>
-
-                                        {/* Add Task Button */}
-                                        <button
-                                            className="w-full text-sm text-gray-600 text-left rounded-lg py-2 px-3 hover:bg-gray-100 hover:cursor-pointer"
-                                            onClick={() => handleOpenAddTaskModal()}
+                            <li className="list-none">
+                                <Droppable key={column.$id} droppableId={column.$id}>
+                                    {(provided) => (
+                                        <div
+                                            ref={provided.innerRef}
+                                            {...provided.droppableProps}
+                                            className="min-h-16 h-auto min-w-72 bg-white rounded-xl shadow-sm rounded-lg px-2 py-2 flex flex-col justify-between"
                                         >
-                                            + Add Task
-                                        </button>
-                                    </div>
-                                )}
-                            </Droppable>
+                                            <div className="w-full flex items-center justify-between w-72 py-2 px-2 text-center gap-1">
+                                                <textarea 
+                                                    className="h-8 p-2 text-left leading-tight text-sm font-semibold text-gray-700 bg-transparent resize-none w-full border border-transparent"
+                                                    value={titles[column.$id] ?? column.title}
+                                                    onChange={(e) => handleColumnTitle(column.$id, e)}
+                                                >
+                                                </textarea>
+
+                                                <span
+                                                    className="cursor-pointer hover:bg-gray-200 rounded-lg py-1 px-2"
+                                                    onClick={() => handleSelectedColumn(column.$id)}
+                                                >
+                                                    ...
+                                                </span>
+                                            </div>
+
+                                            {/* Tasks List */}
+                                            <ul className="space-y-2 mb-2">
+                                                {column.tasks.map((task, index) => (
+                                                    <Draggable
+                                                        key={task.$id}
+                                                        draggableId={task.$id}
+                                                        index={index}
+                                                    >
+                                                        {(provided) => (
+                                                            <li
+                                                                ref={provided.innerRef}
+                                                                {...provided.draggableProps}
+                                                                {...provided.dragHandleProps}
+                                                                className="py-2 px-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200"
+                                                                onClick={() => handleSelectedTask(task, column.$id)}
+                                                            >
+                                                                {task.text}
+                                                            </li>
+                                                        )}
+                                                    </Draggable>
+                                                ))}
+                                                {provided.placeholder}
+                                            </ul>
+
+                                            {/* Add Task Button */}
+                                            <button
+                                                className="w-full text-sm text-gray-600 text-left rounded-lg py-2 px-3 hover:bg-gray-100 hover:cursor-pointer"
+                                                onClick={() => handleOpenAddTaskModal()}
+                                            >
+                                                + Add Task
+                                            </button>
+                                        </div>
+                                    )}
+                                </Droppable>
                             </li>
                         ))}
                         <div className="min-w-72 p-4 bg-gray-100 rounded-lg flex items-center justify-center">
