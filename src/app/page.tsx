@@ -426,7 +426,7 @@ export default function HomePage() {
                                 )}
                             </Droppable>
                         ))}
-                        <div className="w-1/3 p-4 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <div className="min-w-72 p-4 bg-gray-100 rounded-lg flex items-center justify-center">
                             <button
                                 className="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
                                 onClick={() => handleAddColumnModal()}
