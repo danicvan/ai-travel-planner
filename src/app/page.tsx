@@ -300,6 +300,7 @@ export default function HomePage() {
 
     const handleCloseColumnModal = () => {
         console.log(`Close Column Modal button was clicked!`);
+        setIsColumnModalOpen(false);
     }
 
     const handleDeleteColumnModal = async (columnId: string) => {
