@@ -41,6 +41,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                 <div className="mt-6 flex justify-end gap-4">
                     <button
                         onClick={onClose}
+                        className="rounded-md border border-gray-300 bg-white py-1.5 px-3 text-sm font-semibold text-gray-700 hover:bg-gray-100 focus:outline-none"
                     >
                         Cancel
                     </button>
