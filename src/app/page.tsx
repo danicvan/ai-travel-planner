@@ -69,6 +69,10 @@ export default function HomePage() {
             setIsInfoModalOpen(true);
             setTitleInfoModal("Column");
             setTextInfoModal(`Added successfully`);
+
+            toast({
+                description: `Column added successfully!`
+            });
         } catch (error) {
             console.error(`Failed to create column`, error);
         }
