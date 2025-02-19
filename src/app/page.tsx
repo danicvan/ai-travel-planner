@@ -11,8 +11,10 @@ import AddColumnModal from "@/components/AddColumnModal";
 import InfoModal from "@/components/InfoModal";
 import ColumnModal from "@/components/ColumnModal";
 import PreviousMap_ from "postcss/lib/previous-map";
+import { useToast } from "@/hooks/use-toast";
 
 export default function HomePage() {
+    const { toast } = useToast();
     const [columns, setColumns] = useState([]);
 
     useEffect(() => {
@@ -350,6 +352,9 @@ export default function HomePage() {
         }));
 
         setIsColumnModalOpen(false);
+        toast({
+            description: `Column title updated successfully!`
+        });
     }
 
     return (
