@@ -163,9 +163,9 @@ export default function HomePage() {
             }))
         )
 
-        setIsInfoModalOpen(true);
-        setTitleInfoModal("Task");
-        setTextInfoModal(`Edited successfully`);
+        toast({
+            description: `Task edited successfully!`
+        });
 
         console.log(`columns: `, columns);
     }
