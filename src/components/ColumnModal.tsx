@@ -30,7 +30,6 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
                     Edit or delete a existed column or close to cancel the any action.
                 </p>
                 <div className="mt-4">
-                    <label className="block text-sm font-medium text-gray-700">Title</label>
                     <textarea
                         placeholder="Enter column description"
                         rows={5}
