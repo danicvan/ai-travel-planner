@@ -327,6 +327,10 @@ export default function HomePage() {
 
         console.log('new columns is:', columns);
         setIsColumnModalOpen(false);
+
+        toast({
+            description: `Column deleted successfully!`
+        });
     }
 
     const handleSaveColumnModal = async (columnId: string, newTitle: string) => {
