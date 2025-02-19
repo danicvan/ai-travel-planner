@@ -66,10 +66,6 @@ export default function HomePage() {
             setColumns((prevColumns) => [...prevColumns, { ...newColumn, tasks: [] }]);
             console.log(`columns is:`, columns);
 
-            setIsInfoModalOpen(true);
-            setTitleInfoModal("Column");
-            setTextInfoModal(`Added successfully`);
-
             toast({
                 description: `Column added successfully!`
             });
