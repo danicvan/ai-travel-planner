@@ -107,9 +107,9 @@ export default function HomePage() {
                 )
             );
 
-            setTitleInfoModal("Task");
-            setTextInfoModal("Added successfully");
-            setIsInfoModalOpen(true);
+            toast({
+                description: `Task added successfully!`
+            });
 
         } catch (e) {
             console.error(`Failed to create task:`, e);
