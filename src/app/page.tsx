@@ -196,9 +196,9 @@ export default function HomePage() {
             )
         )
 
-        setIsInfoModalOpen(true);
-        setTitleInfoModal("Task");
-        setTextInfoModal(`Deleted successfully`);
+        toast({
+            description: `Task deleted successfully!`
+        });
     }
 
     const [searchKey, setSearchKey] = useState("");
