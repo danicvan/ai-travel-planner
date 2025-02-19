@@ -320,6 +320,7 @@ export default function HomePage() {
         )
 
         console.log('new columns is:', columns);
+        setIsColumnModalOpen(false);
     }
 
     const handleSaveColumnModal = async (columnId: string, newTitle: string) => {
