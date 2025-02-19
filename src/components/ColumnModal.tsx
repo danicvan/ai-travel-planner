@@ -25,7 +25,10 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/70 backdrop-blur-sm">
             <div className="w-full max-w-lg rounded-xl bg-white shadow-lg p-6">
-                <h2 className="text-lg font-semibold text-gray-900">Column Options</h2>
+                <h2 className="text-lg font-semibold text-gray-900">Column Details</h2>
+                <p>
+                    Edit or delete a existed column or close to cancel the any action.
+                </p>
                 <div className="mt-4">
                     <label className="block text-sm font-medium text-gray-700">Title</label>
                     <textarea
