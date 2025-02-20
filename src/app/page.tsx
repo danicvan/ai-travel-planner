@@ -116,6 +116,7 @@ export default function HomePage() {
     const [columnTitleSelected, setColumnTitleSelected] = useState('');
 
     const handleSelectedColumn = (columnId: string, columnTitle: string) => {
+        console.log('columnId and columnTitle is:', columnId, columnTitle)
         setIsColumnModalOpen(true);
         setColumnSelected(columnId);
         setColumnTitleSelected(columnTitle);
@@ -400,7 +401,7 @@ export default function HomePage() {
 
                                                 <span
                                                     className="cursor-pointer hover:bg-gray-200 rounded-lg py-1 px-2"
-                                                    onClick={() => handleSelectedColumn(column.$id, column.title)}
+                                                    onClick={() => handleSelectedColumn(column.$id, titles[column.$id] ?? column.title)}
                                                 >
                                                     ...
                                                 </span>
