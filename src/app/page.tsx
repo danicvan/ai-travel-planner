@@ -473,9 +473,9 @@ export default function HomePage() {
             {/* Add Task Modal */}
             {isAddTaskModalOpen && (
                 <AddTaskModal
-                    lists={filterColumns.map(({ $id, title }) => ({ id: $id, title }))}
+                    lists={filterColumns.map(({ $id, title }) => ({ id: $id, title: titles[$id] ?? title}))}
                     selectedColumn={columnSelected}
-                    onClose={() => setIsAddTaskModalOpen(false)}
+                    onClose={() => setIsAddTaskModalOpen(false)} 
                     onAddTask={(listId, task) => {
                         addTask(listId, task);
                         setIsAddTaskModalOpen(false);
