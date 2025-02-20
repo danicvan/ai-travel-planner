@@ -113,9 +113,12 @@ export default function HomePage() {
     }
 
     const [columnSelected, setColumnSelected] = useState('');
-    const handleSelectedColumn = (columnId: string) => {
+    const [columnTitleSelected, setColumnTitleSelected] = useState('');
+
+    const handleSelectedColumn = (columnId: string, columnTitle: string) => {
         setIsColumnModalOpen(true);
         setColumnSelected(columnId);
+        setColumnTitleSelected(columnTitle);
     }
 
     const handleOpenAddTaskModal = () => {
@@ -397,7 +400,7 @@ export default function HomePage() {
 
                                                 <span
                                                     className="cursor-pointer hover:bg-gray-200 rounded-lg py-1 px-2"
-                                                    onClick={() => handleSelectedColumn(column.$id)}
+                                                    onClick={() => handleSelectedColumn(column.$id, column.title)}
                                                 >
                                                     ...
                                                 </span>
@@ -500,7 +503,7 @@ export default function HomePage() {
             {isColumnModalOpen && (
                 <ColumnModal 
                     id={columnSelected}
-                    title={`title`}
+                    title={columnTitleSelected}
                     onClose={() => handleCloseColumnModal()}
                     onDelete={(columnId) => handleDeleteColumnModal(columnId)}
                     onSave={(columnId, newTitle) => handleSaveColumnModal(columnId, newTitle)}
