@@ -122,7 +122,9 @@ export default function HomePage() {
         setColumnTitleSelected(columnTitle);
     }
 
-    const handleOpenAddTaskModal = () => {
+    const handleOpenAddTaskModal = (selectedColumn :string) => {
+        console.log('selectedColumn is', selectedColumn);
+        setColumnSelected(selectedColumn);
         setIsAddTaskModalOpen(true);
     };
 
@@ -434,7 +436,7 @@ export default function HomePage() {
                                             {/* Add Task Button */}
                                             <button
                                                 className="w-full text-sm text-gray-600 text-left rounded-lg py-2 px-3 hover:bg-gray-100 hover:cursor-pointer"
-                                                onClick={() => handleOpenAddTaskModal()}
+                                                onClick={() => handleOpenAddTaskModal(column.$id)}
                                             >
                                                 + Add Task
                                             </button>
@@ -472,6 +474,7 @@ export default function HomePage() {
             {isAddTaskModalOpen && (
                 <AddTaskModal
                     lists={filterColumns.map(({ $id, title }) => ({ id: $id, title }))}
+                    selectedColumn={columnSelected}
                     onClose={() => setIsAddTaskModalOpen(false)}
                     onAddTask={(listId, task) => {
                         addTask(listId, task);
