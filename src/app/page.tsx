@@ -383,7 +383,7 @@ export default function HomePage() {
 
                 {/* Drag-and-Drop Context */}
                 <DragDropContext onDragEnd={handleDragEnd}>
-                    <div className="flex flex-row gap-4 w-full overflow-x-scroll scrollbar-show h-full my-3 ml-8 flex-grow">
+                    <div className="flex flex-row gap-4 w-full overflow-x-scroll scrollbar-show h-full my-3 flex-grow">
                         {filterColumns.map((column) => (
                             <li className="list-none">
                                 <Droppable key={column.$id} droppableId={column.$id}>
@@ -446,14 +446,14 @@ export default function HomePage() {
                             </li>
                         ))}
                         <div>
-                        <div className="min-w-72 h-auto py-4 bg-gray-100 rounded-lg flex items-center justify-center">
-                            <button
-                                className="px-3 py-1.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
-                                onClick={() => handleAddColumnModal()}
-                            >
-                                + Add Column
-                            </button>                            
-                        </div>
+                            <div className="min-w-72 h-auto py-4 bg-gray-100 rounded-lg flex items-center justify-center ">
+                                <button
+                                    className="px-3 py-1.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
+                                    onClick={() => handleAddColumnModal()}
+                                >
+                                    + Add Column
+                                </button>                            
+                            </div>
                         </div>
                     </div>
                 </DragDropContext>
