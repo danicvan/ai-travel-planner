@@ -368,7 +368,7 @@ export default function HomePage() {
     }
 
     return (
-        <main className="min-h-screen bg-gray-50 flex flex-col text-gray-800">
+        <main className="overflow-hidden min-h-screen bg-gray-50 flex flex-col text-gray-800">
             {/* Header Component */}
             <Header onSearch={handleSearch}/>
 
