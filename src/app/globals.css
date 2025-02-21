@@ -72,14 +72,17 @@ body {
 }
 
 .scrollbar-show::-webkit-scrollbar {
-  height: 8px;
+  height: 12px;
+  margin: 24px;
+  border-radius: 12px;
 }
 
 .scrollbar-show::-webkit-scrollbar-thumb {
   background: rgba(229, 231, 235, 1);
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .scrollbar-show::-webkit-scrollbar-track {
   background: #f0f0f0;
+  border-radius: 12px;
 }
