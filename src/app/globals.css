@@ -70,3 +70,16 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.scrollbar-show::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-show::-webkit-scrollbar-thumb {
+  background: rgba(229, 231, 235, 1);
+  border-radius: 4px;
+}
+
+.scrollbar-show::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}

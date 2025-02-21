@@ -383,7 +383,7 @@ export default function HomePage() {
 
                 {/* Drag-and-Drop Context */}
                 <DragDropContext onDragEnd={handleDragEnd}>
-                    <div className="flex flex-row gap-4 w-full overflow-x-auto h-full my-3 ml-8 flex-grow">
+                    <div className="flex flex-row gap-4 w-full overflow-x-scroll scrollbar-show h-full my-3 ml-8 flex-grow">
                         {filterColumns.map((column) => (
                             <li className="list-none">
                                 <Droppable key={column.$id} droppableId={column.$id}>
