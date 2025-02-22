@@ -446,9 +446,9 @@ export default function HomePage() {
                             </li>
                         ))}
                         <div>
-                            <div className="min-w-72 h-auto py-4 bg-gray-100 rounded-lg flex items-center justify-center ">
+                            <div className="min-w-72 h-auto py-2 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200">
                                 <button
-                                    className="px-3 py-1.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
+                                    className="w-full py-1.5 text-sm text-gray-600 font-semibold border-gray-200 rounded-lg "
                                     onClick={() => handleAddColumnModal()}
                                 >
                                     + Add Column
