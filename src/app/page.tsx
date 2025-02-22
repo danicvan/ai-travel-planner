@@ -438,7 +438,7 @@ export default function HomePage() {
                                                 className="w-full text-sm text-gray-600 text-left rounded-lg py-2 px-3 hover:bg-gray-100 hover:cursor-pointer"
                                                 onClick={() => handleOpenAddTaskModal(column.$id)}
                                             >
-                                                + Add Task
+                                                + Add a card
                                             </button>
                                         </div>
                                     )}
