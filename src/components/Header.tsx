@@ -41,8 +41,8 @@ export default function Header({ onSearch }) {
                     <Image
                         src="https://cdn.worldvectorlogo.com/logos/trello-logo.svg"
                         alt="Trello logo"
-                        width={120}
-                        height={40}
+                        width={90}
+                        height={90}
                         className="cursor-pointer"
                     />
                 </Link>
