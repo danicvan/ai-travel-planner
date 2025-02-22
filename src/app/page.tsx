@@ -435,7 +435,7 @@ export default function HomePage() {
 
                                             {/* Add Task Button */}
                                             <button
-                                                className="w-full text-sm text-gray-600 text-left rounded-lg py-2 px-3 hover:bg-gray-100 hover:cursor-pointer"
+                                                className="w-full text-sm text-gray-600 text-left rounded-lg py-2 px-3 hover:bg-indigo-50 hover:cursor-pointer"
                                                 onClick={() => handleOpenAddTaskModal(column.$id)}
                                             >
                                                 + Add a card
