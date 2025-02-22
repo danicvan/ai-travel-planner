@@ -448,10 +448,10 @@ export default function HomePage() {
                         <div>
                             <div className="min-w-72 h-auto py-2.5 px-3 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200">
                                 <button
-                                    className="w-full text-sm text-gray-600 font-semibold border-gray-200 rounded-lg "
+                                    className="w-full text-sm text-gray-600 font-semibold border-gray-200 rounded-lg text-left px-2"
                                     onClick={() => handleAddColumnModal()}
                                 >
-                                    + Add Column
+                                    + Add another list
                                 </button>                            
                             </div>
                         </div>
