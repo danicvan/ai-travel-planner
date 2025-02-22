@@ -43,7 +43,7 @@ export default function Header({ onSearch }) {
                         alt="Trello logo"
                         width={90}
                         height={90}
-                        className="cursor-pointer"
+                        className="cursor-pointer filter grayscale"
                     />
                 </Link>
 
