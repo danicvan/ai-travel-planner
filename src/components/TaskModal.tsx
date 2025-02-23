@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react";
 import {
   Button,
@@ -73,7 +74,7 @@ const TaskModal: React.FC<TaskModalProps> = ({
             </Field>
           </div>
           {task.imageUrl && (
-            <img
+            <Image
               src={task.imageUrl}
               alt={task.text}
               className="w-full rounded-lg mt-4"
