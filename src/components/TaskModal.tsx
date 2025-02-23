@@ -26,10 +26,11 @@ const TaskModal: React.FC<TaskModalProps> = ({
   onClose,
   onDelete,
   onEdit,
+  textDetail,
   columnId
 }) => {
   console.log(`task is:`, task);
-  const [editedText, setEditedText] = useState(task[0]?.textDetail || "");
+  const [editedText, setEditedText] = useState(textDetail || "");
   console.log(`columnId`, columnId);
 
   if (!task) return null;
