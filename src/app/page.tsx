@@ -464,7 +464,7 @@ export default function HomePage() {
                     task={selectedTask}
                     onClose={handleCloseTask}
                     onDelete={() => handleDeleteTask(selectedTask)}
-                    onEdit={(taskId, text, selectedTask) => handleEditTask(taskId, text)}
+                    onEdit={(taskId, text) => handleEditTask(taskId, text)}
                     textDetail={selectedTask}
                 />
             )}
