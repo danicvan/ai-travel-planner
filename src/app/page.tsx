@@ -84,7 +84,12 @@ export default function HomePage() {
         }
     }
 
-    const [selectedTask, setSelectedTask] = useState([]);
+    type TaskType = {
+        id: string;
+        title: string;
+    }
+
+    const [selectedTask, setSelectedTask] = useState<[TaskType, string] | null>(null);
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
@@ -138,7 +143,7 @@ export default function HomePage() {
         setIsAddTaskModalOpen(true);
     };
 
-    const handleSelectedTask = (task: [], columnId: string) => {
+    const handleSelectedTask = (task: TaskType, columnId: string) => {
         console.log(`My task is`, task);
         setSelectedTask([task, columnId]);
         setIsTaskModalOpen(true);
@@ -182,7 +187,7 @@ export default function HomePage() {
         console.log(`columns: `, columns);
     }
 
-    const handleDeleteTask = async (task) => {
+    const handleDeleteTask = async (task: [{$id: string}]) => {
         console.log(`Button delete clicked!`);
         if (!task[0].$id) return;
 
