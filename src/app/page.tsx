@@ -11,12 +11,13 @@ import AddColumnModal from "@/components/AddColumnModal";
 import InfoModal from "@/components/InfoModal";
 import ColumnModal from "@/components/ColumnModal";
 import { useToast } from "@/hooks/use-toast";
+import { Models } from "appwrite";
 
 export default function HomePage() {
     const { toast } = useToast();
 
     type ColumnType = {
-        tasks: Document[];
+        tasks: Models.Document[];
         $id: string;
         $collectionId: string;
         $databaseId: string;
