@@ -14,7 +14,17 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function HomePage() {
     const { toast } = useToast();
-    const [columns, setColumns] = useState([]);
+
+    type ColumnType = {
+        tasks: Document[];
+        $id: string;
+        $collectionId: string;
+        $databaseId: string;
+        $createdAt: string;
+        $updatedAt: string;
+        $permissions: string[];
+    }
+    const [columns, setColumns] = useState<ColumnType[]>([]);
 
     useEffect(() => {
         const fetchColumnsAndTasks = async () => {
