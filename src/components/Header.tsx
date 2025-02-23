@@ -72,6 +72,7 @@ export default function Header({ onSearch }) {
                         src="https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                         width={30}
                         height={30}
+                        alt="Task Search"
                         className="rounded-full w-8 h-8 border-2 border-transparent hover:border-2 hover:border-stone-200"
                     />
 
