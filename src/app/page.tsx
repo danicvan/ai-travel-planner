@@ -229,7 +229,7 @@ export default function HomePage() {
         ),
     }));
 
-    const handleDragEnd = async (result) => {
+    const handleDragEnd = async (result: DropResult) => {
         const { source, destination } = result;
 
         if (!destination) return;
