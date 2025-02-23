@@ -201,8 +201,6 @@ export default function HomePage() {
         )
 
         console.log(`response of deleteDocument: `, response);
-
-        console.log(`the column selected is: `, task[1]);
         console.log(`column is:`, columns);
         console.log(`column[0] is:`, columns[0].tasks);
 
@@ -220,7 +218,7 @@ export default function HomePage() {
 
     const [searchKey, setSearchKey] = useState("");
 
-    const handleSearch = (key) => {
+    const handleSearch = (key: string) => {
         setSearchKey(key);
     };
 
