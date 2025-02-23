@@ -88,7 +88,7 @@ export default function HomePage() {
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
-    const addTask = async (listId, task) => {
+    const addTask = async (listId: string, task: {text: string, image: string}) => {
         try {
             console.log(`listId`, listId);
             console.log(`task`, task);
@@ -138,7 +138,7 @@ export default function HomePage() {
         setIsAddTaskModalOpen(true);
     };
 
-    const handleSelectedTask = (task, columnId) => {
+    const handleSelectedTask = (task: [], columnId: string) => {
         console.log(`My task is`, task);
         setSelectedTask([task, columnId]);
         setIsTaskModalOpen(true);
