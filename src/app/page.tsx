@@ -18,6 +18,7 @@ export default function HomePage() {
 
     type ColumnType = {
         tasks: Models.Document[];
+        title: string;
         $id: string;
         $collectionId: string;
         $databaseId: string;
@@ -292,11 +293,11 @@ export default function HomePage() {
         setIsInfoModalOpen(false);
     }
 
-    const [titles, setTitles] = useState(
+    const [titles, setTitles] = useState<{ [key: string]: string }>(
         filterColumns.reduce((acc, column)=> {
             acc[column.$id] = column.title;
             return acc;
-        }, {})
+        }, {} as { [key: string]: string})
     );
 
     console.log(`fullFilterColumns`, filterColumns);
