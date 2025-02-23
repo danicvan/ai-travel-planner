@@ -19,7 +19,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({
 
     const [newTitle, setNewTitle] = useState(title);
     const handleSave = () => {
-        newTitle !== '' && newTitle !== title ? onSave(id, newTitle) : '';
+        newTitle !== '' && newTitle !== title && onSave(id, newTitle);
     }
 
     return (
