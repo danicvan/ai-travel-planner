@@ -35,7 +35,7 @@ export default function HomePage() {
                 setColumns(columnsWithTasks);
                 console.log(`columnsWithTasks is:`, columnsWithTasks)
             } catch (e) {
-                console.error(`Failed to fetch columns and tasks`);
+                console.error(`Failed to fetch columns and tasks`, e);
             }
          };
 
