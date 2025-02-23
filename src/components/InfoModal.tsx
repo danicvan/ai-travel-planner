@@ -5,7 +5,6 @@ import {
     DialogTitle,
     Button,
 } from "@headlessui/react";
-import { useState } from "react";
 
 interface InfoModalProps {
     title: string;
