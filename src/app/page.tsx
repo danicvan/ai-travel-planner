@@ -187,7 +187,7 @@ export default function HomePage() {
         console.log(`columns: `, columns);
     }
 
-    const handleDeleteTask = async (task: [{$id: string}]) => {
+    const handleDeleteTask = async (task: [{ $id: string }]) => {
         console.log(`Button delete clicked!`);
         if (!task[0].$id) return;
 
@@ -206,7 +206,7 @@ export default function HomePage() {
 
         setColumns((prevColumns) => 
             prevColumns.map((column) => 
-                column.$id === task[1]
+                column.$id === task[0].$id
                 ? {...column, tasks: [...column.tasks.filter((c) => c.$id !== task[0].$id)]} : {...column}
             )
         )
