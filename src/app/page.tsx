@@ -59,7 +59,7 @@ export default function HomePage() {
         setIsAddColumnModalOpen(true);
     };
 
-    const addColumn = async (columnName) => {
+    const addColumn = async (columnName: string) => {
         try {
             const newColumn = await databases.createDocument(
                 "ai-travel-planner",
