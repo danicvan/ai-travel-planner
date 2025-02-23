@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface ListProps {
   list: { id: number; title: string; tasks: { id: number; text: string; image?: string }[] };
   onAddTask: () => void;
@@ -12,7 +14,7 @@ export default function List({ list, onAddTask }: ListProps) {
           <li key={task.id} className="p-2 border rounded flex items-center">
             <span>{task.text}</span>
             {task.image && (
-              <img src={task.image} alt={task.text} className="ml-2 w-8 h-8 rounded-full" />
+              <Image src={task.image} alt={task.text} className="ml-2 w-8 h-8 rounded-full" />
             )}
           </li>
         ))}
