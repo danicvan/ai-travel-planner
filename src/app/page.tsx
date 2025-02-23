@@ -242,6 +242,12 @@ export default function HomePage() {
         }
 
         const sourceColumn = columns.find((col) => col.$id === source.droppableId);
+        
+        if (!sourceColumn) {
+            console.error("Source column not found");
+            return;
+        }
+
         console.log(`sourceColumn: ` + sourceColumn);
 
         const taskToMove = sourceColumn.tasks[source.index];
@@ -253,6 +259,11 @@ export default function HomePage() {
             (col) => col.$id === destination.droppableId
         );
 
+        if (!destinationColumn) {
+            console.error("Destination column not found");
+            return;
+        }
+        
         destinationColumn.tasks.splice(destination.index, 0, taskToMove);
 
         setColumns([...columns]);
