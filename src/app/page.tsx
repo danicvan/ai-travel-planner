@@ -411,7 +411,6 @@ export default function HomePage() {
                     toDo={columns[0]?.tasks.length || 0}
                     inProgress={columns[1]?.tasks.length || 0}
                     done={columns[2]?.tasks.length || 0}
-                    className="mb-4 text-sm text-gray-500"
                 />
 
                 {/* Drag-and-Drop Context */}
