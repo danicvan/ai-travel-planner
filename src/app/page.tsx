@@ -314,7 +314,7 @@ export default function HomePage() {
         console.log(`updates titles:`, titles);
     }, [titles]);
 
-    const handleColumnTitle = async (columnId: string, event) => {
+    const handleColumnTitle = async (columnId: string, event: React.ChangeEvent<HTMLInputElement>) => {
         console.log(`handleColumnTitle is`, columnId);
         const newTitle = event.target.value;
         const response = await databases.updateDocument(
