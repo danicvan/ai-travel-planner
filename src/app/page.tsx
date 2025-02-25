@@ -75,7 +75,14 @@ export default function HomePage() {
 
             console.log(`The new column id is ${newColumn.$id}`);
 
-            setColumns((prevColumns) => [...prevColumns, { ...newColumn, tasks: [] }]);
+            setColumns((prevColumns) => [
+                ...prevColumns, 
+                {
+                    ...newColumn, 
+                    title: newColumn.title?? "Untitled",
+                    tasks: [] 
+                } as ColumnType,
+            ]);
             console.log(`columns is:`, columns);
 
             toast({
