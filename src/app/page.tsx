@@ -39,6 +39,7 @@ export default function HomePage() {
 
                 const columnsWithTasks = columnsResponse.documents.map((column) => ({
                     ...column,
+                    title: column.title,
                     tasks: tasksResponse.documents.filter(
                         (task) => task.columnId === column.$id
                     ),
