@@ -94,7 +94,7 @@ export default function HomePage() {
     }
 
     type TaskType = {
-        id: string;
+        $id: string;
         title: string;
     }
 
@@ -458,7 +458,12 @@ export default function HomePage() {
                                                                 {...provided.draggableProps}
                                                                 {...provided.dragHandleProps}
                                                                 className="mb-2 py-2 px-3 bg-gray-100 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-200"
-                                                                onClick={() => handleSelectedTask(task, column.$id)}
+                                                                onClick={() => handleSelectedTask(
+                                                                    {
+                                                                        $id: task.$id,
+                                                                        title: task.title,
+                                                                    },
+                                                                    column.$id)}
                                                             >
                                                                 {task.text}
                                                             </li>
