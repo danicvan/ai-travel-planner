@@ -18,13 +18,13 @@ export default function HomePage() {
 
     type ColumnType = {
         tasks: Models.Document[];
-        title: string;
         $id: string;
         $collectionId: string;
         $databaseId: string;
         $createdAt: string;
         $updatedAt: string;
         $permissions: string[];
+        title: string;
     }
     const [columns, setColumns] = useState<ColumnType[]>([]);
 
