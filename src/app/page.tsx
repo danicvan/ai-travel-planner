@@ -99,6 +99,7 @@ export default function HomePage() {
     }
 
     const [selectedTask, setSelectedTask] = useState<TaskType | null>(null);
+const [selectedColumnId, setSelectedColumnId] = useState<string | null>(null);
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
@@ -153,10 +154,10 @@ export default function HomePage() {
     };
 
     const handleSelectedTask = (task: TaskType, columnId: string) => {
-        console.log(`My task is`, task);
-        setSelectedTask([task, columnId]);
+        setSelectedTask(task);
+        setSelectedColumnId(columnId);
         setIsTaskModalOpen(true);
-    }
+    };
 
     const handleCloseTask = () => {
         setIsTaskModalOpen(false);
