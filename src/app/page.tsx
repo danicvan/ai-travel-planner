@@ -464,7 +464,7 @@ export default function HomePage() {
                                                                         $id: task.$id,
                                                                         title: task.title,
                                                                     },
-                                                                    column.$id)}
+                                                                   )}
                                                             >
                                                                 {task.text}
                                                             </li>
