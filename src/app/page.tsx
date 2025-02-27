@@ -99,7 +99,7 @@ export default function HomePage() {
     }
 
     const [selectedTask, setSelectedTask] = useState<TaskType | null>(null);
-const [selectedColumnId, setSelectedColumnId] = useState<string | null>(null);
+    //const [selectedColumnId, setSelectedColumnId] = useState<string | null>(null);
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
