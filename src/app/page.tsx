@@ -153,7 +153,7 @@ export default function HomePage() {
         setIsAddTaskModalOpen(true);
     };
 
-    const handleSelectedTask = (task: TaskType, columnId: string) => {
+    const handleSelectedTask = (task: TaskType) => {
         setSelectedTask(task);
         
         setIsTaskModalOpen(true);
