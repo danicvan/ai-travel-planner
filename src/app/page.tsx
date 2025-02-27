@@ -98,7 +98,7 @@ export default function HomePage() {
         title: string;
     }
 
-    const [selectedTask, setSelectedTask] = useState<[TaskType, string] | null>(null);
+    const [selectedTask, setSelectedTask] = useState<TaskType | null>(null);
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
