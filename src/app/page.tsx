@@ -198,17 +198,17 @@ export default function HomePage() {
         console.log(`columns: `, columns);
     }
 
-    const handleDeleteTask = async (task: [{ $id: string }]) => {
+    const handleDeleteTask = async (task: { $id: string } | null) => {
         console.log(`Button delete clicked!`);
-        if (!task[0].$id) return;
+        if (!task || !task.$id) return;
 
-        console.log(`task[0].$id is:`, task[0].$id);
+        console.log(`task.$id is:`, task.$id);
 
         console.log(`Before databases.deleteDocument process`);
         const response = await databases.deleteDocument(
             `ai-travel-planner`,
             `tasks`,
-            task[0].$id,
+            task.$id,
         )
 
         console.log(`response of deleteDocument: `, response);
@@ -217,8 +217,8 @@ export default function HomePage() {
 
         setColumns((prevColumns) => 
             prevColumns.map((column) => 
-                column.$id === task[0].$id
-                ? {...column, tasks: [...column.tasks.filter((c) => c.$id !== task[0].$id)]} : {...column}
+                column.$id === task.$id
+                ? {...column, tasks: [...column.tasks.filter((c) => c.$id !== task.$id)]} : {...column}
             )
         )
 
