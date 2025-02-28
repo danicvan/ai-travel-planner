@@ -505,7 +505,7 @@ export default function HomePage() {
             {/* Task Modal */}
             {isTaskModalOpen && (
                 <TaskModal
-                    task={selectedTask}
+                    task={selectedTask ? { id: selectedTask.$id, text: selectedTask.title, imageUrl: selectedTask.imageUrl } : null}
                     onClose={handleCloseTask}
                     onDelete={() => handleDeleteTask(selectedTask)}
                     onEdit={(taskId, text) => handleEditTask(taskId, text)}
