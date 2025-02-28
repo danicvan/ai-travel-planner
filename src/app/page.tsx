@@ -97,6 +97,7 @@ export default function HomePage() {
         $id: string;
         title: string;
         imageUrl: string;
+        textDetail: string;
     }
 
     const [selectedTask, setSelectedTask] = useState<TaskType | null>(null);
@@ -464,7 +465,8 @@ export default function HomePage() {
                                                                     {
                                                                         $id: task.$id,
                                                                         title: task.title,
-                                                                        imageUrl: task.imageUrl
+                                                                        imageUrl: task.imageUrl,
+                                                                        textDetail: task.textDetail
                                                                     },
                                                                    )}
                                                             >

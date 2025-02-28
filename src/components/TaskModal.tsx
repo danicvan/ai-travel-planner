@@ -13,7 +13,7 @@ import {
 import clsx from "clsx";
 
 interface TaskModalProps {
-  task: { id: string; text: string; imageUrl?: string } | null;
+  task: { $id: string; text: string; imageUrl?: string; } | null;
   onClose: () => void;
   onDelete: (taskId: string) => void;
   onEdit: (taskId: string, newText: string) => void;
@@ -36,8 +36,8 @@ const TaskModal: React.FC<TaskModalProps> = ({
   if (!task) return null;
 
   const handleSave = () => {
-    console.log(`my taskId on taskModal component is`, task[0], task);
-    onEdit(task[0].$id, editedText);
+    console.log(`my taskId on taskModal component is`, task.$id, task);
+    onEdit(task.$id, editedText);
     onClose();
   };
 
