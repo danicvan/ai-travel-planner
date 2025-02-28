@@ -98,6 +98,7 @@ export default function HomePage() {
         title: string;
         imageUrl: string;
         textDetail: string;
+        columnId: string;
     }
 
     const [selectedTask, setSelectedTask] = useState<TaskType | null>(null);
@@ -466,7 +467,8 @@ export default function HomePage() {
                                                                         $id: task.$id,
                                                                         title: task.title,
                                                                         imageUrl: task.imageUrl,
-                                                                        textDetail: task.textDetail
+                                                                        textDetail: task.textDetail,
+                                                                        columnId: task.columnId
                                                                     },
                                                                    )}
                                                             >
@@ -507,11 +509,12 @@ export default function HomePage() {
             {/* Task Modal */}
             {isTaskModalOpen && (
                 <TaskModal
-                    task={selectedTask ? { id: selectedTask.$id, text: selectedTask.title, imageUrl: selectedTask.imageUrl } : null}
+                    task={selectedTask ? { $id: selectedTask.$id, text: selectedTask.title, imageUrl: selectedTask.imageUrl } : null}
                     onClose={handleCloseTask}
                     onDelete={() => handleDeleteTask(selectedTask)}
                     onEdit={(taskId, text) => handleEditTask(taskId, text)}
-                    textDetail={selectedTask}
+                    textDetail={selectedTask ? selectedTask.textDetail : ''}
+                    columnId={selectedTask ? selectedTask.columnId : ''}
                 />
             )}
 
