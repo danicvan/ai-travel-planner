@@ -106,7 +106,7 @@ export default function HomePage() {
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
-    const addTask = async (listId: string, task: {text: string, image: string}) => {
+    const addTask = async (listId: string, task: {text: string, image?: string}) => {
         try {
             console.log(`listId`, listId);
             console.log(`task`, task);
