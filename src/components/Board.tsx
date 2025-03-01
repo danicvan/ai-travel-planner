@@ -2,14 +2,14 @@ import { useState } from "react";
 import List from "./List";
 import AddTaskModal from "./AddTaskModal";
 
-const initialLists = [
+const initialLists: { id: number; title: string; tasks: { id: number; text: string; image?: string }[] }[] = [
   { id: 1, title: "To Do", tasks: [] },
   { id: 2, title: "In Progress", tasks: [] },
   { id: 3, title: "Done", tasks: [] },
 ];
 
 export default function Board() {
-  const [lists, setLists] = useState(initialLists);
+  const [lists, setLists] = useState<typeof initialLists>(initialLists);
   const [showModal, setShowModal] = useState(false);
 
   const addTask = (listId: number, task: { id: number; text: string; image?: string }) => {
