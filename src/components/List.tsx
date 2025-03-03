@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 interface ListProps {
-  list: { id: number; title: string; tasks: { id: number; text: string; image?: string }[] };
+  list: { id: string; title: string; tasks: { id: string; text: string; image?: string }[] };
   onAddTask: () => void;
 }
 
