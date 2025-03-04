@@ -11,6 +11,7 @@ const initialLists: { id: string; title: string; tasks: { id: string; text: stri
 export default function Board() {
   const [lists, setLists] = useState<typeof initialLists>(initialLists);
   const [showModal, setShowModal] = useState(false);
+  const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
 
   const addTask = (listId: string, task: { id: string | number; text: string; image?: string }) => {
     setLists((prevLists) =>
@@ -52,10 +53,11 @@ export default function Board() {
       </div>
       {showModal && (
         <AddTaskModal
-          lists={lists}
-          onClose={() => setShowModal(false)}
-          onAddTask={addTask}
-        />
+        lists={lists}
+        selectedColumn={selectedColumn} // Passando a propriedade necessária
+        onClose={() => setShowModal(false)}
+        onAddTask={addTask}
+      />      
       )}
     </div>
   );
