@@ -2,7 +2,7 @@ import { useState } from "react";
 import List from "./List";
 import AddTaskModal from "./AddTaskModal";
 
-const initialLists: { id: string; title: string; tasks: { id: string | number; text: string; image?: string }[] }[] = [
+const initialLists: { id: string; title: string; tasks: { id: string; text: string; image?: string }[] }[] = [
   { id: "1", title: "To Do", tasks: [] },
   { id: "2", title: "In Progress", tasks: [] },
   { id: "3", title: "Done", tasks: [] },
@@ -12,16 +12,17 @@ export default function Board() {
   const [lists, setLists] = useState<typeof initialLists>(initialLists);
   const [showModal, setShowModal] = useState(false);
 
-  const addTask = (listId: string, task: { id: string; text: string; image?: string }) => {
+  const addTask = (listId: string, task: { id: string | number; text: string; image?: string }) => {
     setLists((prevLists) =>
       prevLists.map((list) =>
         list.id === listId
-          ? { ...list, tasks: [...list.tasks, task] }
+          ? { ...list, tasks: [...list.tasks, { ...task, id: String(task.id) }] } // Convertendo para string
           : list
       )
     );
     setShowModal(false);
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
