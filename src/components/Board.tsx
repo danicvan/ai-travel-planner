@@ -2,18 +2,21 @@ import { useState } from "react";
 import List from "./List";
 import AddTaskModal from "./AddTaskModal";
 
+// Definição do tipo de uma Task
 type Task = {
   id: string;
   text: string;
   image?: string;
 };
 
+// Definição do tipo de uma Lista (Coluna)
 type ListType = {
   id: string;
   title: string;
   tasks: Task[];
 };
 
+// Listas iniciais (To Do, In Progress, Done)
 const initialLists: ListType[] = [
   { id: "1", title: "To Do", tasks: [] },
   { id: "2", title: "In Progress", tasks: [] },
@@ -25,13 +28,7 @@ export default function Board() {
   const [showModal, setShowModal] = useState(false);
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
 
-  // Abre o modal e define a coluna selecionada
-  const openAddTaskModal = (columnId: string) => {
-    setSelectedColumn(columnId);
-    setShowModal(true);
-  };
-
-  // Adiciona uma tarefa à lista correta
+  // Adiciona uma nova tarefa à lista correta
   const addTask = (listId: string, task: Task) => {
     setLists((prevLists) =>
       prevLists.map((list) =>
@@ -45,6 +42,7 @@ export default function Board() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
+      {/* Cabeçalho */}
       <header className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Trello AI</h1>
         <input
@@ -54,24 +52,34 @@ export default function Board() {
         />
       </header>
 
+      {/* Resumo das Tarefas */}
       <div className="flex justify-between items-center mb-4">
         <p className="text-gray-600">
-          Today, we have {lists[0].tasks.length} tasks in To Do, {lists[1].tasks.length} in Progress, and {lists[2].tasks.length} in Done.
+          Today, we have {lists[0].tasks.length} tasks in To Do, {lists[1].tasks.length} in In Progress, and {lists[2].tasks.length} in Done.
         </p>
         <button
-          onClick={() => openAddTaskModal(lists[0].id)}
+          onClick={() => setShowModal(true)}
           className="bg-indigo-600 text-white px-4 py-2 rounded"
         >
           Create Task
         </button>
       </div>
 
+      {/* Renderização das Listas */}
       <div className="flex space-x-4">
         {lists.map((list) => (
-          <List key={list.id} list={list} onAddTask={() => openAddTaskModal(list.id)} />
+          <List
+            key={list.id}
+            list={list}
+            onAddTask={() => {
+              setSelectedColumn(list.id);
+              setShowModal(true);
+            }}
+          />
         ))}
       </div>
 
+      {/* Modal para Adicionar Tarefa */}
       {showModal && selectedColumn && (
         <AddTaskModal
           lists={lists}
