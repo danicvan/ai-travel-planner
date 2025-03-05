@@ -2,28 +2,46 @@ import { useState } from "react";
 import List from "./List";
 import AddTaskModal from "./AddTaskModal";
 
-const initialLists: { id: string; title: string; tasks: { id: string; text: string; image?: string }[] }[] = [
+type Task = {
+  id: string;
+  text: string;
+  image?: string;
+};
+
+type ListType = {
+  id: string;
+  title: string;
+  tasks: Task[];
+};
+
+const initialLists: ListType[] = [
   { id: "1", title: "To Do", tasks: [] },
   { id: "2", title: "In Progress", tasks: [] },
   { id: "3", title: "Done", tasks: [] },
 ];
 
 export default function Board() {
-  const [lists, setLists] = useState<typeof initialLists>(initialLists);
+  const [lists, setLists] = useState<ListType[]>(initialLists);
   const [showModal, setShowModal] = useState(false);
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
 
-  const addTask = (listId: string, task: { id: string | number; text: string; image?: string }) => {
+  // Abre o modal e define a coluna selecionada
+  const openAddTaskModal = (columnId: string) => {
+    setSelectedColumn(columnId);
+    setShowModal(true);
+  };
+
+  // Adiciona uma tarefa à lista correta
+  const addTask = (listId: string, task: Task) => {
     setLists((prevLists) =>
       prevLists.map((list) =>
         list.id === listId
-          ? { ...list, tasks: [...list.tasks, { ...task, id: String(task.id) }] } // Convertendo para string
+          ? { ...list, tasks: [...list.tasks, { ...task, id: String(task.id) }] }
           : list
       )
     );
     setShowModal(false);
   };
-  
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -35,29 +53,32 @@ export default function Board() {
           className="border rounded p-2 w-64"
         />
       </header>
+
       <div className="flex justify-between items-center mb-4">
         <p className="text-gray-600">
-          Today, we have {lists[0].tasks.length} tasks in To Do, {lists[1].tasks.length} in In Progress, and {lists[2].tasks.length} in Done.
+          Today, we have {lists[0].tasks.length} tasks in To Do, {lists[1].tasks.length} in Progress, and {lists[2].tasks.length} in Done.
         </p>
         <button
-          onClick={() => setShowModal(true)}
+          onClick={() => openAddTaskModal(lists[0].id)}
           className="bg-indigo-600 text-white px-4 py-2 rounded"
         >
           Create Task
         </button>
       </div>
+
       <div className="flex space-x-4">
         {lists.map((list) => (
-          <List key={list.id} list={list} onAddTask={() => setShowModal(true)} />
+          <List key={list.id} list={list} onAddTask={() => openAddTaskModal(list.id)} />
         ))}
       </div>
-      {showModal && (
+
+      {showModal && selectedColumn && (
         <AddTaskModal
-        lists={lists}
-        selectedColumn={selectedColumn} // Passando a propriedade necessária
-        onClose={() => setShowModal(false)}
-        onAddTask={addTask}
-      />      
+          lists={lists}
+          selectedColumn={selectedColumn}
+          onClose={() => setShowModal(false)}
+          onAddTask={addTask}
+        />
       )}
     </div>
   );
