@@ -1,14 +1,25 @@
 import { useState } from "react";
 
+interface Task {
+  id: string;
+  text: string;
+  image?: string;
+}
+
+interface ListType {
+  id: string;
+  title: string;
+  tasks: Task[];
+}
+
 interface AddTaskModalProps {
-  lists: { id: string; title: string; tasks: { id: string; text: string; image?: string }[] }[];
+  lists: ListType[];
   selectedColumn: string;
   onClose: () => void;
-  onAddTask: (listId: string, task: { id: number; text: string; image?: string }) => void;
+  onAddTask: (listId: string, task: Task) => void;
 }
 
 export default function AddTaskModal({ lists, selectedColumn, onClose, onAddTask }: AddTaskModalProps) {
-  console.log(`this is my addTaskModal by list: `, selectedColumn);
   const [selectedListId, setSelectedListId] = useState(selectedColumn);
   const [taskText, setTaskText] = useState("");
   const [taskImage, setTaskImage] = useState<string | undefined>("");
@@ -16,7 +27,12 @@ export default function AddTaskModal({ lists, selectedColumn, onClose, onAddTask
   const handleAddTask = () => {
     if (!taskText.trim()) return;
 
-    onAddTask(selectedListId, { id: Date.now(), text: taskText, image: taskImage });
+    onAddTask(selectedListId, { 
+      id: String(Date.now()),  // Convert ID to string 
+      text: taskText, 
+      image: taskImage || undefined 
+    });
+
     setTaskText("");
     setTaskImage("");
   };
