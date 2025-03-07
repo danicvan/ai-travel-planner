@@ -425,7 +425,7 @@ export default function HomePage() {
                     <ol className="flex flex-row gap-3 w-full overflow-x-scroll scrollbar-show h-full my-3 flex-grow px-4">
                         {filterColumns.map((column) => (
                             <li className="list-none" key={column.$id}>
-                                <Droppable key={column.$id} droppableId={column.$id}>
+                                <Droppable key={column.$id} droppableId={column.$id} isDropDisabled={false}>
                                     {(provided) => (
                                         <div
                                             ref={provided.innerRef}
