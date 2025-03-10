@@ -15,7 +15,7 @@ const fetchData = async (message: string) => {
     };
     
     try {
-        const response = await fetch("https://ai-travel-planner-backend-seven.vercel.app/api/chat", {
+        const response = await fetch("https://ai-travel-planner-backend-130id0jzp-daniels-projects-b3a040a3.vercel.app/api/chat", {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json',
