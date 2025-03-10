@@ -421,7 +421,7 @@ export default function HomePage() {
                 />
 
                 {/* Drag-and-Drop Context */}
-                <DragDropContext onDragEnd={handleDragEnd} isCombineEnabled={false}>
+                <DragDropContext onDragEnd={handleDragEnd}>
                     <ol className="flex flex-row gap-3 w-full overflow-x-scroll scrollbar-show h-full my-3 flex-grow px-4">
                         {filterColumns.map((column) => (
                             <li className="list-none" key={column.$id}>
