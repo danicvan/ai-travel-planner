@@ -2,19 +2,19 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 export default function HomePage() {
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex items-center justify-center min-h-screen">
             <Card className="w-[350px]">
                 <CardHeader>
-                    <CardTitle>Título do Card</CardTitle>
-                    <CardDescription>Descrição do Card</CardDescription>
+                    <CardTitle>Title</CardTitle>
+                    <CardDescription>Card Description</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <p>Este é o conteúdo do card.</p>
+                    <p>This is a content card.</p>
                 </CardContent>
                 <CardFooter>
-                    <p>Rodapé do Card</p>
+                    <p>Card Footer</p>
                 </CardFooter>
             </Card>
         </div>
-    );
+    )
 }
