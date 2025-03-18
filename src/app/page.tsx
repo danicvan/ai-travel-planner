@@ -1,3 +1,5 @@
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+
 export default function HomePage() {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
