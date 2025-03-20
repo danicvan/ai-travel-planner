@@ -36,6 +36,7 @@ export default function HomePage() {
                             Continue with GitHub
                         </Button>
                         <Button
+                            variant="outline"
                             className="w-full"
                             type="button"
                             disabled={login}
