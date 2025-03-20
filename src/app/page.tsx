@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@headlessui/react";
+import { Button, Label } from "@headlessui/react";
 import { Separator } from "@radix-ui/react-separator";
 import { CircleUser, Github } from "lucide-react";
 import { useState } from "react";
@@ -25,6 +25,7 @@ export default function HomePage() {
             
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
+                        <Label>Email</Label>
                         <Button
                             className="w-full"
                             type="button"
