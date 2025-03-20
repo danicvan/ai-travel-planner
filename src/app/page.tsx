@@ -1,7 +1,7 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@headlessui/react";
 import { Separator } from "@radix-ui/react-separator";
 import { CircleUser, Github } from "lucide-react";
 import { useState } from "react";
@@ -26,6 +26,7 @@ export default function HomePage() {
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
                         <Button
+                            variant="outline"
                             className="w-full"
                             type="button"
                             disabled={login}
