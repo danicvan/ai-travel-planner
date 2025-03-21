@@ -11,11 +11,11 @@ import { useState } from "react";
 export default function HomePage() {
     
     const [login, setLogin] = useState(false);
-    const navigate = useNavigate();
+    const router = useRouter();
 
     const handleProviderLogin = (state: boolean) => {
         setLogin(state);
-        navigate("/home");
+        router.push("/home");
     }
 
     return (
