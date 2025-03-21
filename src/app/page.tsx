@@ -3,17 +3,19 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation"; 
 
 import { CircleUser, Github } from "lucide-react";
 import { useState } from "react";
 
 export default function HomePage() {
+    
     const [login, setLogin] = useState(false);
     const navigate = useNavigate();
 
     const handleProviderLogin = (state: boolean) => {
         setLogin(state);
+        navigate("/home");
     }
 
     return (
