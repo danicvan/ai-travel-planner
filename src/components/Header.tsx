@@ -97,7 +97,9 @@ export default function Header({ onSearch }: HeaderProps) {
                 </div>
               </div>
               <div className="mt-4">
-                <p className="px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Log out</p>
+                <Link href="/" >
+                  <p className="px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Log out</p>
+                </Link>
               </div>
             </div>
           )}
