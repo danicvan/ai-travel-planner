@@ -67,7 +67,8 @@ export default function HomePage() {
                     <p className="text-sm text-muted-foreground text-center w-full">
                         Don't have an account?{" "}
                         <a
-                            className="text-primary hover:text-primary/90 font-medium"
+                            href="/register"
+                            className="text-primary hover:text-primary/80 font-medium"
                         >
                             Create Account
                         </a>
