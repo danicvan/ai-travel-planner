@@ -22,7 +22,7 @@ export default function HomePage() {
         <div className="flex items-center justify-center min-h-screen">
             <Card className="w-full max-w-md mx-auto">
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-2x1 font-bold">Sign in</CardTitle>
+                    <CardTitle className="text-2xl font-bold">Sign in</CardTitle>
                     <CardDescription>
                         Sign in yo your account to continue
                     </CardDescription>
