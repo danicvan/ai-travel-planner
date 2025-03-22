@@ -37,7 +37,7 @@ export default function HomePage() {
                             disabled={login}
                             onClick={() => handleProviderLogin(true)}
                         >
-                            <Github className="mr-2 h-4 w-4"/>
+                            <Github className="mr-2 h-4 w-4" />
                             Continue with GitHub
                         </Button>
                         <Button

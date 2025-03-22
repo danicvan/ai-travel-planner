@@ -86,3 +86,7 @@ body {
   background: #f0f0f0;
   border-radius: 12px;
 }
+
+.text-medium {
+  @apply font-medium;
+}
