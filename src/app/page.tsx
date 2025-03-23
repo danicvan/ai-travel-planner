@@ -13,7 +13,15 @@ export default function LandingPage () {
             <br></br>
             <br></br>
             <Navbar />
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Hero />
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Features />
             <Testimonials />
             <CTASection />
