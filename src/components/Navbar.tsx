@@ -20,7 +20,17 @@ export default function Navbar ({ className }: NavbarProps) {
                     </span>
                 </div>
 
-                
+                <nav className="md:flex items-center space-x-8">
+                    <a href="#features" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+                        Features
+                    </a>
+                    <a href="#testiomials" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+                        Testimonials
+                    </a>
+                    <a href="#premium" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+                        Premium
+                    </a>
+                </nav>
 
                 
             </div>
