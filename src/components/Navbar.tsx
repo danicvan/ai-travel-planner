@@ -16,13 +16,13 @@ export default function Navbar ({ className }: NavbarProps) {
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <div className="flex items-center">
                     <span className="text-2xl font-semibold bg-gradient-to-r from-primary to-boardly-blue bg-clip-text text-transparent">
-                        AI Trello
+                        Boardly
                     </span>
                 </div>
 
                 <nav className="md:flex items-center space-x-8">
                     <a href="#features" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
-                        Features
+                        AI Trello
                     </a>
                     <a href="#testiomials" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
                         Testimonials
@@ -32,7 +32,22 @@ export default function Navbar ({ className }: NavbarProps) {
                     </a>
                 </nav>
 
-                
+                <div className="flex items-center space-x-4 ">
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-sm font-medium md:inline-flex"
+                    >
+                        Sign In
+                    </Button>
+                    <Button
+                        variant="default"
+                        size="sm"
+                        className="bg-primary hover:primary/90 transition-colors"
+                    >
+                        Get Started
+                    </Button>
+                </div>
             </div>
         </header>
     );
