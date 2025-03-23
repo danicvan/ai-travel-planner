@@ -13,7 +13,7 @@ import ColumnModal from "@/components/ColumnModal";
 import { useToast } from "@/hooks/use-toast";
 import { Models } from "appwrite";
 
-export default function HomePage() {
+export default function TrelloPage() {
     const { toast } = useToast();
 
     type ColumnType = {

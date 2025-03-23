@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { CircleUser, Github } from "lucide-react";
 import { useState } from "react";
 
-export default function HomePage() {
+export default function LoginPage() {
     
     const [login, setLogin] = useState(false);
     const router = useRouter();
