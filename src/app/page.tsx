@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
+import CTASection from "@/components/CTASection";
 
 export default function LandingPage () {
     return (
@@ -11,6 +12,7 @@ export default function LandingPage () {
             <Navbar />
             <Features />
             <Testimonials />
+            <CTASection />
         </div>
     )
 }
