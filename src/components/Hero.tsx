@@ -1,3 +1,6 @@
+import { ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
+
 export default function Hero () {
     return (
         <div className="relative pt-20 pb-16 md:pt-32 md:pb-24 px-6">
@@ -21,6 +24,22 @@ export default function Hero () {
                     Aproveite o poder da IA para automatizar tarefas,
                     priorizar demandas e otimizar seu fluxo de trabalho.  
                 </p>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in opacity-0" style={{ animationDelay: "0.7s" }}>
+                    <Button
+                        size="lg"
+                        className="bg-primary hover:bg-primary/90 transition-all"
+                    >
+                        Comece Agora
+                        <ArrowRight className="ml-2 h-4 w-4"/>
+                    </Button>
+                    <Button 
+                        variant="outline"
+                        size="lg"
+                    >
+                        Teste Grátis
+                    </Button>
+                </div>
                 
             </div>
         </div>
