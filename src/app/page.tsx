@@ -15,7 +15,7 @@ export default function HomePage() {
 
     const handleProviderLogin = (state: boolean) => {
         setLogin(state);
-        router.push("/home");
+        router.push("/login");
     }
 
     return (
