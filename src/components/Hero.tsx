@@ -11,6 +11,11 @@ export default function Hero () {
                         Potencialize seu Trello com Inteligência Artificial!
                     </span>
                 </div>
+
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 animate-fade-in opacity-0" style={{ animationDelay: "0.3s" }}>
+                    Gerencie seus projetos <br className="md:block" />
+                    <span className="bg-gradient-to-r from-primary to-boardly-blue bg-clip-text text-transparent">no Trello de forma inteligente!</span>
+                </h1>
             </div>
         </div>
     );
