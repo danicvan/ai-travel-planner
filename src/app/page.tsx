@@ -7,10 +7,10 @@ import Footer from "@/components/Footer";
 
 export default function LandingPage () {
     return (
-        <div>
+        <div className="min-h-screen bg-background">
             <h1>Landing Page</h1>
-            <Hero />
             <Navbar />
+            <Hero />
             <Features />
             <Testimonials />
             <CTASection />
