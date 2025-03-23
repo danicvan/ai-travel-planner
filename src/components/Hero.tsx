@@ -16,6 +16,12 @@ export default function Hero () {
                     Gerencie seus projetos <br className="md:block" />
                     <span className="bg-gradient-to-r from-primary to-boardly-blue bg-clip-text text-transparent">no Trello de forma inteligente!</span>
                 </h1>
+
+                <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in opacity-0" style={{ animationDelay: "0.5s" }}> 
+                    Aproveite o poder da IA para automatizar tarefas,
+                    priorizar demandas e otimizar seu fluxo de trabalho.  
+                </p>
+                
             </div>
         </div>
     );
