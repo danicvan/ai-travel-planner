@@ -13,7 +13,17 @@ export default function Navbar ({ className }: NavbarProps) {
                 className
             )}
         >
-            
+            <div className="max-w-7xl mx-auto flex items-center justify-between">
+                <div className="flex items-center">
+                    <span className="text-2xl font-semibold bg-gradient-to-r from-primary to-boardly-blue bg-clip-text text-transparent">
+                        AI Trello
+                    </span>
+                </div>
+
+                
+
+                
+            </div>
         </header>
     );
 }
