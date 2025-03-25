@@ -10,10 +10,6 @@ export default function LandingPage () {
         <div className="min-h-screen bg-background">
             <Navbar />
             <Hero />
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
             <Features />
             <Testimonials />
             <CTASection />

@@ -42,6 +42,54 @@ export default function Hero () {
                 </div>
                 
             </div>
+
+            <div className="mt-16 md:mt-24 max-w-6xl mx-auto relative animate-fade-in opacity-0" style={{ animationDelay: "0.9s" }}>
+        <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
+            <div className="bg-muted w-full h-full flex items-center justify-center p-6">
+                <div className="flex gap-6 overflow-x-scroll py-4 px-2 w-full custom-scrollbar">
+                    <div className="board-column min-h-[300px]">
+                        <h2 className="text-sm font-semibold mb-2">To Do</h2>
+                        <div className="space-y-2">
+                            <div className="board-card">
+                                <div className="flex gap-1 mb-2">
+                                    <span className="bg-boardly-blue text-xs px-2 py-0.5 rounded-full text-boardly-blue-foreground">Design</span>
+                                </div>
+                                <h3 className="text-sm font-medium">Create wireframes</h3>
+                            </div>
+                            <div className="board-card">
+                                <h3 className="text-sm font-medium">Update documentation</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="board-column min-h-[300px]">
+                        <h2 className="text-sm font-semibold mb-2">In Progress</h2>
+                        <div className="space-y-2">
+                            <div className="board-card">
+                                <div className="flex gap-1 mb-2">
+                                    <span className="bg-boardly-amber text-xs px-2 py-0.5 rounded-full text-boardly-amber-foreground">Feature</span>
+                                </div>
+                                <h3 className="text-sm font-medium">Implement drag and drop</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="board-column min-h-[300px]">
+                        <h2 className="text-sm font-semibold mb-2">Done</h2>
+                        <div className="space-y-2">
+                            <div className="board-card">
+                                <div className="flex gap-1 mb-2">
+                                    <span className="bg-boardly-green text-xs px-2 py-0.5 rounded-full text-boardly-green-foreground">Complete</span>
+                                </div>
+                                <h3 className="text-sm font-medium">Setup project repository</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-primary/20 to-boardly-blue/20 -z-10 rounded-xl blur-lg opacity-70"></div>
+        </div>
+       </div>
+ 
         </div>
     );
 }
