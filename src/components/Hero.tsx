@@ -54,10 +54,10 @@ export default function Hero () {
                                 <div className="flex gap-1 mb-2">
                                     <span className="bg-boardly-blue text-xs px-2 py-0.5 rounded-full text-boardly-blue-foreground">Design</span>
                                 </div>
-                                <h3 className="text-sm font-medium">Create wireframes</h3>
+                                <h3 className="text-sm font-medium">Criar wireframes</h3>
                             </div>
                             <div className="board-card">
-                                <h3 className="text-sm font-medium">Update documentation</h3>
+                                <h3 className="text-sm font-medium">Atualizar documentação</h3>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@ export default function Hero () {
                                 <div className="flex gap-1 mb-2">
                                     <span className="bg-boardly-amber text-xs px-2 py-0.5 rounded-full text-boardly-amber-foreground">Feature</span>
                                 </div>
-                                <h3 className="text-sm font-medium">Implement drag and drop</h3>
+                                <h3 className="text-sm font-medium">Implementar drag and drop</h3>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@ export default function Hero () {
                                 <div className="flex gap-1 mb-2">
                                     <span className="bg-boardly-green text-xs px-2 py-0.5 rounded-full text-boardly-green-foreground">Complete</span>
                                 </div>
-                                <h3 className="text-sm font-medium">Setup project repository</h3>
+                                <h3 className="text-sm font-medium">Setup de repositório do projeto</h3>
                             </div>
                         </div>
                     </div>
