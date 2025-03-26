@@ -30,7 +30,14 @@ const defaultTestimonials =[
         "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
         "rating": 5
       },
-      
+      {
+        "name": "Mariana Lima",
+        "role": "Analista de Processos",
+        "content": "Incrível como a IA entende meu fluxo de trabalho e otimiza automaticamente!",
+        "author": "Mariana Lima",
+        "avatar": "https://randomuser.me/api/portraits/women/4.jpg",
+        "rating": 5
+      }
 ]
 
 export default function Testimonials () {
