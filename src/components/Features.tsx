@@ -1,4 +1,5 @@
-import { CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 export default function Features () {
     const features = [
@@ -45,6 +46,16 @@ export default function Features () {
                             <p className="text-muted-foreground">{feature.description}</p>
                         </div>
                     ))}
+                </div>
+
+                <div className="mt-16 text-center">
+                    <Button
+                        size="lg"
+                        className="bg-primary hover:bg-primary/90"
+                    >
+                        Comece Agora
+                        <ArrowRight className="ml-2 h-4 w-4"/>
+                    </Button>
                 </div>
             </div>
         </div>
