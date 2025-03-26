@@ -7,6 +7,12 @@ interface Testimonial {
     rating?: number;
 }
 
+interface TestimonialProps {
+    title?: string;
+    description?: string;
+    testimonials?: Testimonial[];
+}
+
 export default function Testimonials () {
     return (
         <h1>Testimonial</h1>
