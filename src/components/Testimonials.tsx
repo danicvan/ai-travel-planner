@@ -22,7 +22,15 @@ const defaultTestimonials =[
         avatar: "https://randomuser.me/api/portraits/women/2.jpg",
         rating: 5
     },
-    
+    {
+        "name": "Lucas Martins",
+        "role": "Empreendedor",
+        "content": "Economizei horas por semana! A IA prioriza minhas tarefas e evita que eu esqueça prazos importantes.",
+        "author": "Lucas Martins",
+        "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
+        "rating": 5
+      },
+      
 ]
 
 export default function Testimonials () {
