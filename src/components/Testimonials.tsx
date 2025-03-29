@@ -1,5 +1,6 @@
 "use client";
 
+import { Star } from "lucide-react";
 import { useState } from "react";
 
 interface Testimonial {
@@ -90,6 +91,14 @@ export default function Testimonial () {
                                                 </div>
                                                 <h4 className="text-lg font-medium text-center">{displayName}</h4>   
                                                 <p className="text-foreground/70 text-sm text-center">{displayRole}</p>
+                                                <div className="flex items-center mt-2">
+                                                    {[...Array(5)].map((_, i) => (
+                                                        <Star 
+                                                            key={1}
+                                                            className={`h-4 w-4 ${i < (testimonial.rating || 5) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`}
+                                                        />
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
