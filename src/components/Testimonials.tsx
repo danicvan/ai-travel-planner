@@ -47,20 +47,20 @@ const defaultTestimonials = [
 
 export default function Testimonial () {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
 
     return (
         <section className="py-20 md:py-28 bg-secondary">
             <div className="container mx-auto px-6 md:px-10">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 mb-4">
-                        <span className="text-sm font-medium text-primary">Depoimentos</span>
+                        <span className="text-sm font-medium text-primary">Testimonials</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-display font-medium tracking-tight mb-6">
-                        O que nossos clientes dizem
+                        What our customers say
                     </h2>
                     <p className="text-xl text-foreground/70">
-                        Centenas de pessoas já transformaram a forma de gerenciar suas tarefas com o AI Trello
+                        Hundreds of people have already transformed the way they manage their tasks with AI Trello.
                     </p>
                 </div>
 
