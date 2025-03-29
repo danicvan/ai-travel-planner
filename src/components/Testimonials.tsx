@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useState } from "react";
 
 interface Testimonial {
@@ -51,6 +51,10 @@ export default function Testimonial () {
 
     const prevSlide = () => {
         setCurrentSlide((prev) => (prev === 0 ? defaultTestimonials.length - 1 : prev - 1));
+    }
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => prev === defaultTestimonials.length - 1 ? 0 : prev + 1);
     }
 
     return (
@@ -119,7 +123,14 @@ export default function Testimonial () {
                             onClick={prevSlide}
                             className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-subtle flex items-center justify-center text-foreground hover:bg-white transition-all"
                         >
-                            <ChevronLeft className="h-4 w-5"/>
+                            <ChevronLeft className="h-5 w-5"/>
+                        </button>
+
+                        <button
+                            onClick={nextSlide}
+                            className="absolute right-1 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-subtle flex items-center justify-center text-foreground hover:bg-white transition-all "
+                        >
+                            <ChevronRight className="h-5 w-5"/>
                         </button>
                     </div>
                 </div>
