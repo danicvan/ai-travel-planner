@@ -1,7 +1,8 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from 'react-intersection-observer';
 
 interface Testimonial {
     name?: string;
@@ -48,6 +49,10 @@ const defaultTestimonials = [
 export default function Testimonial () {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isVisible, setIsVisible] = useState(true);
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
 
     const prevSlide = () => {
         setCurrentSlide((prev) => (prev === 0 ? defaultTestimonials.length - 1 : prev - 1));
@@ -56,6 +61,20 @@ export default function Testimonial () {
     const nextSlide = () => {
         setCurrentSlide((prev) => prev === defaultTestimonials.length - 1 ? 0 : prev + 1);
     }
+
+    useEffect(() => {
+        if (inView) {
+            setIsVisible(true);
+        }
+    }, [inView]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            nextSlide();
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <section className="py-20 md:py-28 bg-secondary">
@@ -132,6 +151,19 @@ export default function Testimonial () {
                         >
                             <ChevronRight className="h-5 w-5"/>
                         </button>
+                    </div>
+
+                    <div className="flex justify-center items-center mt-8 space-x-2">
+                            {defaultTestimonials.map((_, index) => (
+                                <button 
+                                    key={index}
+                                    onClick={() => setCurrentSlide(index)}
+                                    className={`w-3 h-3 rounded-full transition-all ${
+                                        currentSlide === index ? 'bg-primary scale-2' : 'bg-foreground/20'
+                                    }`}
+                                    aria-label={`Go to the slide ${index + 1}`}
+                                />
+                            ))}
                     </div>
                 </div>
             </div>
