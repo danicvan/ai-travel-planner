@@ -100,6 +100,11 @@ export default function Testimonial () {
                                                     ))}
                                                 </div>
                                             </div>
+                                            <div className="md:w-2/3">
+                                                    <blockquote>
+                                                        <p className="text-xl italic">{testimonial.content}</p>
+                                                    </blockquote>
+                                            </div>
                                         </div>
                                     </div>
 
