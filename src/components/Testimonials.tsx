@@ -88,7 +88,8 @@ export default function Testimonial () {
                                                         className="w-full h-full object-cover"
                                                     />
                                                 </div>
-                                                <h4 className="text-lg font-medium text-center">{displayName}</h4>    
+                                                <h4 className="text-lg font-medium text-center">{displayName}</h4>   
+                                                <p className="text-foreground/70 text-sm text-center">{displayRole}</p>
                                             </div>
                                         </div>
                                     </div>
