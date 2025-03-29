@@ -18,36 +18,36 @@ interface TestimonialProps {
     testimonials?: Testimonial[];
 }
 
-const defaultTestimonials =[
+const defaultTestimonials = [
     {
-        name: "Ana Souza",
-        role: "Gerente de Projetos",
-        content: "Essa ferramenta mudou minha forma de gerenciar projetos no Trello! Agora tenho tudo organizado sem esforço.",
-        author: "Ana Souza",
-        avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-        rating: 5
+      "name": "Ana Souza",
+      "role": "Project Manager",
+      "content": "This tool has changed the way I manage projects on Trello! Now I have everything organized effortlessly.",
+      "author": "Ana Souza",
+      "avatar": "https://randomuser.me/api/portraits/women/2.jpg",
+      "rating": 5
     },
     {
-        "name": "Lucas Martins",
-        "role": "Empreendedor",
-        "content": "Economizei horas por semana! A IA prioriza minhas tarefas e evita que eu esqueça prazos importantes.",
-        "author": "Lucas Martins",
-        "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
-        "rating": 5
-      },
-      {
-        "name": "Mariana Lima",
-        "role": "Analista de Processos",
-        "content": "Incrível como a IA entende meu fluxo de trabalho e otimiza automaticamente!",
-        "author": "Mariana Lima",
-        "avatar": "https://randomuser.me/api/portraits/women/4.jpg",
-        "rating": 5
-      }
-];
+      "name": "Lucas Martins",
+      "role": "Entrepreneur",
+      "content": "I saved hours per week! The AI prioritizes my tasks and prevents me from missing important deadlines.",
+      "author": "Lucas Martins",
+      "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
+      "rating": 5
+    },
+    {
+      "name": "Mariana Lima",
+      "role": "Process Analyst",
+      "content": "It's amazing how AI understands my workflow and optimizes it automatically!",
+      "author": "Mariana Lima",
+      "avatar": "https://randomuser.me/api/portraits/women/4.jpg",
+      "rating": 5
+    }
+ ];  
 
 export default function Testimonial () {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
 
     return (
         <section className="py-20 md:py-28 bg-secondary">
