@@ -85,8 +85,10 @@ export default function Testimonial () {
                                                     <img 
                                                         src={testimonial.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=random`}
                                                         alt={displayName}
+                                                        className="w-full h-full object-cover"
                                                     />
-                                                </div>    
+                                                </div>
+                                                <h4 className="text-lg font-medium text-center">{displayName}</h4>    
                                             </div>
                                         </div>
                                     </div>
