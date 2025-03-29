@@ -83,7 +83,8 @@ export default function Testimonial () {
                                             <div className="md:w-1/3 flex flex-col items-center">
                                                 <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white shadow-subtle">
                                                     <img 
-                                                        src={testimonial.avatar}
+                                                        src={testimonial.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=random`}
+                                                        alt={displayName}
                                                     />
                                                 </div>    
                                             </div>
