@@ -1,6 +1,6 @@
 "use client";
 
-import { Star } from "lucide-react";
+import { ChevronLeft, Star } from "lucide-react";
 import { useState } from "react";
 
 interface Testimonial {
@@ -47,7 +47,11 @@ const defaultTestimonials = [
 
 export default function Testimonial () {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev === 0 ? defaultTestimonials.length - 1 : prev - 1));
+    }
 
     return (
         <section className="py-20 md:py-28 bg-secondary">
@@ -107,12 +111,17 @@ export default function Testimonial () {
                                             </div>
                                         </div>
                                     </div>
-
-                                )
+                                );
                             })}
                         </div>
-                    </div>
 
+                        <button
+                            onClick={prevSlide}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-subtle flex items-center justify-center text-foreground hover:bg-white transition-all"
+                        >
+                            <ChevronLeft className="h-4 w-5"/>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
