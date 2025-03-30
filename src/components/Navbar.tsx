@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
@@ -14,7 +16,7 @@ export default function Navbar ({ className }: NavbarProps) {
             setScrolled(window.scrollY > 10);
         }
     });
-    
+
     return (
         <header
             className={cn(
