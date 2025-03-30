@@ -44,20 +44,20 @@ const CtaSection = ({
                         <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-white/5 rounded-full blur-3xl transform -translate-x-1/4 -translate-y-1/4"></div>
                     </div>
 
-                    <div className="relative z-10 mt-8 mb-8 py-16 md:py-20 px-8 md:px-16 text-center max-w-3xl mx-auto">
+                    <div className="relative z-10 py-16 md:py-20 px-8 md:px-16 text-center max-w-3xl mx-auto">
                         <h2 className="text-4xl md:text-5xl font-display font-medium tracking-tight mb-6 text-white">
                             {title}
                         </h2>
-                        <p className="text-xl text-white mb-10 py-10 mb-8">
+                        <p className="text-xl text-white/80 mb-10">
                             {description}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10 mb-10">
-                            <Button size="lg" className="p-10 rounded-full px-8 py-6 bg-white text-primary hover:bg-white/90 transition-all text-base">
+                        <div className="flex flex-col sm:flex-row justify-center gap-4">
+                            <Button size="lg" className="rounded-full px-8 py-6 bg-white text-primary hover:bg-white/90 transition-all text-base">
                                 {ctaText}<ArrowRight />
                              </Button>
                            
-                            <Button size="lg" variant="outline" className="rounded-full px-8 py-6 text-primary border-white/30 hover:bg-white/10 transition-all text-base">
+                            <Button size="lg" variant="outline" className="rounded-full px-8 py-6 text-primary border-white/30 hover:bg-white/10 hover:text-white transition-all text-base">
                                 Request a demo
                             </Button>
                         </div>
