@@ -1,11 +1,20 @@
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
     className?: string;
 }
 
 export default function Navbar ({ className }: NavbarProps) {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 10);
+        }
+    });
+    
     return (
         <header
             className={cn(
