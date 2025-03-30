@@ -1,4 +1,4 @@
-import { Facebook, Link } from "lucide-react";
+import { Facebook, Link, Twitter } from "lucide-react";
 
 export default function Footer () {
     return (
@@ -15,6 +15,9 @@ export default function Footer () {
                         <div className="flex space-x-4 mt-6">
                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" arial-label="Facebook" className="text-foreground/60 hover:text-primary transition-colors">
                                 <Facebook size={20} />
+                            </a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"  arial-label="Twitter" className="text-foreground/60 hover:text-primary transition-colors">
+                              <Twitter size={20} />  
                             </a>
                         </div>
                     </div>
