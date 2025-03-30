@@ -1,6 +1,8 @@
 import { Facebook, Instagram, Link, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer () {
+
+    const currentYear = new Date().getFullYear();
     return (
         <footer className="bg-secondary py-16">
             <div className="container mx-auto px-6 md:px-10">
@@ -80,6 +82,25 @@ export default function Footer () {
                                 Security
                             </li>
                         </ul>
+                    </div>
+
+                    <div className="border-t border-border/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+                        <p className="text-foreground/60 text-sm">
+                            &copy; {currentYear} AI Trello. All rights reserved.
+                        </p>
+                        <div className="mt-4 md:mt-0">
+                            <ul className="flex space-x-6 text-sm">
+                                <li className="text-foreground/60 hover:text-primary transition-colors">
+                                    Terms
+                                </li>
+                                <li className="text-foreground/60 hover:text-primary transition-colors">
+                                    Privacy
+                                </li>
+                                <li className="text-foreground/60 hover:text-primary transition-colors">
+                                    Cookies
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
