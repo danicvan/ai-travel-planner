@@ -27,6 +27,60 @@ export default function Footer () {
                             </a>
                         </div>
                     </div>
+
+                    <div>
+                        <h3 className="font-medium text-base mb-4">Company</h3>
+                        <ul className="space-y-3">
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                About Us
+                            </li>
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Customers
+                            </li>
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Blog
+                            </li>
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Contact
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className="font-medium text-base mb-4">Resources</h3>
+                        <ul className="space-y-3">
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Features
+                            </li>
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Prices
+                            </li>
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Support
+                            </li>
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Demo
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className="font-medium text-base mb-4">Legal</h3>
+                        <ul className="space-y-3">
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Terms of Service
+                            </li>
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Privacy Politic
+                            </li>
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Cookies Politic
+                            </li>
+                            <li className="text-foreground/70 hover:text-primary transition-colors">
+                                Security
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>
