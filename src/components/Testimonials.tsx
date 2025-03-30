@@ -71,7 +71,7 @@ export default function Testimonial () {
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
-        }, 2000);
+        }, 9000);
 
         return () => clearInterval(interval);
     }, []);
