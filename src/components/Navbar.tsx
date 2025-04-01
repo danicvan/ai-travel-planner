@@ -12,6 +12,7 @@ interface NavbarProps {
 export default function Navbar ({ className }: NavbarProps) {
     const [scrolled, setScrolled] = useState(false);
     const router = useRouter();
+    
     const handlePaymentPage = () => {
         router.push("/payment");
     };
