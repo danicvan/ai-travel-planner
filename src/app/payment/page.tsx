@@ -1,4 +1,5 @@
 import OrderSummary from "@/components/OrderSummary";
+import PaymentForm from "@/components/PaymentForm";
 import PlanFeatures from "@/components/PlanFeatures";
 import PlanSelector from "@/components/PlanSelector";
 
@@ -9,6 +10,7 @@ export default function PaymentPage () {
             <PlanSelector />
             <PlanFeatures />
             <OrderSummary />
+            <PaymentForm />
         </>
     )
 }
