@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface NavbarProps {
     className?: string;
@@ -10,6 +11,10 @@ interface NavbarProps {
 
 export default function Navbar ({ className }: NavbarProps) {
     const [scrolled, setScrolled] = useState(false);
+    const router = useRouter();
+    const handlePaymentPage = () => {
+        router.push("/payment");
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -56,6 +61,7 @@ export default function Navbar ({ className }: NavbarProps) {
                         Sign In
                     </Button>
                     <Button
+                        onClick={() => handlePaymentPage()}
                         variant="default"
                         size="sm"
                         className="bg-primary hover:primary/90 transition-colors"
