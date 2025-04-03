@@ -16,7 +16,12 @@ export default function OrderSummary ({ plan, isNewUser }: OrderSummaryProps) {
                         <span>{plan.price}/month</span>
                     </div>
 
-                    
+                    {isNewUser && (
+                        <div className="flex justify-between text-sm">
+                            <span className="text-emerald-600 font-medium">New user discount</span>
+                            <span className="text-emerald-600">-$5.00</span>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
