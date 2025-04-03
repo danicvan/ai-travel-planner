@@ -1,3 +1,4 @@
+import { Label } from "@headlessui/react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 
@@ -30,6 +31,10 @@ export default function PlanSelector({ plans, selectedPlan, setSelectedPlan}: Pl
                     {plans.map(plan => (
                         <div key={plan.id} className={`flex items-center space-x-2 rounded-md border p-4 ${selectedPlan === plan.id ? 'border-primary' : 'border-input'}`}>
                             <RadioGroupItem value ={plan.id} id={plan.id}/>
+                            <Label htmlFor={plan.id} className="flex flex-col gap-1 cursor-pointer flex-1" >
+                                <span className="font-medium">{plan.name}</span>
+                                <span className="text-primary text-lg font-bold">${plan.price}/month</span>
+                            </Label>
                         </div>
                     ))}
                 </RadioGroup>
