@@ -1,4 +1,5 @@
 import { Plan } from "./PlanSelector";
+import { Separator } from "./ui/separator";
 
 interface OrderSummaryProps {
     plan: Plan;
@@ -22,6 +23,14 @@ export default function OrderSummary ({ plan, isNewUser }: OrderSummaryProps) {
                             <span className="text-emerald-600">-$5.00</span>
                         </div>
                     )}
+
+                    <Separator />
+                    <div className="flex justify-between font-medium">
+                        <span>Total</span>
+                        <span className="text-primary">
+                            ${isNewUser ? (plan.price -5).toFixed(2) : plan.price}/month
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
