@@ -1,4 +1,6 @@
+import { CreditCard } from "lucide-react";
 import { Plan } from "./PlanSelector";
+import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -6,8 +8,17 @@ interface PaymentFormProps {
     onSubmit: (e: React.FormEvent) => void;
 }
 
-export default function PaymentForm () {
+export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: PaymentFormProps) {
     return (
-        <h1>PaymentForm</h1>
+        <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                    <CreditCard className="h-5 w-5">
+                        Payment Details
+                    </CreditCard>
+                </CardTitle>
+                <CardDescription>Select your preferred payment method</CardDescription>
+            </CardHeader>
+        </Card>
     )
 }
