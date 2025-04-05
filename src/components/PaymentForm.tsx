@@ -1,8 +1,9 @@
-import { CreditCard } from "lucide-react";
+import { Building, CreditCard, QrCode, Wallet } from "lucide-react";
 import { Plan } from "./PlanSelector";
-import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
+import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -40,7 +41,32 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                 <CardDescription>Select your preferred payment method</CardDescription>
             </CardHeader>
             <form onSubmit={handlePaymentSubmit}>
-
+                <CardContent>
+                    <Tabs>
+                        <TabsList>
+                            <TabsTrigger value="credit-card">
+                                <CreditCard>
+                                    Credit Card
+                                </CreditCard>
+                            </TabsTrigger>
+                            <TabsTrigger value="pix">
+                                <QrCode>
+                                    PIX
+                                </QrCode>
+                            </TabsTrigger>
+                            <TabsTrigger value="bank">
+                                <Building>
+                                    Bank Transfer
+                                </Building>
+                            <TabsTrigger value="paypal">
+                                <Wallet>
+                                    Paypal
+                                </Wallet>
+                            </TabsTrigger>
+                            </TabsTrigger>
+                        </TabsList>
+                    </Tabs>
+                </CardContent>
             </form>
         </Card>
     )
