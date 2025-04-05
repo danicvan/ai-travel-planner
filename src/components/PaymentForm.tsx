@@ -2,6 +2,7 @@ import { CreditCard } from "lucide-react";
 import { Plan } from "./PlanSelector";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -18,8 +19,15 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
 
         setTimeout(() => {
             setIsProcessing(false);
-        });
-    }
+
+            toast({
+                title: "Payment successful",
+                description: `You are now subscribed to the ${selectedPlan?.name}!`,
+            });
+
+            onSubmit(e);
+        }, 2000);
+    };
     
     return (
         <Card>
