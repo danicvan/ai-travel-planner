@@ -13,6 +13,7 @@ interface PaymentFormProps {
 
 export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: PaymentFormProps) {
     const [isProcessing, setIsProcessing] = useState(false);
+    const [paymentMethod, setPaymentMethod] = useState("credit-card");
     
     const handlePaymentSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -41,28 +42,28 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                 <CardDescription>Select your preferred payment method</CardDescription>
             </CardHeader>
             <form onSubmit={handlePaymentSubmit}>
-                <CardContent>
-                    <Tabs>
-                        <TabsList>
+                <CardContent className="space-y-4">
+                    <Tabs defaultValue="credit-card" onValueChange={setPaymentMethod} className="w-full">
+                        <TabsList className="grid grid-cols-4 mb-4">
                             <TabsTrigger value="credit-card">
-                                <CreditCard>
+                                <CreditCard className="h-4 w-4 mr-2">
                                     Credit Card
                                 </CreditCard>
                             </TabsTrigger>
                             <TabsTrigger value="pix">
-                                <QrCode>
+                                <QrCode className="h-4 w-4- mr-2">
                                     PIX
                                 </QrCode>
                             </TabsTrigger>
                             <TabsTrigger value="bank">
-                                <Building>
+                                <Building className="h-4 w-4 mr-2">
                                     Bank Transfer
                                 </Building>
+                            </TabsTrigger>
                             <TabsTrigger value="paypal">
-                                <Wallet>
+                                <Wallet className="h-4 w-4 mr-2">
                                     Paypal
                                 </Wallet>
-                            </TabsTrigger>
                             </TabsTrigger>
                         </TabsList>
                     </Tabs>
