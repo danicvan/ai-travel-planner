@@ -1,6 +1,7 @@
 import { CreditCard } from "lucide-react";
 import { Plan } from "./PlanSelector";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { useState } from "react";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -9,6 +10,17 @@ interface PaymentFormProps {
 }
 
 export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: PaymentFormProps) {
+    const [isProcessing, setIsProcessing] = useState(false);
+    
+    const handlePaymentSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsProcessing(true);
+
+        setTimeout(() => {
+            setIsProcessing(false);
+        });
+    }
+    
     return (
         <Card>
             <CardHeader>
@@ -19,6 +31,9 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                 </CardTitle>
                 <CardDescription>Select your preferred payment method</CardDescription>
             </CardHeader>
+            <form onSubmit={handlePaymentSubmit}>
+
+            </form>
         </Card>
     )
 }
