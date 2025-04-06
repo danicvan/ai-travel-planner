@@ -26,7 +26,7 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
             .trim();
         setCardName(formattedValue);
     };
-    
+
     const handlePaymentSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setIsProcessing(true);
@@ -84,7 +84,12 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                         placeholder="1234 5678 9012 3456"
                                         value={cardNumber}
                                         onChange={handleCardNumberChange}
+                                        maxLength={19}
+                                        required={paymentMethod === "credit-card"}
                                     />
+                                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">
+                                        <CreditCard className="h-4 w-4" />
+                                    </div>
                                 </div>
                             </div>
                         </TabsContent>
