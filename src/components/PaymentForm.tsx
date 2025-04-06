@@ -5,6 +5,8 @@ import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
+import { Label } from "@headlessui/react";
+import { Input } from "./ui/input";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -15,6 +17,15 @@ interface PaymentFormProps {
 export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: PaymentFormProps) {
     const [isProcessing, setIsProcessing] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("credit-card");
+    const [cardNumber, setCardName] = useState("");
+    
+    const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.replace(/\D/g, "");
+        const formattedValue = value
+            .replace(/(.{4})/g, "$1 ")
+            .trim();
+        setCardName(formattedValue);
+    };
     
     const handlePaymentSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -65,7 +76,17 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                         </TabsList>
 
                         <TabsContent value="credit-card" className="space-y-4">
-
+                            <div className="space-y-2">
+                                <Label htmlFor="card-number">Card Number</Label>
+                                <div className="relative">
+                                    <Input 
+                                        id="card-number"
+                                        placeholder="1234 5678 9012 3456"
+                                        value={cardNumber}
+                                        onChange={handleCardNumberChange}
+                                    />
+                                </div>
+                            </div>
                         </TabsContent>
                     </Tabs>
                 </CardContent>
