@@ -46,24 +46,20 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                     <Tabs defaultValue="credit-card" onValueChange={setPaymentMethod} className="w-full">
                         <TabsList className="grid grid-cols-4 mb-4">
                             <TabsTrigger value="credit-card">
-                                <CreditCard className="h-4 w-4 mr-2">
+                                <CreditCard className="h-4 w-4 mr-2" />
                                     Credit Card
-                                </CreditCard>
                             </TabsTrigger>
                             <TabsTrigger value="pix">
-                                <QrCode className="h-4 w-4- mr-2">
+                                <QrCode className="h-4 w-4- mr-2" />
                                     PIX
-                                </QrCode>
                             </TabsTrigger>
                             <TabsTrigger value="bank">
-                                <Building className="h-4 w-4 mr-2">
+                                <Building className="h-4 w-4 mr-2" />
                                     Bank Transfer
-                                </Building>
                             </TabsTrigger>
                             <TabsTrigger value="paypal">
-                                <Wallet className="h-4 w-4 mr-2">
+                                <Wallet className="h-4 w-4 mr-2" />
                                     Paypal
-                                </Wallet>
                             </TabsTrigger>
                         </TabsList>
                     </Tabs>
