@@ -17,14 +17,14 @@ interface PaymentFormProps {
 export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: PaymentFormProps) {
     const [isProcessing, setIsProcessing] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("credit-card");
-    const [cardNumber, setCardName] = useState("");
+    const [cardNumber, setCardNumber] = useState("");
     
     const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/\D/g, "");
         const formattedValue = value
             .replace(/(.{4})/g, "$1 ")
             .trim();
-        setCardName(formattedValue);
+        setCardNumber(formattedValue);
     };
 
     const handlePaymentSubmit = (e: React.FormEvent) => {
@@ -91,6 +91,15 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                         <CreditCard className="h-4 w-4" />
                                     </div>
                                 </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="card-name">Cardholder Name</Label>
+                                <Input
+                                    id="card-name"
+                                    placeholder="John Doe"
+                                    value={cardName}
+                                />
                             </div>
                         </TabsContent>
                     </Tabs>
