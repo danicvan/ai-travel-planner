@@ -1,7 +1,7 @@
 import { Building, CreditCard, QrCode, Wallet } from "lucide-react";
 import { Plan } from "./PlanSelector";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { useState } from "react";
+import { use, useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
@@ -18,7 +18,8 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
     const [isProcessing, setIsProcessing] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("credit-card");
     const [cardNumber, setCardNumber] = useState("");
-    
+    const [cardName, setCardName] = useState("");
+
     const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/\D/g, "");
         const formattedValue = value
@@ -99,6 +100,8 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                     id="card-name"
                                     placeholder="John Doe"
                                     value={cardName}
+                                    onChange={(e) => setCardName(e.target.value)}
+                                    required={paymentMethod === "credit-card"}
                                 />
                             </div>
                         </TabsContent>
