@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
+import { TabsContent } from "@radix-ui/react-tabs";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -62,6 +63,10 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                     Paypal
                             </TabsTrigger>
                         </TabsList>
+
+                        <TabsContent value="credit-card" className="space-y-4">
+
+                        </TabsContent>
                     </Tabs>
                 </CardContent>
             </form>
