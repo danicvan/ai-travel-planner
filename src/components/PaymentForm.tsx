@@ -44,6 +44,18 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
             onSubmit(e);
         }, 2000);
     };
+
+    const handleExpiryDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.replace(/\D/g, "");
+
+        if (value.length <= 2) {
+            setExpiryDate(value);
+        } else {
+            const month = value.substring(0, 2);
+            const year = value.substring(2, 4);
+            setExpiryDate(`${month}/${year}`);
+        }
+    };
     
     return (
         <Card>
