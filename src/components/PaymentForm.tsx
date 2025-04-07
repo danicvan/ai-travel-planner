@@ -1,3 +1,5 @@
+"use client";
+
 import { Building, CreditCard, QrCode, Wallet } from "lucide-react";
 import { Plan } from "./PlanSelector";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
