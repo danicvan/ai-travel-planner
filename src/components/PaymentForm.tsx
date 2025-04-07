@@ -20,6 +20,7 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
     const [cardNumber, setCardNumber] = useState("");
     const [cardName, setCardName] = useState("");
     const [expiryDate, setExpiryDate] = useState("");
+    const [cvv, setCvv] = useState("");
 
     const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/\D/g, "");
@@ -56,6 +57,11 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
             setExpiryDate(`${month}/${year}`);
         }
     };
+
+    const handleCvvChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.replace(/\D/g, "");
+        setCvv(value);
+    }
     
     return (
         <Card>
@@ -130,9 +136,19 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                         required={paymentMethod === "credit-card"}
                                     />
                                 </div>
+                            
+                                <div className="space-y-2">
+                                    <Label htmlFor="cvv">CVV</Label>
+                                    <Input 
+                                        id="cvv"
+                                        placeholder="123"
+                                        value={cvv}
+                                        onChange={handleCvvChange}
+                                        maxLength={3}
+                                        required={paymentMethod === "credit-card"}
+                                    />
+                                </div>
                             </div>
-
-                    
                         </TabsContent>
                     </Tabs>
                 </CardContent>
