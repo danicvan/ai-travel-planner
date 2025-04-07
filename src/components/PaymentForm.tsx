@@ -19,6 +19,7 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
     const [paymentMethod, setPaymentMethod] = useState("credit-card");
     const [cardNumber, setCardNumber] = useState("");
     const [cardName, setCardName] = useState("");
+    const [expiryDate, setExpiryDate] = useState("");
 
     const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/\D/g, "");
@@ -104,6 +105,22 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                     required={paymentMethod === "credit-card"}
                                 />
                             </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="expire-date">Expiry Date</Label>
+                                    <Input 
+                                        id="expiry-date"
+                                        placeholder="MM/YY"
+                                        value={expiryDate}
+                                        onChange={handleExpiryDateChange}
+                                        maxLength={5}
+                                        required={paymentMethod === "credit-card"}
+                                    />
+                                </div>
+                            </div>
+
+                    
                         </TabsContent>
                     </Tabs>
                 </CardContent>
