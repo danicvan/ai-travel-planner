@@ -203,7 +203,22 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                     id="branch-code"
                                     placeholder="Branch code"
                                     value={bankBranch}
+                                    onChange={(e) => setBankBranch(e.target.value)}
+                                    required={paymentMethod === "bank"}
                                 />
+                            </div>
+                        </TabsContent>
+
+                        <TabsContent value="paypal" className="space-y-4">
+                            <div>
+                                <Wallet />
+                                <p>
+                                    You'll be redirected to Paypal to complete your payment after clicking the subscribe button
+                                </p>
+                                <div>
+                                    <span>Powered by</span>
+                                    <span>PayPal</span>
+                                </div>
                             </div>
                         </TabsContent>
                     </Tabs>
