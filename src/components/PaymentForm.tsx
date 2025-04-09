@@ -23,6 +23,7 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
     const [cardName, setCardName] = useState("");
     const [expiryDate, setExpiryDate] = useState("");
     const [cvv, setCvv] = useState("");
+    const [pixKey, setPixKey] = useState("");
 
     const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/\D/g, "");
@@ -150,6 +151,19 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                         required={paymentMethod === "credit-card"}
                                     />
                                 </div>
+                            </div>
+                        </TabsContent>
+
+                        <TabsContent value="pix" className="space-y-4">
+                            <div className="space-y-2">
+                                <Label>PIX Key</Label>
+                                <Input 
+                                    id="pix-key"
+                                    placeholder="Your PIX key"
+                                    value={pixKey}
+                                    onChange={(e) => setPixKey(e.target.value)}
+                                    required={paymentMethod === "pix"}
+                                />
                             </div>
                         </TabsContent>
                     </Tabs>
