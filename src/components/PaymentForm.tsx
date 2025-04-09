@@ -165,7 +165,15 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                     required={paymentMethod === "pix"}
                                 />
                             </div>
+                            <div className="p-6 border border-dashed rounded-md flex flex-col items-center justify-center space-y-2">
+                                <QrCode className="h-24 w-24 text-primary/50"/>
+                                <p className="text-sm text-muted-foreground text-center">
+                                    Use your banking app to scan the QR code that will be generated after confirmation
+                                </p>
+                            </div>
                         </TabsContent>
+
+                        
                     </Tabs>
                 </CardContent>
             </form>
