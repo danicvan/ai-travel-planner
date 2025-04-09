@@ -26,6 +26,7 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
     const [pixKey, setPixKey] = useState("");
     const [bankName, setBankName] = useState("");
     const [bankAccount, setBankAccount] = useState("");
+    const [bankBranch, setBankBranch] = useState("");
 
     const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/\D/g, "");
@@ -186,12 +187,22 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                                     required={paymentMethod === "bank"}
                                 />
                             </div>
-                            <div>
-                                <Label>Account Number</Label>
+                            <div className="space-y-2">
+                                <Label htmlFor="account-number">Account Number</Label>
                                 <Input 
                                     id="account-number"
                                     placeholder="Your account number"
                                     value={bankAccount}
+                                    onChange={(e) => setBankAccount(e.target.value)}
+                                    required={paymentMethod === "bank"}
+                                />
+                            </div>
+                            <div>
+                                <Label>Branch Code</Label>
+                                <Input 
+                                    id="branch-code"
+                                    placeholder="Branch code"
+                                    value={bankBranch}
                                 />
                             </div>
                         </TabsContent>
