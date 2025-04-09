@@ -3,12 +3,12 @@
 import { Building, CreditCard, QrCode, Wallet } from "lucide-react";
 import { Plan } from "./PlanSelector";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { use, useState } from "react";
+import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
-import { Label } from "@headlessui/react";
 import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -156,5 +156,5 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                 </CardContent>
             </form>
         </Card>
-    )
+    );
 }
