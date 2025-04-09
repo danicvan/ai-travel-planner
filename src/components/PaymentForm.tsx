@@ -1,6 +1,6 @@
 "use client";
 
-import { Building, CreditCard, QrCode, Wallet } from "lucide-react";
+import { Building, CreditCard, Lock, QrCode, Wallet } from "lucide-react";
 import { Plan } from "./PlanSelector";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
@@ -9,6 +9,7 @@ import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import OrderSummary from "./OrderSummary";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -222,6 +223,13 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                             </div>
                         </TabsContent>
                     </Tabs>
+
+                    {selectedPlan && <OrderSummary plan={selectedPlan} isNewUser={isNewUser} />}
+
+                    <div className="flex items-center text-sm text-muted-foreground">
+                        <Lock className="h-3 w-3 mr-1"/>
+                        Payments are secure and encrypted
+                    </div>
                 </CardContent>
             </form>
         </Card>
