@@ -210,14 +210,14 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                         </TabsContent>
 
                         <TabsContent value="paypal" className="space-y-4">
-                            <div>
-                                <Wallet />
-                                <p>
+                            <div className="p-6 border border-dashed rounded-md flex flex-col items-center justify-center space-y-4">
+                                <Wallet className="h-16 w-16 text-primary/50"/>
+                                <p className="text-sm text-muted-foreground text-center">
                                     You'll be redirected to Paypal to complete your payment after clicking the subscribe button
                                 </p>
-                                <div>
+                                <div className="bg-[#0070ba] text-white py-2 px-4 rounded text-sm font-medium inline-flex items-center gap-2">
                                     <span>Powered by</span>
-                                    <span>PayPal</span>
+                                    <span className="font-bold">PayPal</span>
                                 </div>
                             </div>
                         </TabsContent>
