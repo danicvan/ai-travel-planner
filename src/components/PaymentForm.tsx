@@ -1,8 +1,8 @@
 "use client";
 
-import { Building, CreditCard, Lock, QrCode, Wallet } from "lucide-react";
+import { Building, CreditCard, Loader2, Lock, QrCode, Wallet } from "lucide-react";
 import { Plan } from "./PlanSelector";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
@@ -10,6 +10,7 @@ import { TabsContent } from "@radix-ui/react-tabs";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import OrderSummary from "./OrderSummary";
+import { Button } from "./ui/button";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -231,6 +232,21 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                         Payments are secure and encrypted
                     </div>
                 </CardContent>
+
+                <CardFooter>
+                    <Button type="submit" className="w-full" disabled={isProcessing}>
+                        {isProcessing ? (
+                            <>
+                                <Loader2 className="h-4 w-4 mr-2 animate-spin"/>
+                                Processing...
+                            </>
+                        ) : paymentMethod === "paypal" ? (
+                            "Continue to Paypal"
+                        ) : (
+                            isNewUser ? "Subscribe with Discount" : "Subscribe Now"
+                        )}
+                    </Button>
+                </CardFooter>
             </form>
         </Card>
     );
