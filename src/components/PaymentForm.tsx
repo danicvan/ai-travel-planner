@@ -53,7 +53,6 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                 description: `You are now subscribed to the ${selectedPlan?.name}!`,
             });
 
-            
             router.push("/trello");
         }, 2000);
     };
