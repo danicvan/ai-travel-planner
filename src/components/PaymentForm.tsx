@@ -11,6 +11,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import OrderSummary from "./OrderSummary";
 import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
 
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
@@ -29,6 +30,8 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
     const [bankName, setBankName] = useState("");
     const [bankAccount, setBankAccount] = useState("");
     const [bankBranch, setBankBranch] = useState("");
+
+    const router = useRouter();
 
     const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/\D/g, "");
@@ -50,7 +53,8 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                 description: `You are now subscribed to the ${selectedPlan?.name}!`,
             });
 
-            onSubmit(e);
+            
+            router.push("/trello");
         }, 2000);
     };
 
