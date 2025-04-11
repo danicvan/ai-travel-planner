@@ -4,22 +4,22 @@ import { Button } from "./ui/button";
 export default function Features () {
     const features = [
         {
-            title: "Automação Inteligente",
-            description: "Deixe a IA organizar suas tarefas automaticamente."
+            title: "Smart Automation",
+            description: "Let AI organize your tasks automatically."
         },
         {
-            title: "Sugestões Baseadas em Dados",
-            description: "Receba recomendações para otimizar sua produtividade."
+            title: "Data-Driven Suggestions",
+            description: "Get recommendations to optimize your productivity."
         },
         {
-            title: "Prioridades Otimizadas",
-            description: "A IA ajuda a definir o que precisa de mais atenção."
+            title: "Optimized Priorities",
+            description: "AI helps you identify what needs the most attention."
         },
         {
-            title: "Integração Perfeita",
-            description: "Funciona dentro do Trello sem complicações."
+            title: "Seamless Integration",
+            description: "Works inside Trello without any hassle."
         }
-    ];
+    ];    
 
     return (
         <div className="py-20 px-6">
