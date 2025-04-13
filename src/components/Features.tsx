@@ -26,10 +26,10 @@ export default function Features () {
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4"> 
-                        Por que escolher nossa IA para Trello?
+                        Why choose our AI for Trello?
                     </h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        AI Trello combina simplicidade com poderosas funcionalidades para te ajudar a gerenciar suas tarefas de forma eficiente.
+                        AI Trello combines simplicity with powerful features to help you manage your tasks efficiently.
                     </p>
                 </div>
 
@@ -53,7 +53,7 @@ export default function Features () {
                         size="lg"
                         className="bg-primary hover:bg-primary/90"
                     >
-                        Comece Agora
+                        Get Started
                         <ArrowRight className="ml-2 h-4 w-4"/>
                     </Button>
                 </div>
