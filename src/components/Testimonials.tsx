@@ -13,12 +13,6 @@ interface Testimonial {
     rating?: number;
 }
 
-interface TestimonialProps {
-    title?: string;
-    description?: string;
-    testimonials?: Testimonial[];
-}
-
 const defaultTestimonials = [
     {
       "name": "Ana Souza",
@@ -49,7 +43,7 @@ const defaultTestimonials = [
 export default function Testimonial () {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isVisible, setIsVisible] = useState(true);
-    const { ref, inView } = useInView({
+    const {inView } = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
