@@ -16,10 +16,9 @@ import { useRouter } from "next/navigation";
 interface PaymentFormProps {
     selectedPlan: Plan | undefined;
     isNewUser?: boolean;
-    onSubmit: (e: React.FormEvent) => void;
 }
 
-export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: PaymentFormProps) {
+export default function PaymentForm ({ selectedPlan, isNewUser }: PaymentFormProps) {
     const [isProcessing, setIsProcessing] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("credit-card");
     const [cardNumber, setCardNumber] = useState("");
@@ -218,7 +217,7 @@ export default function PaymentForm ({ selectedPlan, isNewUser, onSubmit }: Paym
                             <div className="p-6 border border-dashed rounded-md flex flex-col items-center justify-center space-y-4">
                                 <Wallet className="h-16 w-16 text-primary/50"/>
                                 <p className="text-sm text-muted-foreground text-center">
-                                    You'll be redirected to Paypal to complete your payment after clicking the subscribe button
+                                    You will be redirected to Paypal to complete your payment after clicking the subscribe button
                                 </p>
                                 <div className="bg-[#0070ba] text-white py-2 px-4 rounded text-sm font-medium inline-flex items-center gap-2">
                                     <span>Powered by</span>
