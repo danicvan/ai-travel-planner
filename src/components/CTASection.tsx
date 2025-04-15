@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Link } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Button } from "./ui/button";
@@ -9,14 +9,12 @@ interface CtaSectionProps {
     title?: string;
     description?: string;
     ctaText?: string;
-    ctaLink?: string;
 };
 
 const CtaSection = ({
     title = "Transform the way you manage your projects today",
     description = "Join hundreds of users who have already optimized their workflow with AI Trello. Start now with a 14-day trial.",
     ctaText = "Start free trial",
-    ctaLink = "/register"
 }: CtaSectionProps) => {
     const [isVisible, setIsVisible] = useState(false);
     const { ref, inView } = useInView({
