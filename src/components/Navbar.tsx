@@ -17,6 +17,13 @@ export default function Navbar ({ className }: NavbarProps) {
         router.push("/payment");
     };
 
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 10);
