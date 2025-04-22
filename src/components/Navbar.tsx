@@ -36,7 +36,7 @@ export default function Navbar ({ className }: NavbarProps) {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-6", 
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-6",
                 scrolled ? "bg-white bg-opacity-80 backdrop-blur-md shadow-sm" : "bg-transparent",
                 className
             )}
@@ -47,19 +47,28 @@ export default function Navbar ({ className }: NavbarProps) {
                         AI Trello
                     </span>
                 </div>
-
+    
                 <nav className="md:flex items-center space-x-8">
-                    <a href="#features" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+                    <button
+                        onClick={() => scrollToSection("features")}
+                        className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                    >
                         Features
-                    </a>
-                    <a href="#testiomials" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+                    </button>
+                    <button
+                        onClick={() => scrollToSection("testimonials")}
+                        className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                    >
                         Testimonials
-                    </a>
-                    <a href="#premium" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+                    </button>
+                    <button
+                        onClick={() => scrollToSection("premium")}
+                        className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                    >
                         Premium
-                    </a>
+                    </button>
                 </nav>
-
+    
                 <div className="flex items-center space-x-4 ">
                     <Button
                         variant="ghost"
@@ -69,10 +78,10 @@ export default function Navbar ({ className }: NavbarProps) {
                         Sign In
                     </Button>
                     <Button
-                        onClick={() => handlePaymentPage()}
+                        onClick={handlePaymentPage}
                         variant="default"
                         size="sm"
-                        className="bg-primary hover:primary/90 transition-colors"
+                        className="bg-primary hover:bg-primary/90 transition-colors"
                     >
                         Get Started
                     </Button>
